@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://df47olukyrg15"
+path="res://.godot/imported/Cerrar puerta.wav-d38c166267e0e68b92b2de14d9a68be6.sample"
+
+[deps]
+
+source_file="res://entities/player/sound_effects/Cerrar puerta.wav"
+dest_files=["res://.godot/imported/Cerrar puerta.wav-d38c166267e0e68b92b2de14d9a68be6.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

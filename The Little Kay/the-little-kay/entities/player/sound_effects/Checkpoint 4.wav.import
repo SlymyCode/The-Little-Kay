@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://btvcus6k4lchv"
+path="res://.godot/imported/Checkpoint 4.wav-1a75506f47b595dff464f71fd6058edf.sample"
+
+[deps]
+
+source_file="res://entities/player/sound_effects/Checkpoint 4.wav"
+dest_files=["res://.godot/imported/Checkpoint 4.wav-1a75506f47b595dff464f71fd6058edf.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
