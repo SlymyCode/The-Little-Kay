@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://b0ncylia7nqwm"]
+
+[ext_resource type="Script" uid="uid://cv2vm4tcqaoha" path="res://Entities/Enemies/espinas.gd" id="1_ifdat"]
+[ext_resource type="Texture2D" uid="uid://i26pnyaa5byh" path="res://tile_0119.png" id="2_52d05"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8w0r3"]
+radius = 5.0990195
+
+[node name="Espinas" type="Node2D" unique_id=276837280]
+z_index = 10
+script = ExtResource("1_ifdat")
+duracion = 3.0
+velocidad = 250.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1329771208]
+rotation = -2.3561945
+scale = Vector2(0.41474596, 0.41474587)
+texture = ExtResource("2_52d05")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=241517936]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1955617266]
+shape = SubResource("CircleShape2D_8w0r3")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
