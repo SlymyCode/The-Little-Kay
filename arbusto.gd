@@ -9,9 +9,9 @@ func disparar():
 	var espina :Espinas = espinas.instantiate()
 	var nodo_padre = get_tree().current_scene
 	nodo_padre.add_child(espina)
+	print("nueva espina")
 	espina.global_position = %SpawnPoint.global_position
 	espina.rotation = self.rotation
-	print("Disparando espina en: ", espina.global_position)
 
 
 func _on_timer_timeout() -> void:
