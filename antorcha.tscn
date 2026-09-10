@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://khjr5s11hftj"]
+
+[ext_resource type="Script" uid="uid://l5y3npw8hew2" path="res://antorcha.gd" id="1_3yimf"]
+[ext_resource type="Texture2D" uid="uid://d2wsmt47lmkx4" path="res://tile_0071.png" id="1_ql56p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w7mgy"]
+size = Vector2(48, 107)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_njj41"]
+size = Vector2(10, 16)
+
+[node name="Antorcha" type="RigidBody2D" unique_id=114311181]
+script = ExtResource("1_3yimf")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1743381821]
+texture = ExtResource("1_ql56p")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=184191780]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=349016939]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_w7mgy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1227291570]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_njj41")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

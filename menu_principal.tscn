@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://ktiwxqcjmcyd"]
+[gd_scene format=3 uid="uid://8q8uepo5m5h3"]
 
-[ext_resource type="Script" uid="uid://brvvpvnc23abf" path="res://menu_principal.gd" id="1_bj1uy"]
+[ext_resource type="Script" uid="uid://dwpxo7idsqhso" path="res://menu_principal.gd" id="1_bj1uy"]
 
 [node name="MenuTitulo" type="Control" unique_id=1634701214 node_paths=PackedStringArray("boton_nueva_partida", "boton_salir", "menu_titulo")]
 layout_mode = 3

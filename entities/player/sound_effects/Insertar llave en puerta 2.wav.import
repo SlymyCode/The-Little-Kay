@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://byjfqwomrso6h"
+path="res://.godot/imported/Insertar llave en puerta 2.wav-93a31b5c05d036826c9378d80e7a6126.sample"
+
+[deps]
+
+source_file="res://entities/player/sound_effects/Insertar llave en puerta 2.wav"
+dest_files=["res://.godot/imported/Insertar llave en puerta 2.wav-93a31b5c05d036826c9378d80e7a6126.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
