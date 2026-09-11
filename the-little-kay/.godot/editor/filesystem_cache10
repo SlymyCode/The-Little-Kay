@@ -1,0 +1,38 @@
+78098b89c88a74ebe8c20117b8754620
+::res://::1789167539
+main.tscn::PackedScene::2752669265739382594::1789045480::0::1::::<><><>0<>0<><>::uid://5iifw4f8vie7::::res://tiles/grass/TopGreenPrototype.png<>uid://bykqqyanps31s::::res://entities/player/player_kay.tscn<>uid://bq4xpv0a0kjxt::::res://entities/interactables/Checkpoints/checkpoint.tscn
+nivel.tscn::PackedScene::5689210937204056938::1789045480::0::1::::<><><>0<>0<><>::uid://5iifw4f8vie7::::res://tiles/grass/TopGreenPrototype.png<>uid://bykqqyanps31s::::res://entities/player/player_kay.tscn<>res://Entities/Enemies/arbusto.tscn<>res://Entities/Enemies/espinas.tscn<>uid://bq4xpv0a0kjxt::::res://entities/interactables/Checkpoints/checkpoint.tscn
+::res://entities/::1789045480
+::res://entities/interactables/::1789045480
+::res://entities/interactables/Checkpoints/::1789045480
+checkpoint.gd::GDScript::1742101484638729198::1789045480::0::1::::Checkpoint<>Node2D<><>0<>0<><>::
+checkpoint.tscn::PackedScene::3570733556155830885::1789045480::0::1::::<><><>0<>0<><>::uid://y25fln5itjbq::::res://entities/interactables/Checkpoints/checkpoint.gd<>uid://dxdhrokuds1cp::::res://entities/interactables/Checkpoints/Sprites/Checkpoint_Placeholder.png
+::res://entities/interactables/Checkpoints/Sprites/::1789167521
+Checkpoint_Placeholder.png::CompressedTexture2D::8780254717150377083::1789045480::1789167521::1::::<><><>0<>0<>11b20a75ab67128e67e05fbd0b243b27<>res://.godot/imported/Checkpoint_Placeholder.png-aeeeb51a1e43628b6eccf2be32d3a833.ctex::
+::res://entities/player/::1789045480
+player.gd::GDScript::5770005339416012099::1789045480::0::1::::Player<>CharacterBody2D<><>0<>0<><>::
+player_kay.tscn::PackedScene::4092598014305067542::1789045480::0::1::::<><><>0<>0<><>::uid://cohbe6snwea6f::::res://entities/player/player.gd<>uid://btvcus6k4lchv::::res://entities/player/sound_effects/Checkpoint 4.wav<>uid://bvp7f0aa4apr4::::res://entities/player/sound_effects/Jump.mp3<>uid://b08p7jq51ccls::::res://entities/player/sound_effects/Caminar llave.wav<>uid://bvm875454lelv::::res://entities/player/sprites/SpriteSheet.png
+::res://entities/player/sound_effects/::1789167522
+Abrir puerta.wav::AudioStreamWAV::6098699876229494663::1789045480::1789167521::1::::<><><>0<>0<>a540dac9b4e58904e8f447b32247b392<>res://.godot/imported/Abrir puerta.wav-a0d153cf188dbdef44174736137573d7.sample::
+Bajar picaporte.wav::AudioStreamWAV::5609271023592975436::1789045480::1789167521::1::::<><><>0<>0<>b2e4a77ec9f6c980fd6b3f9aef128572<>res://.godot/imported/Bajar picaporte.wav-318466db1fa779af61a21c4114cd3bdd.sample::
+Caminar llave.wav::AudioStreamWAV::4210234639649247616::1789045480::1789167522::1::::<><><>0<>0<>e516dd38ef1530a861bbcd85e1f272a6<>res://.godot/imported/Caminar llave.wav-5d66be604bb3399d3bea6c784a9f2ed4.sample::
+Candado.wav::AudioStreamWAV::9050421975007714584::1789045480::1789167522::1::::<><><>0<>0<>9d5d1a83f8d871ea721760f0e4138a5b<>res://.godot/imported/Candado.wav-a8aafc320c7adacd2b91753117a76860.sample::
+Cerrar puerta.wav::AudioStreamWAV::7572041778160436210::1789045480::1789167522::1::::<><><>0<>0<>7daceddfa8d7c6ac8323952ad915c359<>res://.godot/imported/Cerrar puerta.wav-d38c166267e0e68b92b2de14d9a68be6.sample::
+Checkpoint2.wav::AudioStreamWAV::6053076482231670721::1789045480::1789167522::1::::<><><>0<>0<>d85b5a45a6490aebc44542b4c0d730e2<>res://.godot/imported/Checkpoint2.wav-3aa6565a331fc89b4ea396b1e4d76d47.sample::
+Checkpoint 4.wav::AudioStreamWAV::3763518789317384883::1789045480::1789167522::1::::<><><>0<>0<>9bee2b3d5c3d7d1b26ce65113a389f4f<>res://.godot/imported/Checkpoint 4.wav-1a75506f47b595dff464f71fd6058edf.sample::
+Checkpoint.wav::AudioStreamWAV::7405630088551588637::1789045480::1789167522::1::::<><><>0<>0<>b91a01fe8a5427362a0464f928edd015<>res://.godot/imported/Checkpoint.wav-e147bf92d13793ed498352a68863f890.sample::
+Checkponit 3.wav::AudioStreamWAV::5823639905449920755::1789045480::1789167522::1::::<><><>0<>0<>cbecdbce6053e75d364d51058594c4e8<>res://.godot/imported/Checkponit 3.wav-a82e07117630b52823276bb5f0346fb9.sample::
+Daño a llave.wav::AudioStreamWAV::527807108881638852::1789045480::1789167522::1::::<><><>0<>0<>6305fd9e88315c2a57d56e6eb75f40bd<>res://.godot/imported/Daño a llave.wav-e2f838afe91539f964586ae08274c39d.sample::
+Insertar llave en puerta 2.wav::AudioStreamWAV::4089865666168359421::1789045480::1789167521::1::::<><><>0<>0<>2a8a1c865db089e565ce4d9577b511cf<>res://.godot/imported/Insertar llave en puerta 2.wav-93a31b5c05d036826c9378d80e7a6126.sample::
+Insertar llave en puerta.wav::AudioStreamWAV::191673269921416330::1789045480::1789167521::1::::<><><>0<>0<>a2202a58823af8cd7d10fc2fdf8ec0a6<>res://.godot/imported/Insertar llave en puerta.wav-245c8d7b49e6183ae2f68b4184bb18fb.sample::
+Jump.mp3::AudioStreamMP3::3893305252263254379::1789045480::1789167521::1::::<><><>0<>0<>f46bbcd411ebda218ec62111a7d3a8ec<>res://.godot/imported/Jump.mp3-b44c21dd9fd22d4701fe75ae57065c86.mp3str::
+Nose2.wav::AudioStreamWAV::8710739278423980886::1789045480::1789167521::1::::<><><>0<>0<>5781932945c3d2a7da8982ff1e2ce3db<>res://.godot/imported/Nose2.wav-be854da136d58d41af7b58b61bf3c081.sample::
+Nose3.wav::AudioStreamWAV::7914966289099959432::1789045480::1789167521::1::::<><><>0<>0<>bc456c49a77ddc1300fdb591a45405d1<>res://.godot/imported/Nose3.wav-d8dd8020a123e4018e9c2d5aeaecacf1.sample::
+Nose.wav::AudioStreamWAV::3146118157824997873::1789045480::1789167521::1::::<><><>0<>0<>c741dce988e8cece204df60edc52ee97<>res://.godot/imported/Nose.wav-d70816b8e83ac68aa603e4ac99b0216a.sample::
+Puerta2.wav::AudioStreamWAV::8560485280930185805::1789045480::1789167521::1::::<><><>0<>0<>339edada0ea1f1de6b0553be28dbf6fc<>res://.godot/imported/Puerta2.wav-b384240607757a28bd78e50c807de69a.sample::
+Puerta.wav::AudioStreamWAV::4351705521089780768::1789045480::1789167521::1::::<><><>0<>0<>c5c86721d23ac4dcece633b10ac50add<>res://.godot/imported/Puerta.wav-c9cb8be0a615529d8029a9dc9b458fb2.sample::
+::res://entities/player/sprites/::1789167521
+SpriteSheet.png::CompressedTexture2D::3887221361208834627::1789045480::1789167521::1::::<><><>0<>0<>af8867f0ce2687f7530141ca474aef1d<>res://.godot/imported/SpriteSheet.png-094215807eaa115d9669e195d212b110.ctex::
+::res://tiles/::1789045480
+::res://tiles/grass/::1789167521
+TopGreenPrototype.png::CompressedTexture2D::2122676196670248160::1789045480::1789167521::1::::<><><>0<>0<>50ebce9d6c36312f4ad1f52f0b314243<>res://.godot/imported/TopGreenPrototype.png-2d52c9bd980a2007a7c64246ee5a4b79.ctex::
