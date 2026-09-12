@@ -24,7 +24,7 @@ enum States {
 var lerp_weight: float
 var direction : float
 var jumps_performed = 0
-var current_hp = 2
+var current_hp = max_hp
 var current_state: States
 var last_respawn_pos: Vector2
 var is_suspended = false
@@ -130,3 +130,13 @@ func _physics_process(delta: float) -> void:
 	reset_scale()
 	move_and_slide()
 	handle_states()
+	
+func daño():
+	current_hp -= 1
+	hp_bar.text = "Vidas: {0}".format([current_hp])
+	if current_hp == 0:
+		max_speed = 0
+		jump_velocity = 0
+		print("moriste")
+		await get_tree().create_timer(1.0).timeout
+		get_tree().reload_current_scene()
