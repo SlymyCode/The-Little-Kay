@@ -8,10 +8,12 @@ func _ready() -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player :
 		print("entro el jugador")
-		freeze = false
-		gravity_scale = 1
+		set_deferred("freeze", false)
+		set_deferred("gravity_scale", 1)
 
-func _on_body_entered(body: Node) -> void:
+
+
+func _on_hitbox_body_entered(body: Node2D) -> void:
 	if body is Player:
 		print("golpe al jugador")
 		body.daño()
