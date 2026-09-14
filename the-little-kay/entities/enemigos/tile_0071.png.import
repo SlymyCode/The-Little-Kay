@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvm875454lelv"
-path="res://.godot/imported/SpriteSheet.png-094215807eaa115d9669e195d212b110.ctex"
+uid="uid://d2wsmt47lmkx4"
+path="res://.godot/imported/tile_0071.png-2afe2183053a5af94cb2b53d4c9da375.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/player/sprites/SpriteSheet.png"
-dest_files=["res://.godot/imported/SpriteSheet.png-094215807eaa115d9669e195d212b110.ctex"]
+source_file="res://entities/enemigos/tile_0071.png"
+dest_files=["res://.godot/imported/tile_0071.png-2afe2183053a5af94cb2b53d4c9da375.ctex"]
 
 [params]
 

@@ -1,8 +1,6 @@
 class_name MenuPrincipal
 extends Node
 
-signal nueva_partida_seleccionado()
-
 @export var boton_nueva_partida: Button
 @export var boton_salir: Button
 @export var menu_titulo: MenuPrincipal
@@ -15,7 +13,7 @@ func _ready() -> void:
 func _al_presionar_nueva_partida():
 	print("partida nueva")
 	menu_titulo.hide()
-	get_tree().change_scene_to_file("res://nivel.tscn")
+	get_tree().change_scene_to_file("res://niveles/nivel.tscn")
 
 # coso para salir
 func _al_presionar_salir(): 

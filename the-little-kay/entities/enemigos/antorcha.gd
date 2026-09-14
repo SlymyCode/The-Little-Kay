@@ -12,8 +12,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		set_deferred("gravity_scale", 1)
 
 
-
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if body is Player:
-		print("golpe al jugador")
+		print("dañé al jugador")
 		body.daño()
