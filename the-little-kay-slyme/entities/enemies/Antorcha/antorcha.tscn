@@ -7,7 +7,7 @@
 size = Vector2(12, 18)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w7mgy"]
-size = Vector2(48, 183.5)
+size = Vector2(48, 145.75)
 
 [node name="Antorcha" type="RigidBody2D" unique_id=114311181]
 gravity_scale = 0.0
@@ -24,7 +24,7 @@ shape = SubResource("RectangleShape2D_njj41")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detecta" unique_id=349016939]
 z_index = -1
-position = Vector2(0, 38.25)
+position = Vector2(0, 6.125)
 shape = SubResource("RectangleShape2D_w7mgy")
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=583036605]
