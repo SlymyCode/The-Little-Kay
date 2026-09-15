@@ -130,6 +130,10 @@ func _physics_process(delta: float) -> void:
 	reset_scale()
 	move_and_slide()
 	handle_states()
+<<<<<<< Updated upstream:the-little-kay/entities/player/player.gd
+=======
+	knockback = knockback.lerp(Vector2.ZERO, 1)
+>>>>>>> Stashed changes:entities/player/player.gd
 	
 func daño():
 	current_hp -= 1

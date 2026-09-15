@@ -1,0 +1,5 @@
+res://main.tscn
+res://nivel.tscn
+res://menu_principal.gd
+res://entities/player/player.gd
+res://entities/enemies/Antorcha/antorcha.tscn
