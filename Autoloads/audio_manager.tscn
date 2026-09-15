@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cv0qte17wro2c"]
+
+[ext_resource type="Script" uid="uid://blaq0kvb4wqdx" path="res://Autoloads/audio_manager.gd" id="1_5psad"]
+[ext_resource type="AudioStream" uid="uid://btvcus6k4lchv" path="res://entities/player/sound_effects/Checkpoint 4.wav" id="2_apnpw"]
+[ext_resource type="AudioStream" uid="uid://bvp7f0aa4apr4" path="res://entities/player/sound_effects/Jump.mp3" id="3_h43j6"]
+[ext_resource type="AudioStream" uid="uid://b08p7jq51ccls" path="res://entities/player/sound_effects/Caminar llave.wav" id="4_amsdr"]
+
+[node name="AudioManager" type="Node2D" unique_id=1272728578]
+script = ExtResource("1_5psad")
+sound_list = Dictionary[String, AudioStream]({
+"fall_sound": ExtResource("2_apnpw"),
+"jump_sound": ExtResource("3_h43j6"),
+"step_sound": ExtResource("4_amsdr")
+})

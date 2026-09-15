@@ -1,0 +1,124 @@
+[gd_scene format=3 uid="uid://b4b0c3rgd2nxj"]
+
+[ext_resource type="Script" uid="uid://cjf0dlbur670u" path="res://entities/enemies/Plant/plant.gd" id="1_xoa3c"]
+[ext_resource type="PackedScene" uid="uid://c0sgtq2cv5oct" path="res://entities/enemies/Plant/Projectile/plant_projectiles.tscn" id="2_xoa3c"]
+[ext_resource type="Texture2D" uid="uid://btm6a7m7hn06b" path="res://entities/enemies/Plant/Sprites/Sprite-0002.png" id="3_xoa3c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vm6b0"]
+size = Vector2(10, 17)
+
+[sub_resource type="Animation" id="Animation_m18f7"]
+resource_name = "Attack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlantSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [1, 2, 3]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"shoot"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_kcmq3"]
+resource_name = "Idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlantSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_hwjem"]
+length = 0.001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlantSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kcmq3"]
+_data = {
+&"Attack": SubResource("Animation_m18f7"),
+&"Idle": SubResource("Animation_kcmq3"),
+&"RESET": SubResource("Animation_hwjem")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vm6b0"]
+radius = 97.00516
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8w0r3"]
+size = Vector2(12, 21)
+
+[node name="Plant" type="CharacterBody2D" unique_id=331965848 node_paths=PackedStringArray("plant_animator")]
+script = ExtResource("1_xoa3c")
+attack_speed = 0.5
+knockback_strength = 325.0
+projectile = ExtResource("2_xoa3c")
+plant_animator = NodePath("PlantAnimation")
+
+[node name="PlantSprite" type="Sprite2D" parent="." unique_id=2091132871]
+z_index = -1
+texture = ExtResource("3_xoa3c")
+hframes = 4
+vframes = 2
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=526020332]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_vm6b0")
+
+[node name="PlantAnimation" type="AnimationPlayer" parent="." unique_id=39891549]
+libraries/ = SubResource("AnimationLibrary_kcmq3")
+
+[node name="SpawnPoint" type="Marker2D" parent="." unique_id=21357589]
+unique_name_in_owner = true
+position = Vector2(0, -8)
+
+[node name="DetectionArea" type="Area2D" parent="." unique_id=856196076]
+
+[node name="DetectionCollision" type="CollisionShape2D" parent="DetectionArea" unique_id=1680487207]
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_vm6b0")
+debug_color = Color(0.80073124, 0.39430502, 0.39867783, 0.41960785)
+
+[node name="HitBox" type="Area2D" parent="." unique_id=935553095]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=955516541]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_8w0r3")
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]

@@ -1,0 +1,111 @@
+[gd_scene format=3 uid="uid://4jgy1a0c87dj"]
+
+[ext_resource type="Script" uid="uid://dy0hyxieernp5" path="res://entities/enemies/Bush/bush.gd" id="1_vm6b0"]
+[ext_resource type="PackedScene" uid="uid://b0ncylia7nqwm" path="res://entities/enemies/Bush/Projectile/bush_projectile.tscn" id="2_vm6b0"]
+[ext_resource type="Texture2D" uid="uid://cysbupu82su10" path="res://entities/enemies/Bush/Sprites/bush_sprite-sheet.png" id="3_m18f7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vm6b0"]
+size = Vector2(16, 10)
+
+[sub_resource type="Animation" id="Animation_m18f7"]
+resource_name = "Attack"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BushSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"disparar"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_kcmq3"]
+resource_name = "Idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BushSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_hwjem"]
+length = 0.001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BushSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kcmq3"]
+_data = {
+&"Attack": SubResource("Animation_m18f7"),
+&"Idle": SubResource("Animation_kcmq3"),
+&"RESET": SubResource("Animation_hwjem")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vm6b0"]
+radius = 104.47966
+
+[node name="Bush" type="CharacterBody2D" unique_id=331965848 node_paths=PackedStringArray("bush_animator")]
+script = ExtResource("1_vm6b0")
+projectile = ExtResource("2_vm6b0")
+bush_animator = NodePath("BushAnimation")
+
+[node name="BushSprite" type="Sprite2D" parent="." unique_id=2091132871]
+position = Vector2(0, -16)
+texture = ExtResource("3_m18f7")
+hframes = 4
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=526020332]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_vm6b0")
+
+[node name="BushAnimation" type="AnimationPlayer" parent="." unique_id=39891549]
+libraries/ = SubResource("AnimationLibrary_kcmq3")
+
+[node name="SpawnPoint" type="Marker2D" parent="." unique_id=21357589]
+unique_name_in_owner = true
+position = Vector2(-3.5, -3)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=856196076]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1680487207]
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_vm6b0")
+debug_color = Color(0.80073124, 0.39430502, 0.39867783, 0.41960785)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
