@@ -1,0 +1,107 @@
+[gd_scene format=3 uid="uid://c0sgtq2cv5oct"]
+
+[ext_resource type="Script" uid="uid://cdtg7mr4w60dq" path="res://entities/enemies/Plant/Projectile/plant_projectiles.gd" id="1_i073v"]
+[ext_resource type="Texture2D" uid="uid://pgoofgt26xjc" path="res://entities/enemies/Plant/Projectile/Sprites/Spike.png" id="2_ioqlv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h4t55"]
+radius = 3.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8w0r3"]
+radius = 3.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fjo7o"]
+radius = 105.0
+
+[sub_resource type="Curve" id="Curve_5dtgn"]
+_data = [Vector2(0, 0.8), 0.0, -1.1751151, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ede4x"]
+curve = SubResource("Curve_5dtgn")
+
+[sub_resource type="Curve" id="Curve_281kh"]
+_data = [Vector2(0, 1), 0.0, -1.3765634, 0, 0, Vector2(1, 0.19999993), -0.6361288, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_5jssd"]
+curve = SubResource("Curve_281kh")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_brlt1"]
+particle_flag_disable_z = true
+angle_min = -360.0
+angle_max = 360.00003
+gravity = Vector3(0, 0, 0)
+scale_min = 0.0
+scale_max = 6.0
+scale_curve = SubResource("CurveTexture_5jssd")
+color = Color(0.75, 0.68437505, 0.63750005, 0.83137256)
+alpha_curve = SubResource("CurveTexture_ede4x")
+turbulence_enabled = true
+turbulence_noise_strength = 5.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fjo7o"]
+lifetime_randomness = 0.25
+particle_flag_disable_z = true
+angle_min = -360.0
+angle_max = 360.00003
+spread = 180.0
+initial_velocity_min = 10.0
+initial_velocity_max = 60.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.0
+scale_max = 6.0
+scale_curve = SubResource("CurveTexture_5jssd")
+color = Color(0.83, 0.7055, 0.7055, 0.83137256)
+alpha_curve = SubResource("CurveTexture_ede4x")
+turbulence_enabled = true
+turbulence_noise_strength = 5.0
+
+[node name="PlantProjectile" type="CharacterBody2D" unique_id=415571446 node_paths=PackedStringArray("smoke_particles", "death_particles")]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_i073v")
+smoke_particles = NodePath("SmokeParticles")
+death_particles = NodePath("DeathParticles")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1767944578]
+shape = SubResource("CircleShape2D_h4t55")
+
+[node name="ProjectileSprite" type="Sprite2D" parent="." unique_id=1329771208]
+visible = false
+z_index = 1
+texture = ExtResource("2_ioqlv")
+
+[node name="DamageArea" type="Area2D" parent="." unique_id=241517936]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea" unique_id=1955617266]
+shape = SubResource("CircleShape2D_8w0r3")
+
+[node name="FollowArea" type="Area2D" parent="." unique_id=175868568]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FollowArea" unique_id=1302656703]
+shape = SubResource("CircleShape2D_fjo7o")
+debug_color = Color(0.5206259, 0.5605671, 0.364143, 0.41960785)
+
+[node name="SmokeParticles" type="GPUParticles2D" parent="." unique_id=1476602646 groups=["pixel_perfect"]]
+amount = 32
+lifetime = 0.52
+process_material = SubResource("ParticleProcessMaterial_brlt1")
+
+[node name="DeathParticles" type="GPUParticles2D" parent="." unique_id=780385396 groups=["pixel_perfect"]]
+z_index = 2
+emitting = false
+amount = 32
+lifetime = 0.52
+one_shot = true
+explosiveness = 0.32
+process_material = SubResource("ParticleProcessMaterial_fjo7o")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="." unique_id=899685030]
+remote_path = NodePath("../SmokeParticles")
+
+[node name="RemoteTransform2D2" type="RemoteTransform2D" parent="." unique_id=1462779537]
+remote_path = NodePath("../DeathParticles")
+
+[connection signal="area_entered" from="DamageArea" to="." method="_on_damage_area_area_entered"]
+[connection signal="body_entered" from="FollowArea" to="." method="_on_follow_area_body_entered"]
+[connection signal="body_exited" from="FollowArea" to="." method="_on_follow_area_body_exited"]

@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bq4xpv0a0kjxt"]
+
+[ext_resource type="Script" uid="uid://y25fln5itjbq" path="res://entities/interactables/checkpoints/checkpoint.gd" id="1_o0kuw"]
+[ext_resource type="Texture2D" uid="uid://dxdhrokuds1cp" path="res://entities/interactables/checkpoints/sprites/Checkpoint_Placeholder.png" id="1_x0xwf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o0kuw"]
+radius = 8.0
+
+[node name="Checkpoint" type="Node2D" unique_id=1895954685 node_paths=PackedStringArray("respawn_locator")]
+script = ExtResource("1_o0kuw")
+respawn_locator = NodePath("RespawnPos")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1078017055]
+texture = ExtResource("1_x0xwf")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=632641371]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1004644006]
+shape = SubResource("CircleShape2D_o0kuw")
+
+[node name="RespawnPos" type="Marker2D" parent="." unique_id=659697795]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

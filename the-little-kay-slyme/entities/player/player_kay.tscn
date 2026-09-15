@@ -1,0 +1,340 @@
+[gd_scene format=3 uid="uid://bykqqyanps31s"]
+
+[ext_resource type="Script" uid="uid://cohbe6snwea6f" path="res://entities/player/player.gd" id="1_e0vk3"]
+[ext_resource type="AudioStream" uid="uid://btvcus6k4lchv" path="res://entities/player/sound_effects/Checkpoint 4.wav" id="2_ede4x"]
+[ext_resource type="AudioStream" uid="uid://bvp7f0aa4apr4" path="res://entities/player/sound_effects/Jump.mp3" id="3_5jssd"]
+[ext_resource type="AudioStream" uid="uid://b08p7jq51ccls" path="res://entities/player/sound_effects/Caminar llave.wav" id="4_nq1nd"]
+[ext_resource type="Texture2D" uid="uid://tprxpjeq527y" path="res://entities/player/sprites/SpriteSheet2.0.png" id="5_ede4x"]
+
+[sub_resource type="Animation" id="Animation_ede4x"]
+resource_name = "Blink"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprites:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [12, 13]
+}
+
+[sub_resource type="Animation" id="Animation_qrqov"]
+resource_name = "Fall"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprites:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [24, 25]
+}
+
+[sub_resource type="Animation" id="Animation_q3cu5"]
+resource_name = "Idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprites:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_3pycs"]
+resource_name = "Jump"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprites:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [20, 21]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["jump_sound", -12.0],
+"method": &"play_fx"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_5jssd"]
+resource_name = "MoveEyes"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprites:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_n2o76"]
+resource_name = "Parry"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprites:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [17, 16]
+}
+
+[sub_resource type="Animation" id="Animation_gyxac"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprites:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_nq1nd"]
+resource_name = "Sleep"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprites:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [16, 17]
+}
+
+[sub_resource type="Animation" id="Animation_14dpy"]
+resource_name = "Walk"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprites:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.25, 0.75),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": ["step_sound", -24.0],
+"method": &"play_fx"
+}, {
+"args": ["step_sound", -24.0],
+"method": &"play_fx"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gyxac"]
+_data = {
+&"Blink": SubResource("Animation_ede4x"),
+&"Fall": SubResource("Animation_qrqov"),
+&"Idle": SubResource("Animation_q3cu5"),
+&"Jump": SubResource("Animation_3pycs"),
+&"MoveEyes": SubResource("Animation_5jssd"),
+&"Parry": SubResource("Animation_n2o76"),
+&"RESET": SubResource("Animation_gyxac"),
+&"Sleep": SubResource("Animation_nq1nd"),
+&"Walk": SubResource("Animation_14dpy")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ede4x"]
+size = Vector2(3.0334234, 19)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nq1nd"]
+size = Vector2(8.023845, 12.053585)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_02u73"]
+size = Vector2(12.977301, 11.021238)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uu6xs"]
+size = Vector2(10, 21)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r0du0"]
+radius = 16.03122
+
+[sub_resource type="Curve" id="Curve_lquwl"]
+_data = [Vector2(0, 0.4967742), 0.0, -1.1751151, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ede4x"]
+curve = SubResource("Curve_lquwl")
+
+[sub_resource type="Curve" id="Curve_7mycd"]
+_data = [Vector2(0, 1), 0.0, -1.3765634, 0, 0, Vector2(1, 0.19999993), -0.6361288, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_5jssd"]
+curve = SubResource("Curve_7mycd")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ede4x"]
+lifetime_randomness = 0.2
+particle_flag_disable_z = true
+angle_min = -360.0
+angle_max = 360.00003
+direction = Vector3(0, 1, 0)
+spread = 85.0
+initial_velocity_min = 5.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 98, 0)
+scale_min = 0.0
+scale_max = 7.0
+scale_curve = SubResource("CurveTexture_5jssd")
+color = Color(4.0059752, 4.0059752, 4.0059752, 0.5294118)
+alpha_curve = SubResource("CurveTexture_ede4x")
+turbulence_noise_strength = 5.0
+
+[sub_resource type="Curve" id="Curve_5jssd"]
+_data = [Vector2(0, 0.4967742), 0.0, -1.1751151, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_nq1nd"]
+curve = SubResource("Curve_5jssd")
+
+[sub_resource type="Curve" id="Curve_ede4x"]
+_data = [Vector2(0, 1), 0.0, -1.3765634, 0, 0, Vector2(1, 0.19999993), -0.6361288, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_02u73"]
+curve = SubResource("Curve_ede4x")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8w0r3"]
+lifetime_randomness = 0.2
+particle_flag_disable_z = true
+angle_min = -360.0
+angle_max = 360.00003
+gravity = Vector3(0, 0, 0)
+scale_min = 0.0
+scale_max = 7.0
+scale_curve = SubResource("CurveTexture_02u73")
+color = Color(4.0059752, 4.0059752, 4.0059752, 1)
+alpha_curve = SubResource("CurveTexture_nq1nd")
+turbulence_enabled = true
+turbulence_noise_strength = 5.0
+
+[node name="PlayerKay" type="CharacterBody2D" unique_id=789730671 node_paths=PackedStringArray("player_sprites", "player_animator", "player_smoke_particles", "player_jump_particles")]
+script = ExtResource("1_e0vk3")
+sound_list = Dictionary[String, AudioStream]({
+"fall_sound": ExtResource("2_ede4x"),
+"jump_sound": ExtResource("3_5jssd"),
+"step_sound": ExtResource("4_nq1nd")
+})
+player_sprites = NodePath("PlayerSprites")
+player_animator = NodePath("PlayerAnimation")
+player_smoke_particles = NodePath("SmokeParticles")
+player_jump_particles = NodePath("JumpParticles")
+
+[node name="PlayerSprites" type="Sprite2D" parent="." unique_id=301333307]
+z_index = 2
+texture = ExtResource("5_ede4x")
+hframes = 4
+vframes = 7
+
+[node name="PlayerAnimation" type="AnimationPlayer" parent="." unique_id=527000476]
+libraries/ = SubResource("AnimationLibrary_gyxac")
+
+[node name="CollisionLine" type="CollisionShape2D" parent="." unique_id=1441683710]
+position = Vector2(0.0006070137, -1.5)
+shape = SubResource("RectangleShape2D_ede4x")
+
+[node name="CollisionTop" type="CollisionShape2D" parent="." unique_id=1780755708]
+position = Vector2(1.5119224, -4.026792)
+shape = SubResource("RectangleShape2D_nq1nd")
+
+[node name="CollisionBody" type="CollisionShape2D" parent="." unique_id=1950924580]
+position = Vector2(-0.011351824, 7.4871817)
+shape = SubResource("RectangleShape2D_02u73")
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=524004160 groups=["player_hurtbox"]]
+collision_layer = 3
+
+[node name="HurtCollision" type="CollisionShape2D" parent="HurtBox" unique_id=1285582175]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_uu6xs")
+debug_color = Color(0.90588236, 0.02745098, 0.2, 0.27450982)
+
+[node name="InteractZone" type="Area2D" parent="." unique_id=2081719644]
+
+[node name="InteractCollision" type="CollisionShape2D" parent="InteractZone" unique_id=949527503]
+shape = SubResource("CircleShape2D_r0du0")
+debug_color = Color(0.5975209, 0.5411475, 0.18252495, 0.41960785)
+
+[node name="JumpParticles" type="GPUParticles2D" parent="." unique_id=1320322124 groups=["pixel_perfect"]]
+z_index = 1
+position = Vector2(0, 11)
+emitting = false
+amount = 12
+lifetime = 0.52
+one_shot = true
+explosiveness = 1.0
+trail_lifetime = 0.84
+process_material = SubResource("ParticleProcessMaterial_ede4x")
+
+[node name="SmokeParticles" type="GPUParticles2D" parent="." unique_id=373390573 groups=["pixel_perfect", "player_hurtbox"]]
+z_index = 1
+position = Vector2(0, 11)
+amount = 24
+lifetime = 0.52
+trail_lifetime = 0.84
+process_material = SubResource("ParticleProcessMaterial_8w0r3")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="." unique_id=1034927176]
+position = Vector2(0, 11)
+remote_path = NodePath("../SmokeParticles")
+
+[node name="RemoteTransform2D2" type="RemoteTransform2D" parent="." unique_id=1337067146]
+position = Vector2(0, 11)
+remote_path = NodePath("../JumpParticles")
