@@ -3,11 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cv0qte17wro2c" path="res://Autoloads/audio_manager.tscn" id="1_272bh"]
 [ext_resource type="Texture2D" uid="uid://5iifw4f8vie7" path="res://tiles/grass/TopGreenPrototype.png" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://bykqqyanps31s" path="res://entities/player/player_kay.tscn" id="2_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://bq4xpv0a0kjxt" path="res://entities/interactables/checkpoints/checkpoint.tscn" id="3_h2yge"]
-[ext_resource type="PackedScene" uid="uid://4jgy1a0c87dj" path="res://entities/enemies/Bush/bush.tscn" id="4_1bvp3"]
 [ext_resource type="Script" uid="uid://lai4jg0hd61x" path="res://shaders&effects/pixel_perfect_layer.gd" id="5_lquwl"]
-[ext_resource type="PackedScene" uid="uid://khjr5s11hftj" path="res://entities/enemies/Antorcha/antorcha.tscn" id="6_5vw27"]
-[ext_resource type="PackedScene" uid="uid://b4b0c3rgd2nxj" path="res://entities/enemies/Plant/plant.tscn" id="6_7mycd"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_1bvp3"]
 polygon = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
@@ -32,7 +28,7 @@ font_size = 12
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ede4x"]
 blend_mode = 4
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_lquwl"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_3l41c"]
 viewport_path = NodePath("PixelPerfectLayer/SubViewport")
 
 [node name="MainController" type="Node2D" unique_id=1647567519]
@@ -46,7 +42,7 @@ tile_map_data = PackedByteArray("AABWABAAAAAAAAAAAABMABAAAAAAAAAAAABLABAAAAAAAAA
 tile_set = SubResource("TileSet_1bvp3")
 
 [node name="PlayerKay" parent="LevelController" unique_id=789730671 node_paths=PackedStringArray("hp_bar") instance=ExtResource("2_1bvp3")]
-position = Vector2(36, 163)
+position = Vector2(298, 115)
 max_speed = 100.0
 hp_bar = NodePath("../HUD/Hp")
 metadata/_edit_group_ = true
@@ -71,26 +67,6 @@ offset_bottom = 34.0
 text = "Vidas:"
 label_settings = SubResource("LabelSettings_0xm2m")
 metadata/_edit_use_anchors_ = true
-
-[node name="Checkpoint" parent="LevelController" unique_id=1895954685 instance=ExtResource("3_h2yge")]
-position = Vector2(173, 74)
-
-[node name="Checkpoint2" parent="LevelController" unique_id=1892157138 instance=ExtResource("3_h2yge")]
-position = Vector2(612, 106)
-
-[node name="Arbusto" parent="LevelController" unique_id=430146249 instance=ExtResource("4_1bvp3")]
-position = Vector2(441, 176)
-
-[node name="Arbusto2" parent="LevelController" unique_id=331965848 instance=ExtResource("4_1bvp3")]
-position = Vector2(473, 144)
-scale = Vector2(-1, 1)
-
-[node name="Antorcha" parent="LevelController" unique_id=114311181 instance=ExtResource("6_5vw27")]
-position = Vector2(98, 54)
-
-[node name="Plant" parent="LevelController" unique_id=1661661312 instance=ExtResource("6_7mycd")]
-position = Vector2(268, 164)
-rotation = -1.5707964
 
 [node name="PixelPerfectLayer" type="CanvasLayer" parent="." unique_id=1171765972 node_paths=PackedStringArray("main_camera", "pp_camera")]
 layer = -1
@@ -120,10 +96,10 @@ material = SubResource("CanvasItemMaterial_ede4x")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 143.0
-offset_top = 50.0
-offset_right = 143.0
-offset_bottom = 50.0
+offset_left = 146.0
+offset_top = 2.0
+offset_right = 146.0
+offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("ViewportTexture_lquwl")
+texture = SubResource("ViewportTexture_3l41c")
