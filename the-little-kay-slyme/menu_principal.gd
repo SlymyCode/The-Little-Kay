@@ -13,7 +13,7 @@ func _ready() -> void:
 func _al_presionar_nueva_partida():
 	print("partida nueva")
 	menu_titulo.hide()
-	get_tree().change_scene_to_file("res://nivel2.tscn")
+	get_tree().change_scene_to_file("res://nivel.tscn")
 
 # coso para salir
 func _al_presionar_salir(): 

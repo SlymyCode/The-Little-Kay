@@ -44,6 +44,7 @@ func jump():
 	velocity.y = lerp(velocity.y, jump_velocity, 1)
 	player_sprites.scale = Vector2(0.7, 1.3)
 	jumps_performed += 1
+	print(jumps_performed)
 	if jumps_performed < 1 and can_double_jump():
 		player_jump_particles.restart()
 		
@@ -79,7 +80,6 @@ func reset_scale():
 	if player_sprites.scale != Vector2(1, 1):
 		player_sprites.scale.x = move_toward(player_sprites.scale.x, 1, 2 * get_physics_process_delta_time())
 		player_sprites.scale.y = move_toward(player_sprites.scale.y, 1, 2 * get_physics_process_delta_time())
-
 
 func set_state():
 	var new_state := current_state
@@ -153,7 +153,7 @@ func _physics_process(delta: float) -> void:
 	lerp_weight = delta * (acceleration if direction else friction)
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-	elif is_on_floor():
+	if is_on_floor():
 		jumps_performed = 0
 	
 	if Input.is_action_pressed("RepairAction"):
