@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://khjr5s11hftj"]
 
 [ext_resource type="Script" uid="uid://dwyr8bbacal80" path="res://entities/enemies/Antorcha/antorcha.gd" id="1_oe3ty"]
-[ext_resource type="Texture2D" uid="uid://d2wsmt47lmkx4" path="res://entities/enemies/Antorcha/tile_0071.png" id="2_rts4x"]
+[ext_resource type="Texture2D" uid="uid://d1yjjncsyjebc" path="res://entities/enemies/Antorcha/Vela.png" id="2_omi1u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_njj41"]
 size = Vector2(12, 18)
@@ -14,7 +14,7 @@ gravity_scale = 0.0
 script = ExtResource("1_oe3ty")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1743381821]
-texture = ExtResource("2_rts4x")
+texture = ExtResource("2_omi1u")
 
 [node name="Colision" type="CollisionShape2D" parent="." unique_id=124983475]
 position = Vector2(0, -1)

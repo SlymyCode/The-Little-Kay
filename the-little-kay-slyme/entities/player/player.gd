@@ -44,7 +44,6 @@ func jump():
 	velocity.y = lerp(velocity.y, jump_velocity, 1)
 	player_sprites.scale = Vector2(0.7, 1.3)
 	jumps_performed += 1
-	print(jumps_performed)
 	if jumps_performed < 1 and can_double_jump():
 		player_jump_particles.restart()
 		

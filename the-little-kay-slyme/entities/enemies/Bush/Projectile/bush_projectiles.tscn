@@ -54,6 +54,7 @@ turbulence_enabled = true
 turbulence_noise_strength = 5.0
 
 [node name="BushProjectile" type="CharacterBody2D" unique_id=415571446 node_paths=PackedStringArray("smoke_particles", "death_particles")]
+z_index = 1
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_cvaxr")

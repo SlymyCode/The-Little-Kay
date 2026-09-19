@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2wsmt47lmkx4"
-path="res://.godot/imported/tile_0071.png-830f7e186dbe36ef7193cdba38e49801.ctex"
+uid="uid://ln560lpnkr52"
+path="res://.godot/imported/Suelo5.png-8294e40636c8182e1e45c32b5d4c257e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/enemies/Antorcha/tile_0071.png"
-dest_files=["res://.godot/imported/tile_0071.png-830f7e186dbe36ef7193cdba38e49801.ctex"]
+source_file="res://Suelo5.png"
+dest_files=["res://.godot/imported/Suelo5.png-8294e40636c8182e1e45c32b5d4c257e.ctex"]
 
 [params]
 
