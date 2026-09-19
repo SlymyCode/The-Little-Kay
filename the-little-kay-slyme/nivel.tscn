@@ -217,7 +217,7 @@ tile_map_data = PackedByteArray("AAD///v/AAAXABUAAAD///z/AAAXABYAAAAAAPv/AAAYABU
 tile_set = SubResource("TileSet_w7mgy")
 
 [node name="PlayerKay" parent="LevelController" unique_id=789730671 node_paths=PackedStringArray("hp_bar") instance=ExtResource("2_1bvp3")]
-position = Vector2(1275, 86)
+position = Vector2(2, 147)
 max_speed = 100.0
 hp_bar = NodePath("../HUD/Hp")
 metadata/_edit_group_ = true
