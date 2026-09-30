@@ -1,14 +1,14 @@
 extends CanvasLayer
-class_name  PixelPerfectLayer
+class_name PixelPerfectLayerBack
 
 @export var main_camera: Camera2D
 @export var pp_camera: Camera2D
-@onready var sub_viewport: SubViewport = $SubViewport
+@onready var sub_viewport: SubViewport = $SubViewportBack
 
 func _ready() -> void:
 	Events.add_to_group.connect(add_to_pp_group)
 	
-	var pixel_perfect_objects: Array = get_tree().get_nodes_in_group("pixel_perfect")
+	var pixel_perfect_objects: Array = get_tree().get_nodes_in_group("pixel_perfect_back")
 
 	for object in pixel_perfect_objects:
 		object.reparent(sub_viewport)
@@ -30,5 +30,5 @@ func sync_camera() -> void:
 	pp_camera.limit_left = main_camera.limit_left
 
 func add_to_pp_group(node: Node, group_name: String):
-	if group_name != "pixel_perfect": return
+	if group_name != "pixel_perfect_back": return
 	node.reparent(sub_viewport)

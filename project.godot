@@ -23,6 +23,7 @@ Events="*uid://bs13b1sr80cn8"
 
 window/size/viewport_width=320
 window/size/viewport_height=180
+window/size/mode=3
 window/size/window_width_override=1600
 window/size/window_height_override=900
 window/stretch/mode="canvas_items"
@@ -32,7 +33,9 @@ mouse_cursor/custom_image="uid://d1n281vmjq8eq"
 [global_group]
 
 player_hurtbox=""
-pixel_perfect=""
+pixel_perfect_back=""
+pixel_perfect_front=""
+player_invulnerable_zone=""
 
 [input]
 

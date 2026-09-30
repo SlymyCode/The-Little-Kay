@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://b5g4emx6jy575"]
+
+[ext_resource type="Script" uid="uid://dwroh6svyg77k" path="res://entities/interactables/WinFlag/win.gd" id="1_hmj87"]
+[ext_resource type="Texture2D" uid="uid://dxdhrokuds1cp" path="res://entities/interactables/checkpoints/sprites/Checkpoint_Placeholder.png" id="2_7tao6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o0kuw"]
+radius = 8.0
+
+[node name="WinFlag" type="Node2D" unique_id=1895954685]
+script = ExtResource("1_hmj87")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1078017055]
+modulate = Color(1, 0.19999999, 0.19999999, 1)
+texture = ExtResource("2_7tao6")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=632641371]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1004644006]
+shape = SubResource("CircleShape2D_o0kuw")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

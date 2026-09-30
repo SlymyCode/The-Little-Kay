@@ -81,14 +81,14 @@ radius = 97.00516
 size = Vector2(12, 21)
 
 [node name="Plant" type="CharacterBody2D" unique_id=331965848 node_paths=PackedStringArray("plant_animator")]
-collision_layer = 5
 script = ExtResource("1_xoa3c")
 attack_speed = 0.5
-knockback_strength = 125.0
+knockback_strength = 325.0
 projectile = ExtResource("2_xoa3c")
 plant_animator = NodePath("PlantAnimation")
 
 [node name="PlantSprite" type="Sprite2D" parent="." unique_id=2091132871]
+z_index = -1
 texture = ExtResource("3_xoa3c")
 hframes = 4
 vframes = 2
@@ -109,9 +109,10 @@ position = Vector2(0, -8)
 [node name="DetectionCollision" type="CollisionShape2D" parent="DetectionArea" unique_id=1680487207]
 position = Vector2(0, -7)
 shape = SubResource("CircleShape2D_vm6b0")
-debug_color = Color(0.8, 0.39200002, 0.3987999, 0.050980393)
+debug_color = Color(0.80073124, 0.39430502, 0.39867783, 0.41960785)
 
 [node name="HitBox" type="Area2D" parent="." unique_id=935553095]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=955516541]
 position = Vector2(0, -0.5)
@@ -119,4 +120,4 @@ shape = SubResource("RectangleShape2D_8w0r3")
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_area_2d_body_exited"]
-[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
+[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]

@@ -38,7 +38,6 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_kcmq3"]
 resource_name = "Idle"
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -82,9 +81,10 @@ size = Vector2(137, 51)
 size = Vector2(18, 10)
 
 [node name="Bush" type="CharacterBody2D" unique_id=331965848 node_paths=PackedStringArray("bush_animator")]
+collision_layer = 5
 script = ExtResource("1_vm6b0")
-attack_speed = 0.5
-knockback_strength = 325.0
+attack_speed = 0.75
+knockback_strength = 175.0
 projectile = ExtResource("2_m18f7")
 bush_animator = NodePath("BushAnimation")
 
@@ -108,9 +108,10 @@ position = Vector2(-3.5, -4)
 [node name="DetectionArea" type="Area2D" parent="." unique_id=856196076]
 
 [node name="DetectionCollision" type="CollisionShape2D" parent="DetectionArea" unique_id=1680487207]
+unique_name_in_owner = true
 position = Vector2(-60.5, -7.5)
 shape = SubResource("RectangleShape2D_7mycd")
-debug_color = Color(0.80073124, 0.39430502, 0.39867783, 0.41960785)
+debug_color = Color(0.8, 0.39200002, 0.3987999, 0.0627451)
 
 [node name="HitBox" type="Area2D" parent="." unique_id=935553095]
 
@@ -120,4 +121,4 @@ shape = SubResource("RectangleShape2D_8w0r3")
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_area_2d_body_exited"]
-[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
