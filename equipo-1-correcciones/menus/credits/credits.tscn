@@ -1,0 +1,135 @@
+[gd_scene format=3 uid="uid://b5tafllpr7kjo"]
+
+[ext_resource type="Texture2D" uid="uid://2x1ipjkvkuco" path="res://menus/images/FondoMenuSinPlataformas.png" id="1_v1kn4"]
+
+[node name="Credits" type="Control" unique_id=1826613662]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -320.0
+offset_bottom = -180.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Color" type="ColorRect" parent="." unique_id=1628736543]
+layout_mode = 0
+offset_right = 322.0
+offset_bottom = 183.0
+color = Color(0.047058824, 0.0627451, 0.07058824, 1)
+
+[node name="Fondo" type="TextureRect" parent="." unique_id=874754182]
+visible = false
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 180.0
+texture = ExtResource("1_v1kn4")
+
+[node name="Creditos" type="Label" parent="." unique_id=201727578]
+layout_mode = 0
+offset_right = 319.0
+offset_bottom = 34.0
+theme_override_font_sizes/font_size = 19
+text = "Créditos"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridContainer" type="BoxContainer" parent="." unique_id=1858067606]
+layout_mode = 0
+offset_top = 67.0
+offset_right = 319.0
+offset_bottom = 351.0
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="Programacion" type="VBoxContainer" parent="GridContainer" unique_id=1490911776]
+layout_mode = 2
+
+[node name="NombreArea" type="Label" parent="GridContainer/Programacion" unique_id=568731727]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Programación"
+
+[node name="Persona1" type="Label" parent="GridContainer/Programacion" unique_id=796474985]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "-"
+
+[node name="Persona2" type="Label" parent="GridContainer/Programacion" unique_id=340974862]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "-"
+
+[node name="Persona3" type="Label" parent="GridContainer/Programacion" unique_id=1078146329]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "-"
+
+[node name="Arte" type="VBoxContainer" parent="GridContainer" unique_id=1668641218]
+layout_mode = 2
+
+[node name="NombreArea" type="Label" parent="GridContainer/Arte" unique_id=55120728]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Arte"
+
+[node name="Persona1" type="Label" parent="GridContainer/Arte" unique_id=844761756]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "-"
+
+[node name="Persona2" type="Label" parent="GridContainer/Arte" unique_id=1557614243]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "-"
+
+[node name="Persona3" type="Label" parent="GridContainer/Arte" unique_id=193941840]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "-"
+
+[node name="Game Design" type="VBoxContainer" parent="GridContainer" unique_id=2108878443]
+layout_mode = 2
+
+[node name="NombreArea" type="Label" parent="GridContainer/Game Design" unique_id=921125818]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Game Design"
+
+[node name="Persona1" type="Label" parent="GridContainer/Game Design" unique_id=476571031]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "-"
+
+[node name="Persona2" type="Label" parent="GridContainer/Game Design" unique_id=1056185157]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "-"
+
+[node name="Persona3" type="Label" parent="GridContainer/Game Design" unique_id=426580492]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "-"
+
+[node name="Audio" type="VBoxContainer" parent="GridContainer" unique_id=736534264]
+layout_mode = 2
+
+[node name="NombreArea" type="Label" parent="GridContainer/Audio" unique_id=442688936]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Audio"
+
+[node name="Persona1" type="Label" parent="GridContainer/Audio" unique_id=873106279]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "-"
+
+[node name="Persona2" type="Label" parent="GridContainer/Audio" unique_id=119838035]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "-"
+
+[node name="Persona3" type="Label" parent="GridContainer/Audio" unique_id=1157514503]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "-"
