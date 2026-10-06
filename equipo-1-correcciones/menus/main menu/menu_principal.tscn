@@ -4,8 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://c5kt4f3ke2ma8" path="res://menus/images/FondoMainMenu.png" id="2_hhyr6"]
 [ext_resource type="Texture2D" uid="uid://cxs7c1e2i26o1" path="res://menus/images/titulo1.png" id="3_h8llx"]
 [ext_resource type="Texture2D" uid="uid://c353k7h71rwe4" path="res://menus/images/Kay.png" id="4_f0a4c"]
+[ext_resource type="StyleBox" uid="uid://bra4jqheqq4xp" path="res://menus/styles/style botones.tres" id="5_hhyr6"]
+[ext_resource type="StyleBox" uid="uid://pkem7tdvl4ae" path="res://menus/styles/style bordes.tres" id="6_h8llx"]
+[ext_resource type="PackedScene" uid="uid://b5cwl2ddmy6vy" path="res://menus/music/musica.tscn" id="7_f0a4c"]
 
-[node name="MenuTitulo" type="Control" unique_id=1634701214 node_paths=PackedStringArray("NewGame", "Quit", "Settings", "Credits", "menu_titulo")]
+[node name="MenuTitulo" type="Control" unique_id=1634701214 node_paths=PackedStringArray("NewGame", "Quit", "Settings", "Credits")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,7 +20,6 @@ NewGame = NodePath("VBoxContainer/ButtonNewGame")
 Quit = NodePath("VBoxContainer/ButtonQuit")
 Settings = NodePath("VBoxContainer/ButtonSettings")
 Credits = NodePath("VBoxContainer/ButtonCredits")
-menu_titulo = NodePath(".")
 
 [node name="Fondo" type="TextureRect" parent="." unique_id=742972954]
 layout_mode = 0
@@ -50,24 +52,48 @@ offset_bottom = 155.0
 alignment = 1
 
 [node name="ButtonNewGame" type="Button" parent="VBoxContainer" unique_id=1907437805]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../ButtonSettings")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = ExtResource("5_hhyr6")
+theme_override_styles/hover = ExtResource("6_h8llx")
+theme_override_styles/focus = ExtResource("6_h8llx")
 text = "Nueva Partida"
 
 [node name="ButtonSettings" type="Button" parent="VBoxContainer" unique_id=259795337]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
+focus_neighbor_top = NodePath("../ButtonNewGame")
+focus_neighbor_bottom = NodePath("../ButtonCredits")
 theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = ExtResource("5_hhyr6")
+theme_override_styles/hover = ExtResource("6_h8llx")
+theme_override_styles/focus = ExtResource("6_h8llx")
 text = "Ajustes"
 
 [node name="ButtonCredits" type="Button" parent="VBoxContainer" unique_id=178670955]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
+focus_neighbor_top = NodePath("../ButtonSettings")
+focus_neighbor_bottom = NodePath("../ButtonQuit")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = ExtResource("5_hhyr6")
+theme_override_styles/hover = ExtResource("6_h8llx")
+theme_override_styles/focus = ExtResource("6_h8llx")
 text = "Creditos"
 
 [node name="ButtonQuit" type="Button" parent="VBoxContainer" unique_id=1070784063]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
+focus_neighbor_top = NodePath("../ButtonCredits")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = ExtResource("5_hhyr6")
+theme_override_styles/hover = ExtResource("6_h8llx")
+theme_override_styles/focus = ExtResource("6_h8llx")
 text = "Salir"
+
+[node name="Menu Music" parent="." unique_id=533580468 instance=ExtResource("7_f0a4c")]

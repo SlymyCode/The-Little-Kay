@@ -1,0 +1,157 @@
+[gd_scene format=3 uid="uid://cplnfqplf04da"]
+
+[ext_resource type="Script" uid="uid://b035dli43j4np" path="res://menus/botones duplicados/menu_pausa.gd" id="1_0efpp"]
+[ext_resource type="Texture2D" uid="uid://bv6veoahr1aav" path="res://menus/images/BotonPausa.png" id="1_jd2x8"]
+[ext_resource type="StyleBox" uid="uid://cwsggh8m0kbh" path="res://menus/styles/style botones pausa.tres" id="3_p0hfp"]
+[ext_resource type="StyleBox" uid="uid://dok7u1vf56leq" path="res://menus/styles/style hover botones pausa.tres" id="4_m3yup"]
+[ext_resource type="PackedScene" uid="uid://b5cwl2ddmy6vy" path="res://menus/music/musica.tscn" id="4_xmaxb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1qitr"]
+content_margin_left = 4.0
+bg_color = Color(0.9843137, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iaxd0"]
+content_margin_left = 4.0
+bg_color = Color(0.57254905, 0.5882353, 0.6, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w12uw"]
+bg_color = Color(0.22352941, 0.23137255, 0.27058825, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x1yim"]
+bg_color = Color(0.22352941, 0.23137255, 0.27058825, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[node name="Menu Pausa" type="Control" unique_id=1238612063 node_paths=PackedStringArray("BotonPausar", "BotonContinuar", "BotonVolver", "BotonAjustes", "VolverPausa", "FondoPausa", "MenuPausa", "Ajustes", "menu")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_0efpp")
+BotonPausar = NodePath("Pausar")
+BotonContinuar = NodePath("Menu/VBoxContainer/Continuar")
+BotonVolver = NodePath("Menu/VBoxContainer/Menu Principal")
+BotonAjustes = NodePath("Menu/VBoxContainer/Ajustes")
+VolverPausa = NodePath("Ajustes/Atras")
+FondoPausa = NodePath("Fondo Pausa")
+MenuPausa = NodePath("Menu")
+Ajustes = NodePath("Ajustes")
+menu = NodePath("Menu")
+
+[node name="Pausar" type="Button" parent="." unique_id=1816471235]
+layout_mode = 0
+offset_left = 301.0
+offset_right = 320.0
+offset_bottom = 19.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_1qitr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_iaxd0")
+action_mode = 0
+icon = ExtResource("1_jd2x8")
+
+[node name="Fondo Pausa" type="ColorRect" parent="." unique_id=259589737]
+visible = false
+layout_mode = 0
+offset_left = -4.0
+offset_top = -3.0
+offset_right = 326.0
+offset_bottom = 185.0
+color = Color(0, 0, 0, 0.5411765)
+
+[node name="Menu" type="Panel" parent="." unique_id=166455209]
+process_mode = 3
+visible = false
+layout_mode = 0
+offset_left = 80.0
+offset_top = 45.0
+offset_right = 240.0
+offset_bottom = 135.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_w12uw")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu" unique_id=2106056423]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 22.5
+offset_right = 120.0
+offset_bottom = 67.5
+
+[node name="Continuar" type="Button" parent="Menu/VBoxContainer" unique_id=1941362765]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../Ajustes")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = ExtResource("3_p0hfp")
+theme_override_styles/hover = ExtResource("4_m3yup")
+theme_override_styles/focus = ExtResource("4_m3yup")
+text = "Continuar
+"
+
+[node name="Ajustes" type="Button" parent="Menu/VBoxContainer" unique_id=439898659]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Continuar")
+focus_neighbor_bottom = NodePath("../Menu Principal")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = ExtResource("3_p0hfp")
+theme_override_styles/hover = ExtResource("4_m3yup")
+theme_override_styles/focus = ExtResource("4_m3yup")
+text = "Ajustes
+
+"
+
+[node name="Menu Principal" type="Button" parent="Menu/VBoxContainer" unique_id=1142951571]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Ajustes")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = ExtResource("3_p0hfp")
+theme_override_styles/hover = ExtResource("4_m3yup")
+theme_override_styles/focus = ExtResource("4_m3yup")
+text = "Menú Principal
+"
+
+[node name="Menu Music" parent="Menu" unique_id=533580468 instance=ExtResource("4_xmaxb")]
+
+[node name="Label" type="Label" parent="Menu" unique_id=579192375]
+layout_mode = 0
+offset_left = 45.0
+offset_right = 116.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 10
+text = "Juego Pausado"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Ajustes" type="Panel" parent="." unique_id=1005650314]
+process_mode = 3
+visible = false
+layout_mode = 0
+offset_left = 60.0
+offset_top = 30.0
+offset_right = 260.0
+offset_bottom = 150.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_w12uw")
+
+[node name="Atras" type="Button" parent="Ajustes" unique_id=839333531]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 106.0
+offset_right = 123.0
+offset_bottom = 120.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = SubResource("StyleBoxFlat_x1yim")
+theme_override_styles/hover = ExtResource("4_m3yup")
+theme_override_styles/focus = ExtResource("4_m3yup")
+text = "Volver"

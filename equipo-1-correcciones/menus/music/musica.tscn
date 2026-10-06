@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://b5cwl2ddmy6vy"]
+
+[ext_resource type="AudioStream" uid="uid://doewmb5j45fn" path="res://menus/music/Song2(piano focused).mp3" id="1_rrs3c"]
+
+[node name="Menu Music" type="AudioStreamPlayer" unique_id=533580468]
+stream = ExtResource("1_rrs3c")
+volume_db = -10.0
+autoplay = true
+parameters/looping = true

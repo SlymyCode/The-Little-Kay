@@ -1,6 +1,31 @@
 [gd_scene format=3 uid="uid://b82qe04lpdkyd"]
 
-[ext_resource type="Script" uid="uid://cuc8gyuwgpqt3" path="res://menus/settings/settings.gd" id="1_2e4a5"]
+[ext_resource type="PackedScene" uid="uid://4fl50wxukej2" path="res://menus/botones duplicados/back.tscn" id="1_2e4a5"]
+[ext_resource type="PackedScene" uid="uid://b5cwl2ddmy6vy" path="res://menus/music/musica.tscn" id="2_n0cus"]
 
-[node name="Settings" type="Node2D" unique_id=2128957157]
-script = ExtResource("1_2e4a5")
+[node name="Settings" type="Control" unique_id=2145677217]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Color" type="ColorRect" parent="." unique_id=1766198915]
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 183.0
+color = Color(0.047058824, 0.0627451, 0.07058824, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=225525736]
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=2001203965]
+layout_mode = 2
+text = "AJUSTES"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonBack" parent="." unique_id=1134103880 instance=ExtResource("1_2e4a5")]
+layout_mode = 0
+focus_mode = 2
+
+[node name="Menu Music" parent="." unique_id=533580468 instance=ExtResource("2_n0cus")]

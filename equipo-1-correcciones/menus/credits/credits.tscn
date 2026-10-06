@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://b5tafllpr7kjo"]
 
 [ext_resource type="Texture2D" uid="uid://2x1ipjkvkuco" path="res://menus/images/FondoMenuSinPlataformas.png" id="1_v1kn4"]
+[ext_resource type="PackedScene" uid="uid://4fl50wxukej2" path="res://menus/botones duplicados/back.tscn" id="2_32j7k"]
+[ext_resource type="PackedScene" uid="uid://b5cwl2ddmy6vy" path="res://menus/music/musica.tscn" id="3_v68ex"]
 
 [node name="Credits" type="Control" unique_id=1826613662]
 layout_mode = 3
@@ -14,7 +16,7 @@ grow_vertical = 2
 
 [node name="Color" type="ColorRect" parent="." unique_id=1628736543]
 layout_mode = 0
-offset_right = 322.0
+offset_right = 320.0
 offset_bottom = 183.0
 color = Color(0.047058824, 0.0627451, 0.07058824, 1)
 
@@ -27,7 +29,7 @@ texture = ExtResource("1_v1kn4")
 
 [node name="Creditos" type="Label" parent="." unique_id=201727578]
 layout_mode = 0
-offset_right = 319.0
+offset_right = 320.0
 offset_bottom = 34.0
 theme_override_font_sizes/font_size = 19
 text = "Créditos"
@@ -133,3 +135,9 @@ text = "-"
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
 text = "-"
+
+[node name="ButtonBack" parent="." unique_id=1134103880 instance=ExtResource("2_32j7k")]
+layout_mode = 0
+focus_mode = 2
+
+[node name="Menu Music" parent="." unique_id=533580468 instance=ExtResource("3_v68ex")]

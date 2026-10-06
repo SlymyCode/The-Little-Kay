@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://4fl50wxukej2"]
+
+[ext_resource type="Script" uid="uid://diwddgkexcd3u" path="res://menus/botones duplicados/back.gd" id="1_ewt2f"]
+[ext_resource type="StyleBox" uid="uid://cwsggh8m0kbh" path="res://menus/styles/style botones pausa.tres" id="2_bdwxn"]
+[ext_resource type="StyleBox" uid="uid://pkem7tdvl4ae" path="res://menus/styles/style bordes.tres" id="3_28u3d"]
+
+[node name="Back" type="Control" unique_id=1134103880 node_paths=PackedStringArray("Back")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ewt2f")
+Back = NodePath("ButtonBack")
+
+[node name="ButtonBack" type="Button" parent="." unique_id=1079557861]
+layout_mode = 0
+offset_left = 125.0
+offset_top = 158.0
+offset_right = 195.0
+offset_bottom = 180.0
+focus_behavior_recursive = 2
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = ExtResource("2_bdwxn")
+theme_override_styles/hover = ExtResource("3_28u3d")
+theme_override_styles/focus = ExtResource("3_28u3d")
+text = "Volver"

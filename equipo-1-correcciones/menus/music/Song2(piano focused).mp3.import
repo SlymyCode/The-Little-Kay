@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://doewmb5j45fn"
+path="res://.godot/imported/Song2(piano focused).mp3-dc5a6332a05d760b0915b808b6de7f1d.mp3str"
+
+[deps]
+
+source_file="res://menus/music/Song2(piano focused).mp3"
+dest_files=["res://.godot/imported/Song2(piano focused).mp3-dc5a6332a05d760b0915b808b6de7f1d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
