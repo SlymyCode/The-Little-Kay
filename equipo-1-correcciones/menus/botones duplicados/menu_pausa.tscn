@@ -1,10 +1,17 @@
 [gd_scene format=3 uid="uid://cplnfqplf04da"]
 
 [ext_resource type="Script" uid="uid://b035dli43j4np" path="res://menus/botones duplicados/menu_pausa.gd" id="1_0efpp"]
-[ext_resource type="Texture2D" uid="uid://bv6veoahr1aav" path="res://menus/images/BotonPausa.png" id="1_jd2x8"]
-[ext_resource type="StyleBox" uid="uid://cwsggh8m0kbh" path="res://menus/styles/style botones pausa.tres" id="3_p0hfp"]
-[ext_resource type="StyleBox" uid="uid://dok7u1vf56leq" path="res://menus/styles/style hover botones pausa.tres" id="4_m3yup"]
+[ext_resource type="Texture2D" uid="uid://dhf6ion20dr0s" path="res://menus/images/BotonPausaBlanco.png" id="2_m3yup"]
+[ext_resource type="Texture2D" uid="uid://dl0hrogw63gxu" path="res://menus/images/JuegoPausado.png" id="3_0gesy"]
+[ext_resource type="Texture2D" uid="uid://tkd0sh1k1xid" path="res://menus/images/Buttons/btnContinuar.png" id="4_045g6"]
 [ext_resource type="PackedScene" uid="uid://b5cwl2ddmy6vy" path="res://menus/music/musica.tscn" id="4_xmaxb"]
+[ext_resource type="Texture2D" uid="uid://xure4b4cnr1x" path="res://menus/images/Buttons/btnContinuarPresionado.png" id="5_c45du"]
+[ext_resource type="Texture2D" uid="uid://bq2so4v8j3hfy" path="res://menus/images/Buttons/btnSettings.png" id="6_dayn1"]
+[ext_resource type="Texture2D" uid="uid://b3exjyxfjc0f6" path="res://menus/images/Buttons/btnSettingsPresionado.png" id="7_g1qdb"]
+[ext_resource type="Texture2D" uid="uid://bc66kvfepm531" path="res://menus/images/Buttons/btnMainMenu.png" id="8_7w2pe"]
+[ext_resource type="Texture2D" uid="uid://v5coxc0tdlga" path="res://menus/images/Buttons/btnMainMenuPresionado.png" id="9_khljv"]
+[ext_resource type="Texture2D" uid="uid://db1wox64nvt1u" path="res://menus/images/Buttons/btnVolver.png" id="11_045g6"]
+[ext_resource type="Texture2D" uid="uid://bnjw06qmxwshx" path="res://menus/images/Buttons/btnVolverPresionado.png" id="12_c45du"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1qitr"]
 content_margin_left = 4.0
@@ -29,14 +36,7 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x1yim"]
-bg_color = Color(0.22352941, 0.23137255, 0.27058825, 1)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-
-[node name="Menu Pausa" type="Control" unique_id=1238612063 node_paths=PackedStringArray("BotonPausar", "BotonContinuar", "BotonVolver", "BotonAjustes", "VolverPausa", "FondoPausa", "MenuPausa", "Ajustes", "menu")]
+[node name="Menu Pausa" type="Control" unique_id=1238612063 node_paths=PackedStringArray("BotonPausar", "BotonContinuar", "BotonVolver", "BotonAjustes", "VolverPausa", "FondoPausa", "MenuPausa", "Ajustes")]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_0efpp")
@@ -48,9 +48,9 @@ VolverPausa = NodePath("Ajustes/Atras")
 FondoPausa = NodePath("Fondo Pausa")
 MenuPausa = NodePath("Menu")
 Ajustes = NodePath("Ajustes")
-menu = NodePath("Menu")
 
 [node name="Pausar" type="Button" parent="." unique_id=1816471235]
+modulate = Color(0.8392157, 0.8666667, 0.8666667, 1)
 layout_mode = 0
 offset_left = 301.0
 offset_right = 320.0
@@ -58,7 +58,8 @@ offset_bottom = 19.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_1qitr")
 theme_override_styles/hover = SubResource("StyleBoxFlat_iaxd0")
 action_mode = 0
-icon = ExtResource("1_jd2x8")
+icon = ExtResource("2_m3yup")
+flat = true
 
 [node name="Fondo Pausa" type="ColorRect" parent="." unique_id=259589737]
 visible = false
@@ -82,56 +83,43 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_w12uw")
 [node name="VBoxContainer" type="VBoxContainer" parent="Menu" unique_id=2106056423]
 layout_mode = 0
 offset_left = 40.0
-offset_top = 22.5
+offset_top = 6.0
 offset_right = 120.0
-offset_bottom = 67.5
+offset_bottom = 81.0
 
-[node name="Continuar" type="Button" parent="Menu/VBoxContainer" unique_id=1941362765]
+[node name="TextureRect" type="TextureRect" parent="Menu/VBoxContainer" unique_id=1900149126]
+layout_mode = 2
+texture = ExtResource("3_0gesy")
+
+[node name="Continuar" type="TextureButton" parent="Menu/VBoxContainer" unique_id=1413028214]
+process_mode = 3
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../Ajustes")
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 10
-theme_override_styles/normal = ExtResource("3_p0hfp")
-theme_override_styles/hover = ExtResource("4_m3yup")
-theme_override_styles/focus = ExtResource("4_m3yup")
-text = "Continuar
-"
+texture_normal = ExtResource("4_045g6")
+texture_hover = ExtResource("5_c45du")
+texture_focused = ExtResource("5_c45du")
+stretch_mode = 3
 
-[node name="Ajustes" type="Button" parent="Menu/VBoxContainer" unique_id=439898659]
+[node name="Ajustes" type="TextureButton" parent="Menu/VBoxContainer" unique_id=2116666108]
+process_mode = 3
 layout_mode = 2
 focus_neighbor_top = NodePath("../Continuar")
 focus_neighbor_bottom = NodePath("../Menu Principal")
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 10
-theme_override_styles/normal = ExtResource("3_p0hfp")
-theme_override_styles/hover = ExtResource("4_m3yup")
-theme_override_styles/focus = ExtResource("4_m3yup")
-text = "Ajustes
+texture_normal = ExtResource("6_dayn1")
+texture_hover = ExtResource("7_g1qdb")
+texture_focused = ExtResource("7_g1qdb")
+stretch_mode = 3
 
-"
-
-[node name="Menu Principal" type="Button" parent="Menu/VBoxContainer" unique_id=1142951571]
+[node name="Menu Principal" type="TextureButton" parent="Menu/VBoxContainer" unique_id=677263743]
+process_mode = 3
 layout_mode = 2
 focus_neighbor_top = NodePath("../Ajustes")
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 10
-theme_override_styles/normal = ExtResource("3_p0hfp")
-theme_override_styles/hover = ExtResource("4_m3yup")
-theme_override_styles/focus = ExtResource("4_m3yup")
-text = "Menú Principal
-"
+texture_normal = ExtResource("8_7w2pe")
+texture_hover = ExtResource("9_khljv")
+texture_focused = ExtResource("9_khljv")
+stretch_mode = 3
 
 [node name="Menu Music" parent="Menu" unique_id=533580468 instance=ExtResource("4_xmaxb")]
-
-[node name="Label" type="Label" parent="Menu" unique_id=579192375]
-layout_mode = 0
-offset_left = 45.0
-offset_right = 116.0
-offset_bottom = 23.0
-theme_override_font_sizes/font_size = 10
-text = "Juego Pausado"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Ajustes" type="Panel" parent="." unique_id=1005650314]
 process_mode = 3
@@ -143,15 +131,14 @@ offset_right = 260.0
 offset_bottom = 150.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_w12uw")
 
-[node name="Atras" type="Button" parent="Ajustes" unique_id=839333531]
+[node name="Atras" type="TextureButton" parent="Ajustes" unique_id=742841783]
+process_mode = 3
 layout_mode = 0
-offset_left = 80.0
-offset_top = 106.0
-offset_right = 123.0
+offset_left = 65.0
+offset_top = 101.0
+offset_right = 137.0
 offset_bottom = 120.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 10
-theme_override_styles/normal = SubResource("StyleBoxFlat_x1yim")
-theme_override_styles/hover = ExtResource("4_m3yup")
-theme_override_styles/focus = ExtResource("4_m3yup")
-text = "Volver"
+texture_normal = ExtResource("11_045g6")
+texture_hover = ExtResource("12_c45du")
+texture_focused = ExtResource("12_c45du")
+stretch_mode = 3

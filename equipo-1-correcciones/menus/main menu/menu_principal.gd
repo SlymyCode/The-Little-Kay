@@ -1,9 +1,9 @@
 extends Node
 
-@export var NewGame: Button
-@export var Quit: Button
-@export var Settings: Button
-@export var Credits: Button
+@export var NewGame: TextureButton
+@export var Quit: TextureButton
+@export var Settings: TextureButton
+@export var Credits: TextureButton
 
 func _ready() -> void:
 	NewGame.grab_focus()
