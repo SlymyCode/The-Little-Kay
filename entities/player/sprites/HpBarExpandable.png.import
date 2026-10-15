@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tprxpjeq527y"
-path="res://.godot/imported/SpriteSheet2.0.png-30a2873bb4c306e0101c891152c746ed.ctex"
+uid="uid://oh5qys4ixu71"
+path="res://.godot/imported/HpBarExpandable.png-2474a54dc183e07a4792a857e16d1b09.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/player/sprites/SpriteSheet2.0.png"
-dest_files=["res://.godot/imported/SpriteSheet2.0.png-30a2873bb4c306e0101c891152c746ed.ctex"]
+source_file="res://entities/player/sprites/HpBarExpandable.png"
+dest_files=["res://.godot/imported/HpBarExpandable.png-2474a54dc183e07a4792a857e16d1b09.ctex"]
 
 [params]
 

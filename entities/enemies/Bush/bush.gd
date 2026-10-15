@@ -9,13 +9,17 @@ class_name Bush
 @export var bush_animator: AnimationPlayer
 
 var target: Player
-var player: Player
+var player_colliding: Player
 
 func _physics_process(delta: float) -> void:
 	if target:
 		bush_animator.play("Attack", -1, attack_speed)
 	else:
 		bush_animator.play("Idle")
+	if player_colliding:
+		var knockback_direction = global_position.direction_to(player_colliding.global_position)
+		player_colliding.apply_knockback(knockback_direction, knockback_strength, 0.12)
+		player_colliding.receive_damage(collision_damage)
 
 func shoot():
 	var projectile_instance :BushProjectile = projectile.instantiate()
@@ -36,7 +40,8 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 
 func _on_hit_box_area_entered(area: Area2D) -> void:
 	if area.is_in_group("player_hurtbox") :
-		player = area.get_parent()
-		var knockback_direction = global_position.direction_to(player.global_position)
-		player.apply_knockback(knockback_direction, knockback_strength, 0.12)
-		player.receive_damage(collision_damage)
+		player_colliding = area.get_parent()
+
+func _on_hit_box_area_exited(area: Area2D) -> void:
+	if area.is_in_group("player_hurtbox") :
+		player_colliding = null

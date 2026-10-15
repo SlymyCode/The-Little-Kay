@@ -9,7 +9,7 @@ class_name PlantProjectile
 @export var bounciness: float = 1
 @export var knockback_strength: float = 100
 
-@export var smoke_particles: GPUParticles2D
+@export var trail_particles: GPUParticles2D
 @export var death_particles: GPUParticles2D
 
 var time_elapsed:float = 0
@@ -22,17 +22,25 @@ func kill_projectile():
 	if dead:
 		return
 	dead = true
+	
 	death_particles.reparent(get_tree().current_scene)
 	Events.add_to_group.emit(death_particles, "pixel_perfect_front")
+	
+	trail_particles.emitting = false
+	trail_particles.lifetime = 0.12
+	
 	death_particles.emitting = true
-	queue_free()
-	await death_particles.finished
-	death_particles.queue_free()
+	death_particles.finished.connect(death_particles.queue_free)
+	
+	%DamageArea.set_deferred("monitoring", false)
+	%Collision.set_deferred("disabled", true)
+	hide()
+	get_tree().create_timer(trail_particles.lifetime).timeout.connect(queue_free)
 
 func _ready() -> void:
-	if smoke_particles:
-		tree_exited.connect(smoke_particles.queue_free)
-		Events.add_to_group.emit(smoke_particles, "pixel_perfect_front")
+	if trail_particles:
+		tree_exited.connect(trail_particles.queue_free)
+		Events.add_to_group.emit(trail_particles, "pixel_perfect_front")
 
 func _physics_process(delta: float) -> void:
 	if target:
@@ -54,13 +62,15 @@ func _physics_process(delta: float) -> void:
 		kill_projectile()
 
 func _on_damage_area_area_entered(area: Area2D) -> void:
-	if area.is_in_group("player_hurtbox"):
+	if area.is_in_group("player_hurtbox") and !dead:
 		player = area.get_parent()
 		var knockback_direction = global_position.direction_to(player.global_position)
 		player.apply_knockback(knockback_direction, knockback_strength, 0.12)
 		player.receive_damage(damage)
 		kill_projectile()
-	elif area.is_in_group("player_invulnerable_zone"):
+	elif area.is_in_group("player_invulnerable_zone") and !dead:
+		player = area.get_parent()
+		player.apply_flash_fx("top")
 		kill_projectile()
 
 func _on_follow_area_body_entered(body: Node2D) -> void:
