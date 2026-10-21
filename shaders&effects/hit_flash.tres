@@ -1,0 +1,90 @@
+[gd_resource type="VisualShader" format=3 uid="uid://bqb3ocrwgvrbt"]
+
+[sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_tuwyw"]
+
+[sub_resource type="VisualShaderNodeIf" id="VisualShaderNodeIf_pvp0q"]
+output_port_for_preview = 0
+default_input_values = [0, 0.0, 1, 2.0, 2, 0.001, 3, Vector3(0, 0, 0), 4, Vector3(0, 0, 0), 5, Vector3(0, 0, 0)]
+
+[sub_resource type="VisualShaderNodeVaryingGetter" id="VisualShaderNodeVaryingGetter_bhhse"]
+varying_name = "local_y"
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_bhhse"]
+parameter_name = "tint"
+default_value_enabled = true
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_ip5du"]
+parameter_name = "top_limit"
+default_value_enabled = true
+default_value = -4.0
+
+[sub_resource type="VisualShaderNodeBooleanParameter" id="VisualShaderNodeBooleanParameter_bhhse"]
+parameter_name = "full_body_enabled"
+
+[sub_resource type="VisualShaderNodeIf" id="VisualShaderNodeIf_ip5du"]
+default_input_values = [0, 0.0, 1, 1.0, 2, 1e-05, 3, Vector3(0, 0, 0), 4, Vector3(0, 0, 0), 5, Vector3(0, 0, 0)]
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_tuwyw"]
+input_name = "color"
+
+[sub_resource type="VisualShaderNodeIf" id="VisualShaderNodeIf_bhhse"]
+default_input_values = [0, 0.0, 1, 1.0, 2, 1e-05, 3, Vector3(0, 0, 0), 4, Vector3(0, 0, 0), 5, Vector3(0, 0, 0)]
+
+[sub_resource type="VisualShaderNodeBooleanParameter" id="VisualShaderNodeBooleanParameter_ip5du"]
+parameter_name = "top_enabled"
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_w8g7t"]
+input_name = "vertex"
+
+[sub_resource type="VisualShaderNodeVectorDecompose" id="VisualShaderNodeVectorDecompose_5yghl"]
+output_port_for_preview = 1
+default_input_values = [0, Vector2(0, 0)]
+op_type = 0
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_pvp0q"]
+input_name = "vertex"
+
+[sub_resource type="VisualShaderNodeVectorDecompose" id="VisualShaderNodeVectorDecompose_w8g7t"]
+default_input_values = [0, Vector2(0, 0)]
+op_type = 0
+
+[sub_resource type="VisualShaderNodeVaryingSetter" id="VisualShaderNodeVaryingSetter_5yghl"]
+varying_name = "local_y"
+
+[resource]
+mode = 1
+flags/light_only = false
+varyings/local_y = "0,0"
+nodes/vertex/2/node = SubResource("VisualShaderNodeInput_pvp0q")
+nodes/vertex/2/position = Vector2(746.6667, 640)
+nodes/vertex/3/node = SubResource("VisualShaderNodeVectorDecompose_w8g7t")
+nodes/vertex/3/position = Vector2(1053.3334, 640)
+nodes/vertex/4/node = SubResource("VisualShaderNodeVaryingSetter_5yghl")
+nodes/vertex/4/position = Vector2(1240, 693.3333)
+nodes/vertex/connections = PackedInt32Array(2, 0, 3, 0, 3, 1, 4, 0)
+nodes/fragment/0/position = Vector2(746.6667, 160)
+nodes/fragment/2/node = SubResource("VisualShaderNodeColorParameter_bhhse")
+nodes/fragment/2/position = Vector2(-560, 253.33333)
+nodes/fragment/3/node = SubResource("VisualShaderNodeBooleanParameter_bhhse")
+nodes/fragment/3/position = Vector2(-560, 93.333336)
+nodes/fragment/4/node = SubResource("VisualShaderNodeIf_ip5du")
+nodes/fragment/4/position = Vector2(-160, 133.33333)
+nodes/fragment/5/node = SubResource("VisualShaderNodeInput_tuwyw")
+nodes/fragment/5/position = Vector2(-586.6667, 480)
+nodes/fragment/6/node = SubResource("VisualShaderNodeIf_bhhse")
+nodes/fragment/6/position = Vector2(480, 160)
+nodes/fragment/7/node = SubResource("VisualShaderNodeBooleanParameter_ip5du")
+nodes/fragment/7/position = Vector2(-560, 586.6667)
+nodes/fragment/8/node = SubResource("VisualShaderNodeInput_w8g7t")
+nodes/fragment/8/position = Vector2(-933.3333, 866.6667)
+nodes/fragment/9/node = SubResource("VisualShaderNodeVectorDecompose_5yghl")
+nodes/fragment/9/position = Vector2(-546.6667, 866.6667)
+nodes/fragment/16/node = SubResource("VisualShaderNodeColorConstant_tuwyw")
+nodes/fragment/16/position = Vector2(-426.66666, 746.6667)
+nodes/fragment/17/node = SubResource("VisualShaderNodeIf_pvp0q")
+nodes/fragment/17/position = Vector2(146.66667, 413.33334)
+nodes/fragment/19/node = SubResource("VisualShaderNodeVaryingGetter_bhhse")
+nodes/fragment/19/position = Vector2(-333.33334, 853.3333)
+nodes/fragment/20/node = SubResource("VisualShaderNodeFloatParameter_ip5du")
+nodes/fragment/20/position = Vector2(-920, 626.6667)
+nodes/fragment/connections = PackedInt32Array(3, 0, 4, 0, 2, 0, 4, 3, 5, 0, 4, 5, 5, 0, 4, 4, 4, 0, 6, 4, 4, 0, 6, 5, 7, 0, 6, 0, 6, 0, 0, 0, 17, 0, 6, 3, 4, 0, 17, 3, 16, 0, 17, 5, 8, 0, 9, 0, 19, 0, 17, 0, 4, 0, 17, 4, 20, 0, 17, 1)

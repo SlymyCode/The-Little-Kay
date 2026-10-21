@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://b5cwl2ddmy6vy"]
-
-[ext_resource type="AudioStream" uid="uid://fqb0a1da430s" path="res://menus/music/Main Title Kay.mp3" id="1_rrs3c"]
-
-[node name="Menu Music" type="AudioStreamPlayer" unique_id=533580468]
-stream = ExtResource("1_rrs3c")
-volume_db = -10.0
-autoplay = true
-parameters/looping = true

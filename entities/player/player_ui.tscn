@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://dckx5roben64j"]
+
+[ext_resource type="Script" uid="uid://dgxear0ughkbd" path="res://entities/player/player_ui.gd" id="1_ffycu"]
+[ext_resource type="Texture2D" uid="uid://ctyhc14u5k6gm" path="res://entities/player/sprites/Hp bar.png" id="1_o542u"]
+[ext_resource type="Texture2D" uid="uid://dvuaybfk6cquk" path="res://entities/player/sprites/EnergyMeter.png" id="2_m1pxc"]
+[ext_resource type="Texture2D" uid="uid://bnsrc8ysd5hm2" path="res://entities/player/sprites/HeartContainer.png" id="4_as6rj"]
+[ext_resource type="Texture2D" uid="uid://b4ilvk3muvie8" path="res://entities/player/sprites/Heart.png" id="4_oeivo"]
+[ext_resource type="Texture2D" uid="uid://oh5qys4ixu71" path="res://entities/player/sprites/HpBarExpandable.png" id="6_l2mnk"]
+[ext_resource type="Texture2D" uid="uid://u8ns8so4baix" path="res://entities/player/sprites/HpBarCap.png" id="7_35srt"]
+
+[node name="HUD" type="CanvasLayer" unique_id=859151768 node_paths=PackedStringArray("heart_container", "heart_sprite", "hp_bar", "bar_piece", "bar_cap")]
+script = ExtResource("1_ffycu")
+heart_container = NodePath("HpBar/HeartContainer")
+heart_sprite = NodePath("HpBar/Heart")
+hp_bar = NodePath("HpBar")
+bar_piece = NodePath("HpBar/HeartContainer/BarPiece")
+bar_cap = NodePath("HpBar/BarCap")
+
+[node name="HpBar" type="TextureRect" parent="." unique_id=478951729]
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 110.0
+offset_bottom = 37.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("1_o542u")
+stretch_mode = 4
+
+[node name="EnergyMeter" type="Sprite2D" parent="HpBar" unique_id=108546221]
+position = Vector2(16.5, 19)
+texture = ExtResource("2_m1pxc")
+hframes = 4
+frame = 3
+
+[node name="Heart" type="Sprite2D" parent="HpBar" unique_id=488289161]
+z_index = 3
+position = Vector2(59.5, 8)
+texture = ExtResource("4_oeivo")
+hframes = 2
+frame = 1
+
+[node name="HeartContainer" type="Sprite2D" parent="HpBar" unique_id=771861658]
+z_index = 2
+position = Vector2(59.5, 7.5)
+texture = ExtResource("4_as6rj")
+
+[node name="BarPiece" type="Sprite2D" parent="HpBar/HeartContainer" unique_id=347013406]
+z_index = -1
+position = Vector2(0, 11.5)
+texture = ExtResource("6_l2mnk")
+
+[node name="BarCap" type="Sprite2D" parent="HpBar" unique_id=251980590]
+z_index = 2
+position = Vector2(71, 19)
+texture = ExtResource("7_35srt")
