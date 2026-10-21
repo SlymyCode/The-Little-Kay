@@ -1,0 +1,186 @@
+[gd_scene format=3 uid="uid://b5tafllpr7kjo"]
+
+[ext_resource type="Script" uid="uid://cvookco4427gr" path="res://menus/credits/credits.gd" id="1_7mvet"]
+[ext_resource type="Texture2D" uid="uid://2x1ipjkvkuco" path="res://menus/images/FondoMenuSinPlataformas.png" id="1_v1kn4"]
+[ext_resource type="PackedScene" uid="uid://4fl50wxukej2" path="res://menus/botones duplicados/back.tscn" id="2_32j7k"]
+[ext_resource type="FontFile" uid="uid://c2lcmmri3l7ib" path="res://menus/styles/homespun/homespun.ttf" id="2_rl7hp"]
+[ext_resource type="Texture2D" uid="uid://n4r584ygjq8j" path="res://menus/images/Buttons/Botones Creditos/btnProgramacion.png" id="3_4s8ef"]
+[ext_resource type="ButtonGroup" uid="uid://b7k80vnacsfpw" path="res://menus/new_button_group.tres" id="3_53xrr"]
+[ext_resource type="Texture2D" uid="uid://0lgoxhpxp5ed" path="res://menus/images/Buttons/Botones Creditos/btnProgramacionPresionado.png" id="4_53xrr"]
+[ext_resource type="Texture2D" uid="uid://blvetskitfdka" path="res://menus/images/Buttons/Botones Creditos/btnProgramacionHover.png" id="5_7mvet"]
+[ext_resource type="Texture2D" uid="uid://64el8tsnlvep" path="res://menus/images/Buttons/Botones Creditos/btnArte.png" id="6_42x40"]
+[ext_resource type="Texture2D" uid="uid://rvddh3gii4bp" path="res://menus/images/Buttons/Botones Creditos/btnArtePresionado.png" id="7_hirx0"]
+[ext_resource type="Texture2D" uid="uid://bn3umnwtc1qkq" path="res://menus/images/Buttons/Botones Creditos/btnArteHover.png" id="8_gnhag"]
+[ext_resource type="Texture2D" uid="uid://cplflrbw62r0g" path="res://menus/images/Buttons/Botones Creditos/btnGameDesing.png" id="9_up16n"]
+[ext_resource type="Texture2D" uid="uid://idtpdpegpupo" path="res://menus/images/Buttons/Botones Creditos/btnGameDesingPresionado.png" id="10_mmli3"]
+[ext_resource type="Texture2D" uid="uid://dsdbqtlbgqqpm" path="res://menus/images/Buttons/Botones Creditos/btnGameDesingHover.png" id="11_v4dw4"]
+[ext_resource type="Texture2D" uid="uid://ble6gy7at60m8" path="res://menus/images/Buttons/Botones Creditos/btnAudio.png" id="12_fylgf"]
+[ext_resource type="Texture2D" uid="uid://mkm1x2iuo8tb" path="res://menus/images/Buttons/Botones Creditos/btnAudioPresionado.png" id="13_4tt0v"]
+[ext_resource type="Texture2D" uid="uid://c54ljy5e04q7j" path="res://menus/images/Buttons/Botones Creditos/btnAudioHover.png" id="14_u7ewk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8w0r3"]
+font = ExtResource("2_rl7hp")
+font_size = 13
+font_color = Color(0.6313726, 0.39215687, 0.21960784, 1)
+outline_color = Color(0.08235294, 0.14509805, 0.16078432, 1)
+shadow_color = Color(0.08235294, 0.14509805, 0.16078432, 1)
+
+[node name="Credits" type="Control" unique_id=1826613662 node_paths=PackedStringArray("FondoNombres", "ContenedorNombres", "Persona1", "Persona2", "Persona3", "Persona4", "Persona5", "Programacion", "Arte", "GameDesign", "Audio")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -320.0
+offset_bottom = -180.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7mvet")
+FondoNombres = NodePath("FondoNombres")
+ContenedorNombres = NodePath("Nombres")
+Persona1 = NodePath("Nombres/Label")
+Persona2 = NodePath("Nombres/Label2")
+Persona3 = NodePath("Nombres/Label3")
+Persona4 = NodePath("Nombres/Label4")
+Persona5 = NodePath("Nombres/Label5")
+Programacion = NodePath("Botones/Programacion")
+Arte = NodePath("Botones/Arte")
+GameDesign = NodePath("Botones/Game Design")
+Audio = NodePath("Botones/Audio")
+
+[node name="Color" type="ColorRect" parent="." unique_id=1628736543]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 320.0
+offset_bottom = 181.0
+color = Color(0.047058824, 0.0627451, 0.07058824, 1)
+
+[node name="Fondo" type="TextureRect" parent="." unique_id=874754182]
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 180.0
+texture = ExtResource("1_v1kn4")
+
+[node name="Creditos" type="Label" parent="." unique_id=201727578]
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 34.0
+theme_override_fonts/font = ExtResource("2_rl7hp")
+theme_override_font_sizes/font_size = 19
+text = "Créditos"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Botones" type="VBoxContainer" parent="." unique_id=1490911776]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 47.0
+offset_right = 83.0
+offset_bottom = 135.0
+layout_direction = 2
+alignment = 1
+
+[node name="Programacion" type="TextureButton" parent="Botones" unique_id=551546332]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("3_53xrr")
+texture_normal = ExtResource("3_4s8ef")
+texture_pressed = ExtResource("4_53xrr")
+texture_hover = ExtResource("5_7mvet")
+texture_focused = ExtResource("5_7mvet")
+stretch_mode = 0
+
+[node name="Arte" type="TextureButton" parent="Botones" unique_id=1472278397]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("3_53xrr")
+texture_normal = ExtResource("6_42x40")
+texture_pressed = ExtResource("7_hirx0")
+texture_hover = ExtResource("8_gnhag")
+texture_focused = ExtResource("8_gnhag")
+stretch_mode = 0
+
+[node name="Game Design" type="TextureButton" parent="Botones" unique_id=1648867533]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("3_53xrr")
+texture_normal = ExtResource("9_up16n")
+texture_pressed = ExtResource("10_mmli3")
+texture_hover = ExtResource("11_v4dw4")
+texture_focused = ExtResource("11_v4dw4")
+stretch_mode = 0
+
+[node name="Audio" type="TextureButton" parent="Botones" unique_id=760613424]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("3_53xrr")
+texture_normal = ExtResource("12_fylgf")
+texture_pressed = ExtResource("13_4tt0v")
+texture_hover = ExtResource("14_u7ewk")
+texture_focused = ExtResource("14_u7ewk")
+stretch_mode = 0
+
+[node name="FondoNombres" type="ColorRect" parent="." unique_id=1549761027]
+visible = false
+custom_minimum_size = Vector2(200, 88)
+propagate_maximum_size = true
+layout_mode = 0
+offset_left = 83.0
+offset_top = 47.0
+offset_right = 307.0
+offset_bottom = 135.0
+color = Color(0.9137255, 0.8509804, 0.7176471, 1)
+
+[node name="Nombres" type="VBoxContainer" parent="." unique_id=485004230]
+layout_mode = 0
+offset_left = 83.0
+offset_top = 47.0
+offset_right = 307.0
+offset_bottom = 135.0
+
+[node name="Label" type="Label" parent="Nombres" unique_id=1126960251]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Nombre 1"
+label_settings = SubResource("LabelSettings_8w0r3")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Nombres" unique_id=1933119441]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Nombre 2"
+label_settings = SubResource("LabelSettings_8w0r3")
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="Nombres" unique_id=418149652]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Nombre 3"
+label_settings = SubResource("LabelSettings_8w0r3")
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="Nombres" unique_id=1885126281]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Nombre 4"
+label_settings = SubResource("LabelSettings_8w0r3")
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="Nombres" unique_id=586700942]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Nombre 5"
+label_settings = SubResource("LabelSettings_8w0r3")
+horizontal_alignment = 1
+
+[node name="ButtonBack" parent="." unique_id=1134103880 instance=ExtResource("2_32j7k")]
+layout_mode = 0
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../Botones/Audio")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../Botones/Programacion")
+focus_mode = 2

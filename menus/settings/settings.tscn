@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://b82qe04lpdkyd"]
+
+[ext_resource type="PackedScene" uid="uid://4fl50wxukej2" path="res://menus/botones duplicados/back.tscn" id="1_2e4a5"]
+[ext_resource type="Script" uid="uid://qp1peevdd8hx" path="res://menus/settings/settings.gd" id="1_50vup"]
+[ext_resource type="FontFile" uid="uid://c2lcmmri3l7ib" path="res://menus/styles/homespun/homespun.ttf" id="1_jykqg"]
+
+[node name="Settings" type="Control" unique_id=2145677217]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_50vup")
+
+[node name="Color" type="ColorRect" parent="." unique_id=1766198915]
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 183.0
+color = Color(0.047058824, 0.0627451, 0.07058824, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=225525736]
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 23.0
+
+[node name="Ajustes" type="Label" parent="VBoxContainer" unique_id=2001203965]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_jykqg")
+text = "AJUSTES"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonBack" parent="." unique_id=1134103880 instance=ExtResource("1_2e4a5")]
+layout_mode = 0
+focus_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="." unique_id=1861854094]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 34.0
+offset_right = 262.0
+offset_bottom = 111.0
+
+[node name="Efectos" type="HBoxContainer" parent="VBoxContainer2" unique_id=1036834704]
+layout_mode = 2
+alignment = 1
+
+[node name="SonidoSFX" type="Label" parent="VBoxContainer2/Efectos" unique_id=66222053]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_jykqg")
+text = "Efectos de Sonido"
+
+[node name="VolumenSFX" type="HSlider" parent="VBoxContainer2/Efectos" unique_id=1730372254]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+value = 100.0
+
+[node name="Musica" type="HBoxContainer" parent="VBoxContainer2" unique_id=1085237025]
+layout_mode = 2
+
+[node name="SonidoMusica" type="Label" parent="VBoxContainer2/Musica" unique_id=2093187968]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_jykqg")
+text = "Musica"
+
+[node name="VolumenMusica" type="HSlider" parent="VBoxContainer2/Musica" unique_id=657793000]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+value = 100.0

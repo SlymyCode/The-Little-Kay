@@ -1,0 +1,96 @@
+78098b89c88a74ebe8c20117b8754620
+::res://::1792499858
+export_presets.cfg::TextFile::-1::1792344589::0::1::::<><><>0<>0<><>::
+main.tscn::PackedScene::2752669265739382594::1792499858::0::1::::<><><>0<>0<><>::uid://cv0qte17wro2c::::res://Autoloads/audio_manager.tscn<>uid://bykqqyanps31s::::res://entities/player/player_kay.tscn<>uid://cpx545eia8wpd::::res://tiles/Bricks/mockup equipo llave.png<>uid://bq4xpv0a0kjxt::::res://entities/interactables/checkpoints/checkpoint.tscn<>uid://4jgy1a0c87dj::::res://entities/enemies/Bush/bush.tscn<>uid://u7og3chrlw7s::::res://entities/player/player_camera.gd<>uid://lai4jg0hd61x::::res://shaders&effects/pixel_perfect_layer_back.gd<>uid://b4b0c3rgd2nxj::::res://entities/enemies/Plant/plant.tscn<>uid://rvyn4i4lag75::::res://shaders&effects/pixel_perfect_layer_front.gd<>uid://b5g4emx6jy575::::res://entities/interactables/WinFlag/winflag.tscn
+::res://Autoloads/::1792499858
+audio_manager.gd::GDScript::3159514638202809757::1792499858::0::1::::<>Node<><>0<>0<><>::
+audio_manager.tscn::PackedScene::6299422181347166648::1792499858::0::1::::<><><>0<>0<><>::uid://blaq0kvb4wqdx::::res://Autoloads/audio_manager.gd<>uid://btvcus6k4lchv::::res://entities/player/sound_effects/Checkpoint 4.wav<>uid://bvp7f0aa4apr4::::res://entities/player/sound_effects/Jump.mp3<>uid://b08p7jq51ccls::::res://entities/player/sound_effects/Caminar llave.wav
+events.gd::GDScript::3705196946605673947::1792499858::0::1::::<>Node<><>0<>0<><>::
+::res://entities/::1792344589
+::res://entities/enemies/::1792344589
+::res://entities/enemies/Bush/::1792499858
+bush.gd::GDScript::8895872840829916952::1792499858::0::1::::Bush<>CharacterBody2D<><>0<>0<><>::
+bush.tscn::PackedScene::2054464393046789559::1792499858::0::1::::<><><>0<>0<><>::uid://dy0hyxieernp5::::res://entities/enemies/Bush/bush.gd<>uid://b0ncylia7nqwm::::res://entities/enemies/Bush/Projectile/bush_projectiles.tscn<>uid://cysbupu82su10::::res://entities/enemies/Bush/Sprites/bush_sprite-sheet.png
+::res://entities/enemies/Bush/Projectile/::1792499858
+bush_projectiles.gd::GDScript::8543073400471324630::1792499858::0::1::::BushProjectile<>CharacterBody2D<><>0<>0<><>::
+bush_projectiles.tscn::PackedScene::4168143568644518048::1792499858::0::1::::<><><>0<>0<><>::uid://dtylf2nbryhec::::res://entities/enemies/Bush/Projectile/bush_projectiles.gd
+::res://entities/enemies/Bush/Sprites/::1792344665
+bush_sprite-sheet.png::CompressedTexture2D::6494629667425441725::1792344589::1792344665::1::::<><><>0<>0<>0e70b517c03f80a38a0b14001bbdbf77<>res://.godot/imported/bush_sprite-sheet.png-88200f670f3ff0745a407a3572fc5a5a.ctex::
+::res://entities/enemies/Plant/::1792499858
+plant.gd::GDScript::5416386711334007214::1792499858::0::1::::Plant<>CharacterBody2D<><>0<>0<><>::
+plant.tscn::PackedScene::4425484520550249043::1792499858::0::1::::<><><>0<>0<><>::uid://cjf0dlbur670u::::res://entities/enemies/Plant/plant.gd<>uid://c0sgtq2cv5oct::::res://entities/enemies/Plant/Projectile/plant_projectiles.tscn<>uid://btm6a7m7hn06b::::res://entities/enemies/Plant/Sprites/Sprite-0002.png
+::res://entities/enemies/Plant/Projectile/::1792499858
+plant_projectiles.gd::GDScript::5023053180879141394::1792499858::0::1::::PlantProjectile<>CharacterBody2D<><>0<>0<><>::
+plant_projectiles.tscn::PackedScene::6565120372154330319::1792499858::0::1::::<><><>0<>0<><>::uid://cdtg7mr4w60dq::::res://entities/enemies/Plant/Projectile/plant_projectiles.gd
+::res://entities/enemies/Plant/Projectile/Sprites/::1792344665
+Spike.png::CompressedTexture2D::1066094232894420120::1792344589::1792344665::1::::<><><>0<>0<>742520e420ead347e69247b6ecb512e3<>res://.godot/imported/Spike.png-0008a1eedf0c1ee0348389209995b02d.ctex::
+::res://entities/enemies/Plant/Sprites/::1792344665
+Sprite-0002.png::CompressedTexture2D::3746665173388880475::1792344589::1792344665::1::::<><><>0<>0<>2a1bce90db24097ee4a64b14d2eaf8ea<>res://.godot/imported/Sprite-0002.png-6b6f424c926af8f36de0cb9c74a3d752.ctex::
+::res://entities/interactables/::1792344589
+::res://entities/interactables/checkpoints/::1792344589
+checkpoint.gd::GDScript::1742101484638729198::1792344589::0::1::::Checkpoint<>Node2D<><>0<>0<><>::
+checkpoint.tscn::PackedScene::3570733556155830885::1792344589::0::1::::<><><>0<>0<><>::uid://y25fln5itjbq::::res://entities/interactables/checkpoints/checkpoint.gd<>uid://dxdhrokuds1cp::::res://entities/interactables/checkpoints/sprites/Checkpoint_Placeholder.png
+::res://entities/interactables/checkpoints/sprites/::1792344665
+Checkpoint_Placeholder.png::CompressedTexture2D::8780254717150377083::1792344589::1792344665::1::::<><><>0<>0<>9f72f538220b45e2e458171e03552335<>res://.godot/imported/Checkpoint_Placeholder.png-bb6f307f064ff126c35afeefcf47e88c.ctex::
+::res://entities/interactables/WinFlag/::1792344589
+win.gd::GDScript::8739375228407920410::1792344589::0::1::::<>Node2D<><>0<>0<><>::
+winflag.tscn::PackedScene::4506240862556485830::1792344589::0::1::::<><><>0<>0<><>::uid://dwroh6svyg77k::::res://entities/interactables/WinFlag/win.gd<>uid://dxdhrokuds1cp::::res://entities/interactables/checkpoints/sprites/Checkpoint_Placeholder.png
+::res://entities/player/::1792499858
+player.gd::GDScript::5770005339416012099::1792499858::0::1::::Player<>CharacterBody2D<><>0<>0<><>::
+player_camera.gd::GDScript::1470699187637357810::1792344589::0::1::::<>Camera2D<><>0<>0<><>::
+player_kay.tscn::PackedScene::4092598014305067542::1792499858::0::1::::<><><>0<>0<><>::uid://cohbe6snwea6f::::res://entities/player/player.gd<>uid://b28kaj3ey450f::::res://entities/player/sprites/SpriteSheet3.0.png
+player_ui.gd::GDScript::7628119601656014245::1792499858::0::1::::<>CanvasLayer<><>0<>0<><>::
+player_ui.tscn::PackedScene::7321734495122284071::1792499858::0::1::::<><><>0<>0<><>::
+::res://entities/player/sound_effects/::1792499858
+Abrir puerta.wav::AudioStreamWAV::6098699876229494663::1792344589::1792344665::1::::<><><>0<>0<>a540dac9b4e58904e8f447b32247b392<>res://.godot/imported/Abrir puerta.wav-a0d153cf188dbdef44174736137573d7.sample::
+Bajar picaporte.wav::AudioStreamWAV::5609271023592975436::1792344589::1792344665::1::::<><><>0<>0<>b2e4a77ec9f6c980fd6b3f9aef128572<>res://.godot/imported/Bajar picaporte.wav-318466db1fa779af61a21c4114cd3bdd.sample::
+Caminar llave.wav::AudioStreamWAV::4210234639649247616::1792344589::1792344664::1::::<><><>0<>0<>e516dd38ef1530a861bbcd85e1f272a6<>res://.godot/imported/Caminar llave.wav-5d66be604bb3399d3bea6c784a9f2ed4.sample::
+Candado.wav::AudioStreamWAV::9050421975007714584::1792344589::1792344665::1::::<><><>0<>0<>9d5d1a83f8d871ea721760f0e4138a5b<>res://.godot/imported/Candado.wav-a8aafc320c7adacd2b91753117a76860.sample::
+Cerrar puerta.wav::AudioStreamWAV::7572041778160436210::1792344589::1792344665::1::::<><><>0<>0<>7daceddfa8d7c6ac8323952ad915c359<>res://.godot/imported/Cerrar puerta.wav-d38c166267e0e68b92b2de14d9a68be6.sample::
+Checkpoint2.wav::AudioStreamWAV::6053076482231670721::1792344589::1792344665::1::::<><><>0<>0<>d85b5a45a6490aebc44542b4c0d730e2<>res://.godot/imported/Checkpoint2.wav-3aa6565a331fc89b4ea396b1e4d76d47.sample::
+Checkpoint 4.wav::AudioStreamWAV::3763518789317384883::1792344589::1792344664::1::::<><><>0<>0<>9bee2b3d5c3d7d1b26ce65113a389f4f<>res://.godot/imported/Checkpoint 4.wav-1a75506f47b595dff464f71fd6058edf.sample::
+Checkpoint.wav::AudioStreamWAV::7405630088551588637::1792344589::1792344665::1::::<><><>0<>0<>b91a01fe8a5427362a0464f928edd015<>res://.godot/imported/Checkpoint.wav-e147bf92d13793ed498352a68863f890.sample::
+Checkponit 3.wav::AudioStreamWAV::5823639905449920755::1792344589::1792344665::1::::<><><>0<>0<>cbecdbce6053e75d364d51058594c4e8<>res://.godot/imported/Checkponit 3.wav-a82e07117630b52823276bb5f0346fb9.sample::
+Daño a llave.wav::AudioStreamWAV::527807108881638852::1792344589::1792344665::1::::<><><>0<>0<>6305fd9e88315c2a57d56e6eb75f40bd<>res://.godot/imported/Daño a llave.wav-e2f838afe91539f964586ae08274c39d.sample::
+hit_body_kay.mp3::AudioStreamMP3::6488333205925102211::1792499858::1792500085::1::::<><><>0<>0<>e7979d7c331728ec10de04fefdfa26c1<>res://.godot/imported/hit_body_kay.mp3-bd6946dfa632ee80e02f8637416a8a80.mp3str::
+hit_top_kay.mp3::AudioStreamMP3::7770673839454546593::1792499858::1792500085::1::::<><><>0<>0<>66afae88602f51c8c577d6b1064b5990<>res://.godot/imported/hit_top_kay.mp3-7b6bbfe6db0e9c42b6108a1c57c282f0.mp3str::
+Insertar llave en puerta 2.wav::AudioStreamWAV::4089865666168359421::1792344589::1792344665::1::::<><><>0<>0<>2a8a1c865db089e565ce4d9577b511cf<>res://.godot/imported/Insertar llave en puerta 2.wav-93a31b5c05d036826c9378d80e7a6126.sample::
+Insertar llave en puerta.wav::AudioStreamWAV::191673269921416330::1792344589::1792344665::1::::<><><>0<>0<>a2202a58823af8cd7d10fc2fdf8ec0a6<>res://.godot/imported/Insertar llave en puerta.wav-245c8d7b49e6183ae2f68b4184bb18fb.sample::
+Jump.mp3::AudioStreamMP3::3893305252263254379::1792344589::1792344664::1::::<><><>0<>0<>f46bbcd411ebda218ec62111a7d3a8ec<>res://.godot/imported/Jump.mp3-b44c21dd9fd22d4701fe75ae57065c86.mp3str::
+Nose2.wav::AudioStreamWAV::8710739278423980886::1792344589::1792344665::1::::<><><>0<>0<>5781932945c3d2a7da8982ff1e2ce3db<>res://.godot/imported/Nose2.wav-be854da136d58d41af7b58b61bf3c081.sample::
+Nose3.wav::AudioStreamWAV::7914966289099959432::1792344589::1792344665::1::::<><><>0<>0<>bc456c49a77ddc1300fdb591a45405d1<>res://.godot/imported/Nose3.wav-d8dd8020a123e4018e9c2d5aeaecacf1.sample::
+Nose.wav::AudioStreamWAV::3146118157824997873::1792344589::1792344665::1::::<><><>0<>0<>c741dce988e8cece204df60edc52ee97<>res://.godot/imported/Nose.wav-d70816b8e83ac68aa603e4ac99b0216a.sample::
+Puerta2.wav::AudioStreamWAV::8560485280930185805::1792344589::1792344665::1::::<><><>0<>0<>339edada0ea1f1de6b0553be28dbf6fc<>res://.godot/imported/Puerta2.wav-b384240607757a28bd78e50c807de69a.sample::
+Puerta.wav::AudioStreamWAV::4351705521089780768::1792344589::1792344665::1::::<><><>0<>0<>c5c86721d23ac4dcece633b10ac50add<>res://.godot/imported/Puerta.wav-c9cb8be0a615529d8029a9dc9b458fb2.sample::
+Regen.mp3::AudioStreamMP3::6418088393189293367::1792499858::1792500085::1::::<><><>0<>0<>d33b09806bd99ef257eb3ef7bcf0be59<>res://.godot/imported/Regen.mp3-9d73dd3aea9ec05fd74e690ba5c32e2e.mp3str::
+RegenFinished.mp3::AudioStreamMP3::2016047615890283291::1792499858::1792500085::1::::<><><>0<>0<>acee38571e49c46eb54df1918d443760<>res://.godot/imported/RegenFinished.mp3-20166cd4e5ec2895a91399f63ea961b8.mp3str::
+::res://entities/player/sprites/::1792499858
+EnergyMeter.png::CompressedTexture2D::8674558242356146930::1792499858::1792500085::1::::<><><>0<>0<>a6ea3ab22bbda43ef7ee655bda531561<>res://.godot/imported/EnergyMeter.png-3c1cdcd086ec949409ce9752c193ae93.ctex::
+Heart.png::CompressedTexture2D::4439118128881764017::1792499858::1792500085::1::::<><><>0<>0<>dbfbff36b27e6bf0c6ff2bf45ba99ed0<>res://.godot/imported/Heart.png-9faad1660d3c33503c82fc6db56924bc.ctex::
+HeartContainer.png::CompressedTexture2D::3337071982194332719::1792499858::1792500085::1::::<><><>0<>0<>a9432cc56fb226eac4f9aa9228f938cb<>res://.godot/imported/HeartContainer.png-d744a50fad154e44b56a337e942d9ba5.ctex::
+Hp bar.png::CompressedTexture2D::6156404464499086532::1792499858::1792500085::1::::<><><>0<>0<>08b838bf45da1d69e1aca3a6c51214b0<>res://.godot/imported/Hp bar.png-06ee4dcb76f1abbde60f039c76c774c6.ctex::
+HpBarCap.png::CompressedTexture2D::1472724565592795967::1792499858::1792500085::1::::<><><>0<>0<>7addd3e5710f431e0be2924f5846686b<>res://.godot/imported/HpBarCap.png-4343b129358d4102e13d30018c84d32a.ctex::
+HpBarExpandable.png::CompressedTexture2D::998945827392473218::1792499858::1792500085::1::::<><><>0<>0<>0dca43fa0ee52e2ff9366fbfb519d428<>res://.godot/imported/HpBarExpandable.png-2474a54dc183e07a4792a857e16d1b09.ctex::
+SpriteSheet3.0.png::CompressedTexture2D::4350251613911276727::1792344589::1792344664::1::::<><><>0<>0<>9cbf80b12bf616b19923925493b2eea1<>res://.godot/imported/SpriteSheet3.0.png-a5f476260f797735f1e0e07b7879e7f5.ctex::
+::res://equipo-1-correcciones/::1792499254
+::res://equipo-1-correcciones/entities/::1792344589
+::res://equipo-1-correcciones/entities/enemies/::1792344588
+::res://equipo-1-correcciones/entities/enemies/Bush/::1792344588
+::res://equipo-1-correcciones/entities/enemies/Bush/Projectile/::1792344588
+::res://equipo-1-correcciones/entities/enemies/Bush/Projectile/Sprites/::1790809626
+::res://shaders&effects/::1792499858
+hit_flash.tres::VisualShader::3513231768884626305::1792499858::0::1::::<><><>0<>0<><>::
+Outline.gdshader::Shader::8536042824189416838::1792344589::0::1::::<><><>0<>0<><>::
+pixel_perfect_layer.gd::GDScript::2667619185296540766::1792499858::0::1::::PixelPerfectLayer<>CanvasLayer<><>0<>0<><>::
+swaying.gdshader::Shader::5596792073018820693::1792344589::0::1::::<><><>0<>0<><>::
+::res://tiles/::1792344589
+::res://tiles/Bricks/::1792499858
+mockup equipo llave.png::CompressedTexture2D::5875029590350826977::1792344589::1792344665::1::::<><><>0<>0<>1c6567f47eaa59a197952116999cea51<>res://.godot/imported/mockup equipo llave.png-b5f992315868ee6ab8e8ace97d8ec0f3.ctex::
+Pilares.png::CompressedTexture2D::7325380408321589135::1792499858::1792500085::1::::<><><>0<>0<>801293456bef86b1ffb167e7f55b5ca3<>res://.godot/imported/Pilares.png-40f7862e44012f01b893c4cb9c7a7181.ctex::
+Sprite-0002.png::CompressedTexture2D::6444846140621442396::1792344589::1792344664::1::::<><><>0<>0<>2a67b257e755c938263db7858ee8be85<>res://.godot/imported/Sprite-0002.png-a91718e7a8a465e3fed817a12afb0d6b.ctex::
+::res://tiles/grass/::1792344664
+TopGreenPrototype.png::CompressedTexture2D::2122676196670248160::1792344589::1792344664::1::::<><><>0<>0<>50ebce9d6c36312f4ad1f52f0b314243<>res://.godot/imported/TopGreenPrototype.png-2d52c9bd980a2007a7c64246ee5a4b79.ctex::
+::res://ui/::1792344589
+::res://ui/cursor/::1792344589
+::res://ui/cursor/sprites/::1792344665
+normal.png::CompressedTexture2D::9012708585080394092::1792344589::1792344664::1::::<><><>0<>0<>846a319a4659cce6914729c5cc0e7543<>res://.godot/imported/normal.png-73cc4dcd675667ed8397719a79a14c53.ctex::

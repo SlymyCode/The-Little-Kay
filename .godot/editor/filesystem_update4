@@ -1,0 +1,9 @@
+res://Autoloads/audio_manager.gd
+res://Autoloads/events.gd
+res://entities/enemies/Bush/bush.gd
+res://entities/enemies/Bush/Projectile/bush_projectiles.gd
+res://entities/enemies/Bush/Projectile/bush_projectiles.tscn
+res://entities/enemies/Plant/plant.gd
+res://entities/enemies/Plant/Projectile/plant_projectiles.gd
+res://entities/enemies/Plant/Projectile/plant_projectiles.tscn
+res://entities/player/player.gd

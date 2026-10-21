@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cv0qte17wro2c"]
 
 [ext_resource type="Script" uid="uid://blaq0kvb4wqdx" path="res://Autoloads/audio_manager.gd" id="1_5psad"]
+<<<<<<< Updated upstream:equipo-1-correcciones/Autoloads/audio_manager.tscn
 [ext_resource type="AudioStream" uid="uid://btvcus6k4lchv" path="res://entities/player/sound_effects/Checkpoint 4.wav" id="2_apnpw"]
 [ext_resource type="AudioStream" uid="uid://bvp7f0aa4apr4" path="res://entities/player/sound_effects/Jump.mp3" id="3_h43j6"]
 [ext_resource type="AudioStream" uid="uid://b08p7jq51ccls" path="res://entities/player/sound_effects/Caminar llave.wav" id="4_amsdr"]
@@ -11,4 +12,22 @@ sound_list = Dictionary[String, AudioStream]({
 "fall_sound": ExtResource("2_apnpw"),
 "jump_sound": ExtResource("3_h43j6"),
 "step_sound": ExtResource("4_amsdr")
+=======
+[ext_resource type="AudioStream" uid="uid://diyf4lorwoi14" path="res://entities/player/sound_effects/hit_top_kay.mp3" id="5_amsdr"]
+[ext_resource type="AudioStream" uid="uid://fqb0a1da430s" path="res://menus/music/Main Title Kay.mp3" id="6_filgv"]
+[ext_resource type="AudioStream" uid="uid://cyo85uln5gg48" path="res://entities/player/sound_effects/hit_body_kay.mp3" id="6_jpqn3"]
+[ext_resource type="AudioStream" uid="uid://cxo78iy4sip1h" path="res://entities/player/sound_effects/Regen.mp3" id="7_filgv"]
+[ext_resource type="AudioStream" uid="uid://3yualgxbo3y2" path="res://entities/player/sound_effects/RegenFinished.mp3" id="8_monbp"]
+
+[node name="AudioManager" type="Node2D" unique_id=1272728578]
+script = ExtResource("1_5psad")
+sfx_list = Dictionary[String, AudioStream]({
+"hit_body_sound": ExtResource("6_jpqn3"),
+"hit_top_sound": ExtResource("5_amsdr"),
+"regen_finished_sound": ExtResource("8_monbp"),
+"regen_sound": ExtResource("7_filgv")
+})
+music_list = Dictionary[String, AudioStream]({
+"music1": ExtResource("6_filgv")
+>>>>>>> Stashed changes:Autoloads/audio_manager.tscn
 })
