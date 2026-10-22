@@ -1,0 +1,8 @@
+[gd_resource type="StyleBoxTexture" format=3 uid="uid://jcm1ddsglfyj"]
+
+[ext_resource type="Texture2D" uid="uid://c4p4pyji81j3p" path="res://menus/settings/Sprites/GrabberHigh.png" id="1_e25rj"]
+
+[resource]
+texture = ExtResource("1_e25rj")
+texture_margin_left = 4.0
+texture_margin_right = 4.0

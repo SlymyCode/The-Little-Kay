@@ -9,8 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://b3exjyxfjc0f6" path="res://menus/images/Buttons/btnSettingsPresionado.png" id="7_g1qdb"]
 [ext_resource type="Texture2D" uid="uid://bc66kvfepm531" path="res://menus/images/Buttons/btnMainMenu.png" id="8_7w2pe"]
 [ext_resource type="Texture2D" uid="uid://v5coxc0tdlga" path="res://menus/images/Buttons/btnMainMenuPresionado.png" id="9_khljv"]
-[ext_resource type="Texture2D" uid="uid://db1wox64nvt1u" path="res://menus/images/Buttons/btnVolver.png" id="11_045g6"]
-[ext_resource type="Texture2D" uid="uid://bnjw06qmxwshx" path="res://menus/images/Buttons/btnVolverPresionado.png" id="12_c45du"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1qitr"]
 content_margin_left = 4.0
@@ -35,7 +33,10 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
-[node name="Menu Pausa" type="Control" unique_id=1238612063 node_paths=PackedStringArray("BotonPausar", "BotonContinuar", "BotonVolver", "BotonAjustes", "VolverPausa", "FondoPausa", "MenuPausa", "Ajustes")]
+[node name="Menu Pausa" type="Control" unique_id=1238612063 node_paths=PackedStringArray("BotonPausar", "BotonContinuar", "BotonVolver", "BotonAjustes", "FondoPausa", "MenuPausa")]
+top_level = true
+z_index = 1000
+z_as_relative = false
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_0efpp")
@@ -43,10 +44,8 @@ BotonPausar = NodePath("Pausar")
 BotonContinuar = NodePath("Menu/VBoxContainer/Continuar")
 BotonVolver = NodePath("Menu/VBoxContainer/Menu Principal")
 BotonAjustes = NodePath("Menu/VBoxContainer/Ajustes")
-VolverPausa = NodePath("Ajustes/Atras")
 FondoPausa = NodePath("Fondo Pausa")
 MenuPausa = NodePath("Menu")
-Ajustes = NodePath("Ajustes")
 
 [node name="Pausar" type="Button" parent="." unique_id=1816471235]
 modulate = Color(0.8392157, 0.8666667, 0.8666667, 1)
@@ -124,30 +123,4 @@ focus_neighbor_bottom = NodePath("../Continuar")
 texture_normal = ExtResource("8_7w2pe")
 texture_hover = ExtResource("9_khljv")
 texture_focused = ExtResource("9_khljv")
-stretch_mode = 3
-
-[node name="Ajustes" type="Panel" parent="." unique_id=1005650314]
-process_mode = 3
-visible = false
-layout_mode = 0
-offset_left = 60.0
-offset_top = 30.0
-offset_right = 260.0
-offset_bottom = 150.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_w12uw")
-
-[node name="Atras" type="TextureButton" parent="Ajustes" unique_id=742841783]
-process_mode = 3
-layout_mode = 0
-offset_left = 65.0
-offset_top = 101.0
-offset_right = 137.0
-offset_bottom = 120.0
-focus_neighbor_left = NodePath(".")
-focus_neighbor_top = NodePath(".")
-focus_neighbor_right = NodePath(".")
-focus_neighbor_bottom = NodePath(".")
-texture_normal = ExtResource("11_045g6")
-texture_hover = ExtResource("12_c45du")
-texture_focused = ExtResource("12_c45du")
 stretch_mode = 3

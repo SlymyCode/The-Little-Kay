@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://bfhoccdja3yis"]
 
+[ext_resource type="PackedScene" uid="uid://cplnfqplf04da" path="res://menus/botones duplicados/menu_pausa.tscn" id="1_4c57u"]
 [ext_resource type="PackedScene" uid="uid://dckx5roben64j" path="res://entities/player/player_ui.tscn" id="1_kek77"]
 [ext_resource type="PackedScene" uid="uid://bykqqyanps31s" path="res://entities/player/player_kay.tscn" id="2_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://cpx545eia8wpd" path="res://tiles/Bricks/mockup equipo llave.png" id="2_272bh"]
@@ -150,6 +151,8 @@ viewport_path = NodePath("PixelPerfectFront/SubViewportFront")
 
 [node name="HUD" parent="." unique_id=859151768 instance=ExtResource("1_kek77")]
 
+[node name="Menu Pausa" parent="HUD" unique_id=1238612063 instance=ExtResource("1_4c57u")]
+
 [node name="LevelController" type="Node2D" parent="." unique_id=132378779]
 
 [node name="DrawBehindParticles" type="CanvasLayer" parent="LevelController" unique_id=1806732098]
@@ -179,9 +182,9 @@ metadata/_edit_group_ = true
 offset = Vector2(0, -24)
 process_callback = 0
 limit_left = -16
-limit_top = 32
+limit_top = 0
 limit_right = 2000
-limit_bottom = 236
+limit_bottom = 230
 limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 6.0

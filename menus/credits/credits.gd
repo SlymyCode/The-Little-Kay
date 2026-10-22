@@ -15,6 +15,7 @@ extends Node
 @export var Arte: TextureButton
 @export var GameDesign: TextureButton
 @export var Audio: TextureButton
+@export var Volver: TextureButton
 
 func _ready() -> void:
 	AudioManager.play_music("music1")
@@ -23,6 +24,7 @@ func _ready() -> void:
 	Arte.pressed.connect(arte)
 	GameDesign.pressed.connect(game_design)
 	Audio.pressed.connect(audio)
+	Volver.pressed.connect(volver)
 
 func programcion():
 	for child in ContenedorNombres.get_children():
@@ -37,14 +39,15 @@ func arte():
 	FondoNombres.show()
 	Persona5.show()
 
-
 func game_design():
 	for child in ContenedorNombres.get_children():
 		child.visible = false
 	FondoNombres.show()
 
-
 func audio():
 	for child in ContenedorNombres.get_children():
 		child.visible = false
 	FondoNombres.show()
+
+func volver():
+	get_tree().change_scene_to_file("res://menus/main menu/menu_principal.tscn")

@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dr47f8rgf2ia5" path="res://menus/images/Buttons/btnQuit.png" id="11_25rct"]
 [ext_resource type="Texture2D" uid="uid://b5avuxuv3svg2" path="res://menus/images/Buttons/btnQuitPresionado.png" id="12_1ahxw"]
 
-[node name="MenuTitulo" type="Control" unique_id=1634701214 node_paths=PackedStringArray("NewGame", "Quit", "Settings", "Credits")]
+[node name="MenuTitulo" type="Control" unique_id=1634701214 node_paths=PackedStringArray("NewGame", "Quit", "Settings", "Credits", "Fondo", "Titulo", "Kay")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,6 +26,9 @@ NewGame = NodePath("VBoxContainer/ButtonNewGame")
 Quit = NodePath("VBoxContainer/ButtonQuit")
 Settings = NodePath("VBoxContainer/ButtonSettings")
 Credits = NodePath("VBoxContainer/ButtonCredits")
+Fondo = NodePath("Fondo")
+Titulo = NodePath("Titulo")
+Kay = NodePath("Kay")
 
 [node name="Fondo" type="TextureRect" parent="." unique_id=742972954]
 layout_mode = 0
@@ -36,7 +39,7 @@ texture = ExtResource("2_hhyr6")
 [node name="Titulo" type="TextureRect" parent="." unique_id=1853121103]
 layout_mode = 0
 offset_left = 69.0
-offset_right = 383.0
+offset_right = 405.93256
 offset_bottom = 72.0
 scale = Vector2(0.56687903, 0.75)
 texture = ExtResource("3_kqtc7")

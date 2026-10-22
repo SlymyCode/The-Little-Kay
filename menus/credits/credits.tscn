@@ -2,10 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cvookco4427gr" path="res://menus/credits/credits.gd" id="1_7mvet"]
 [ext_resource type="Texture2D" uid="uid://2x1ipjkvkuco" path="res://menus/images/FondoMenuSinPlataformas.png" id="1_v1kn4"]
-[ext_resource type="PackedScene" uid="uid://4fl50wxukej2" path="res://menus/botones duplicados/back.tscn" id="2_32j7k"]
 [ext_resource type="FontFile" uid="uid://c2lcmmri3l7ib" path="res://menus/styles/homespun/homespun.ttf" id="2_rl7hp"]
 [ext_resource type="Texture2D" uid="uid://n4r584ygjq8j" path="res://menus/images/Buttons/Botones Creditos/btnProgramacion.png" id="3_4s8ef"]
-[ext_resource type="ButtonGroup" uid="uid://b7k80vnacsfpw" path="res://menus/new_button_group.tres" id="3_53xrr"]
 [ext_resource type="Texture2D" uid="uid://0lgoxhpxp5ed" path="res://menus/images/Buttons/Botones Creditos/btnProgramacionPresionado.png" id="4_53xrr"]
 [ext_resource type="Texture2D" uid="uid://blvetskitfdka" path="res://menus/images/Buttons/Botones Creditos/btnProgramacionHover.png" id="5_7mvet"]
 [ext_resource type="Texture2D" uid="uid://64el8tsnlvep" path="res://menus/images/Buttons/Botones Creditos/btnArte.png" id="6_42x40"]
@@ -17,6 +15,11 @@
 [ext_resource type="Texture2D" uid="uid://ble6gy7at60m8" path="res://menus/images/Buttons/Botones Creditos/btnAudio.png" id="12_fylgf"]
 [ext_resource type="Texture2D" uid="uid://mkm1x2iuo8tb" path="res://menus/images/Buttons/Botones Creditos/btnAudioPresionado.png" id="13_4tt0v"]
 [ext_resource type="Texture2D" uid="uid://c54ljy5e04q7j" path="res://menus/images/Buttons/Botones Creditos/btnAudioHover.png" id="14_u7ewk"]
+[ext_resource type="Texture2D" uid="uid://db1wox64nvt1u" path="res://menus/images/Buttons/btnVolver.png" id="16_53xrr"]
+[ext_resource type="Texture2D" uid="uid://bnjw06qmxwshx" path="res://menus/images/Buttons/btnVolverPresionado.png" id="17_7mvet"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_4s8ef"]
+allow_unpress = true
 
 [sub_resource type="LabelSettings" id="LabelSettings_8w0r3"]
 font = ExtResource("2_rl7hp")
@@ -25,7 +28,7 @@ font_color = Color(0.6313726, 0.39215687, 0.21960784, 1)
 outline_color = Color(0.08235294, 0.14509805, 0.16078432, 1)
 shadow_color = Color(0.08235294, 0.14509805, 0.16078432, 1)
 
-[node name="Credits" type="Control" unique_id=1826613662 node_paths=PackedStringArray("FondoNombres", "ContenedorNombres", "Persona1", "Persona2", "Persona3", "Persona4", "Persona5", "Programacion", "Arte", "GameDesign", "Audio")]
+[node name="Credits" type="Control" unique_id=1826613662 node_paths=PackedStringArray("FondoNombres", "ContenedorNombres", "Persona1", "Persona2", "Persona3", "Persona4", "Persona5", "Programacion", "Arte", "GameDesign", "Audio", "Volver")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -46,6 +49,7 @@ Programacion = NodePath("Botones/Programacion")
 Arte = NodePath("Botones/Arte")
 GameDesign = NodePath("Botones/Game Design")
 Audio = NodePath("Botones/Audio")
+Volver = NodePath("Volver")
 
 [node name="Color" type="ColorRect" parent="." unique_id=1628736543]
 layout_mode = 0
@@ -64,6 +68,7 @@ texture = ExtResource("1_v1kn4")
 layout_mode = 0
 offset_right = 320.0
 offset_bottom = 34.0
+theme_override_constants/outline_size = -2
 theme_override_fonts/font = ExtResource("2_rl7hp")
 theme_override_font_sizes/font_size = 19
 text = "Créditos"
@@ -82,7 +87,7 @@ alignment = 1
 [node name="Programacion" type="TextureButton" parent="Botones" unique_id=551546332]
 layout_mode = 2
 toggle_mode = true
-button_group = ExtResource("3_53xrr")
+button_group = SubResource("ButtonGroup_4s8ef")
 texture_normal = ExtResource("3_4s8ef")
 texture_pressed = ExtResource("4_53xrr")
 texture_hover = ExtResource("5_7mvet")
@@ -92,7 +97,7 @@ stretch_mode = 0
 [node name="Arte" type="TextureButton" parent="Botones" unique_id=1472278397]
 layout_mode = 2
 toggle_mode = true
-button_group = ExtResource("3_53xrr")
+button_group = SubResource("ButtonGroup_4s8ef")
 texture_normal = ExtResource("6_42x40")
 texture_pressed = ExtResource("7_hirx0")
 texture_hover = ExtResource("8_gnhag")
@@ -102,7 +107,7 @@ stretch_mode = 0
 [node name="Game Design" type="TextureButton" parent="Botones" unique_id=1648867533]
 layout_mode = 2
 toggle_mode = true
-button_group = ExtResource("3_53xrr")
+button_group = SubResource("ButtonGroup_4s8ef")
 texture_normal = ExtResource("9_up16n")
 texture_pressed = ExtResource("10_mmli3")
 texture_hover = ExtResource("11_v4dw4")
@@ -112,7 +117,7 @@ stretch_mode = 0
 [node name="Audio" type="TextureButton" parent="Botones" unique_id=760613424]
 layout_mode = 2
 toggle_mode = true
-button_group = ExtResource("3_53xrr")
+button_group = SubResource("ButtonGroup_4s8ef")
 texture_normal = ExtResource("12_fylgf")
 texture_pressed = ExtResource("13_4tt0v")
 texture_hover = ExtResource("14_u7ewk")
@@ -177,10 +182,15 @@ text = "Nombre 5"
 label_settings = SubResource("LabelSettings_8w0r3")
 horizontal_alignment = 1
 
-[node name="ButtonBack" parent="." unique_id=1134103880 instance=ExtResource("2_32j7k")]
+[node name="Volver" type="TextureButton" parent="." unique_id=1021568467]
+process_mode = 3
 layout_mode = 0
-focus_neighbor_left = NodePath(".")
-focus_neighbor_top = NodePath("../Botones/Audio")
-focus_neighbor_right = NodePath(".")
-focus_neighbor_bottom = NodePath("../Botones/Programacion")
-focus_mode = 2
+offset_left = 123.0
+offset_top = 161.0
+offset_right = 195.0
+offset_bottom = 180.0
+focus_behavior_recursive = 2
+texture_normal = ExtResource("16_53xrr")
+texture_hover = ExtResource("17_7mvet")
+texture_focused = ExtResource("17_7mvet")
+stretch_mode = 3

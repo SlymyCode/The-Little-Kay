@@ -1,19 +1,43 @@
 [gd_scene format=3 uid="uid://b82qe04lpdkyd"]
 
-[ext_resource type="PackedScene" uid="uid://4fl50wxukej2" path="res://menus/botones duplicados/back.tscn" id="1_2e4a5"]
-[ext_resource type="Script" uid="uid://qp1peevdd8hx" path="res://menus/settings/settings.gd" id="1_50vup"]
-[ext_resource type="FontFile" uid="uid://c2lcmmri3l7ib" path="res://menus/styles/homespun/homespun.ttf" id="1_jykqg"]
+[ext_resource type="Script" uid="uid://qp1peevdd8hx" path="res://menus/settings/settings.gd" id="1_6plv5"]
+[ext_resource type="FontFile" uid="uid://c2lcmmri3l7ib" path="res://menus/styles/homespun/homespun.ttf" id="2_5w2mp"]
+[ext_resource type="Texture2D" uid="uid://2x1ipjkvkuco" path="res://menus/images/FondoMenuSinPlataformas.png" id="2_byb6x"]
+[ext_resource type="Script" uid="uid://diwddgkexcd3u" path="res://menus/botones duplicados/back.gd" id="3_w8yqo"]
+[ext_resource type="Texture2D" uid="uid://db1wox64nvt1u" path="res://menus/images/Buttons/btnVolver.png" id="4_ehpkr"]
+[ext_resource type="Texture2D" uid="uid://d01aexc6gbgep" path="res://menus/images/Buttons/btnGuardar.png" id="4_qt7f2"]
+[ext_resource type="Script" uid="uid://bnvp3ytxcl60d" path="res://menus/settings/guardar.gd" id="5_5w2mp"]
+[ext_resource type="Texture2D" uid="uid://bnjw06qmxwshx" path="res://menus/images/Buttons/btnVolverPresionado.png" id="5_23wkb"]
+[ext_resource type="Texture2D" uid="uid://tb287ic7finf" path="res://menus/images/Buttons/btnGuardarPresionado.png" id="5_e2fab"]
+[ext_resource type="Script" uid="uid://rd3bwgbgrnv" path="res://menus/settings/cargar.gd" id="7_7logk"]
+[ext_resource type="Texture2D" uid="uid://713vkcr21x3p" path="res://menus/images/Buttons/btnCargar.png" id="7_nuhl7"]
+[ext_resource type="Texture2D" uid="uid://cpwvyxh42fvrp" path="res://menus/images/Buttons/btnCargarPresionado.png" id="8_e2fab"]
+[ext_resource type="StyleBox" uid="uid://dqcdle72r7hd3" path="res://menus/settings/Textures/Slider.tres" id="12_ab0gi"]
+[ext_resource type="Texture2D" uid="uid://c6hf8knqtm44r" path="res://menus/settings/Sprites/BarraGrabber.png" id="12_ffcyu"]
+[ext_resource type="Texture2D" uid="uid://d3n4qkojdv0sq" path="res://menus/settings/Sprites/BarraHigh.png" id="13_byb6x"]
+[ext_resource type="StyleBox" uid="uid://jcm1ddsglfyj" path="res://menus/settings/Textures/GrabberHigh.tres" id="13_p1xil"]
+[ext_resource type="StyleBox" uid="uid://bhhnkvjww7pa6" path="res://menus/settings/Textures/GrabberArea.tres" id="14_ffcyu"]
 
-[node name="Settings" type="Control" unique_id=2145677217]
+[node name="Settings" type="Control" unique_id=2145677217 node_paths=PackedStringArray("Music", "Sfx", "BotonVolver")]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 0
-script = ExtResource("1_50vup")
+script = ExtResource("1_6plv5")
+Music = NodePath("VBoxContainer2/Musica/VolumenMusica")
+Sfx = NodePath("VBoxContainer2/Efectos/VolumenSFX")
+BotonVolver = NodePath("Botones/Volver")
 
 [node name="Color" type="ColorRect" parent="." unique_id=1766198915]
 layout_mode = 0
 offset_right = 320.0
 offset_bottom = 183.0
-color = Color(0.047058824, 0.0627451, 0.07058824, 1)
+color = Color(0.013040076, 0.42268738, 0.15055883, 1)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1352344641]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_byb6x")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=225525736]
 layout_mode = 0
@@ -22,35 +46,89 @@ offset_bottom = 23.0
 
 [node name="Ajustes" type="Label" parent="VBoxContainer" unique_id=2001203965]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_jykqg")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("2_5w2mp")
 text = "AJUSTES"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ButtonBack" parent="." unique_id=1134103880 instance=ExtResource("1_2e4a5")]
+[node name="Botones" type="HBoxContainer" parent="." unique_id=706297155]
 layout_mode = 0
-focus_mode = 2
+offset_top = 161.0
+offset_right = 320.0
+offset_bottom = 180.0
+alignment = 1
+
+[node name="Cargar" type="TextureButton" parent="Botones" unique_id=1492897496]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Guardar")
+focus_neighbor_top = NodePath("../../VBoxContainer2/Musica/VolumenMusica")
+focus_neighbor_right = NodePath("../Volver")
+focus_neighbor_bottom = NodePath("../../VBoxContainer2/Efectos/VolumenSFX")
+texture_normal = ExtResource("7_nuhl7")
+texture_hover = ExtResource("8_e2fab")
+texture_focused = ExtResource("8_e2fab")
+script = ExtResource("7_7logk")
+
+[node name="Volver" type="TextureButton" parent="Botones" unique_id=1021568467]
+process_mode = 3
+layout_mode = 2
+focus_neighbor_left = NodePath("../Cargar")
+focus_neighbor_top = NodePath("../../VBoxContainer2/Musica/VolumenMusica")
+focus_neighbor_right = NodePath("../Guardar")
+focus_neighbor_bottom = NodePath("../../VBoxContainer2/Efectos/VolumenSFX")
+focus_behavior_recursive = 2
+texture_normal = ExtResource("4_ehpkr")
+texture_hover = ExtResource("5_23wkb")
+texture_focused = ExtResource("5_23wkb")
+script = ExtResource("3_w8yqo")
+
+[node name="Guardar" type="TextureButton" parent="Botones" unique_id=1967239502]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Volver")
+focus_neighbor_top = NodePath("../../VBoxContainer2/Musica/VolumenMusica")
+focus_neighbor_right = NodePath("../Cargar")
+focus_neighbor_bottom = NodePath("../../VBoxContainer2/Efectos/VolumenSFX")
+texture_normal = ExtResource("4_qt7f2")
+texture_hover = ExtResource("5_e2fab")
+texture_focused = ExtResource("5_e2fab")
+script = ExtResource("5_5w2mp")
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="." unique_id=1861854094]
 layout_mode = 0
-offset_left = 45.0
-offset_top = 34.0
-offset_right = 262.0
-offset_bottom = 111.0
+offset_left = 31.0
+offset_top = 26.0
+offset_right = 294.0
+offset_bottom = 65.0
 
 [node name="Efectos" type="HBoxContainer" parent="VBoxContainer2" unique_id=1036834704]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 alignment = 1
 
 [node name="SonidoSFX" type="Label" parent="VBoxContainer2/Efectos" unique_id=66222053]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_jykqg")
+size_flags_horizontal = 6
+size_flags_stretch_ratio = 0.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("2_5w2mp")
 text = "Efectos de Sonido"
 
 [node name="VolumenSFX" type="HSlider" parent="VBoxContainer2/Efectos" unique_id=1730372254]
+custom_minimum_size = Vector2(128, -1)
+custom_maximum_size = Vector2(128, -1)
 layout_mode = 2
-size_flags_horizontal = 3
 size_flags_vertical = 4
+focus_neighbor_top = NodePath("../../../Botones/Volver")
+focus_neighbor_bottom = NodePath("../../Musica/VolumenMusica")
+theme_override_icons/grabber = ExtResource("12_ffcyu")
+theme_override_icons/grabber_highlight = ExtResource("13_byb6x")
+theme_override_styles/slider = ExtResource("12_ab0gi")
+theme_override_styles/grabber_area = ExtResource("14_ffcyu")
+theme_override_styles/grabber_area_highlight = ExtResource("13_p1xil")
 value = 100.0
 
 [node name="Musica" type="HBoxContainer" parent="VBoxContainer2" unique_id=1085237025]
@@ -58,11 +136,27 @@ layout_mode = 2
 
 [node name="SonidoMusica" type="Label" parent="VBoxContainer2/Musica" unique_id=2093187968]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_jykqg")
+size_flags_horizontal = 6
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("2_5w2mp")
+theme_override_font_sizes/font_size = 16
 text = "Musica"
+vertical_alignment = 1
 
 [node name="VolumenMusica" type="HSlider" parent="VBoxContainer2/Musica" unique_id=657793000]
+custom_minimum_size = Vector2(128, -1)
+custom_maximum_size = Vector2(128, -1)
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 8
 size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+focus_neighbor_top = NodePath("../../Efectos/VolumenSFX")
+focus_neighbor_bottom = NodePath("../../../Botones/Volver")
+theme_override_icons/grabber = ExtResource("12_ffcyu")
+theme_override_icons/grabber_highlight = ExtResource("13_byb6x")
+theme_override_styles/slider = ExtResource("12_ab0gi")
+theme_override_styles/grabber_area = ExtResource("14_ffcyu")
+theme_override_styles/grabber_area_highlight = ExtResource("13_p1xil")
 value = 100.0
