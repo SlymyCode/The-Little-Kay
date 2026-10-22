@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://qp1peevdd8hx" path="res://menus/settings/settings.gd" id="1_6plv5"]
 [ext_resource type="FontFile" uid="uid://c2lcmmri3l7ib" path="res://menus/styles/homespun/homespun.ttf" id="2_5w2mp"]
 [ext_resource type="Texture2D" uid="uid://2x1ipjkvkuco" path="res://menus/images/FondoMenuSinPlataformas.png" id="2_byb6x"]
-[ext_resource type="Script" uid="uid://diwddgkexcd3u" path="res://menus/botones duplicados/back.gd" id="3_w8yqo"]
 [ext_resource type="Texture2D" uid="uid://db1wox64nvt1u" path="res://menus/images/Buttons/btnVolver.png" id="4_ehpkr"]
 [ext_resource type="Texture2D" uid="uid://d01aexc6gbgep" path="res://menus/images/Buttons/btnGuardar.png" id="4_qt7f2"]
 [ext_resource type="Script" uid="uid://bnvp3ytxcl60d" path="res://menus/settings/guardar.gd" id="5_5w2mp"]
@@ -82,7 +81,6 @@ focus_behavior_recursive = 2
 texture_normal = ExtResource("4_ehpkr")
 texture_hover = ExtResource("5_23wkb")
 texture_focused = ExtResource("5_23wkb")
-script = ExtResource("3_w8yqo")
 
 [node name="Guardar" type="TextureButton" parent="Botones" unique_id=1967239502]
 layout_mode = 2
