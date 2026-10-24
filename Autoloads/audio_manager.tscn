@@ -1,22 +1,28 @@
 [gd_scene format=3 uid="uid://cv0qte17wro2c"]
 
-[ext_resource type="Script" uid="uid://blaq0kvb4wqdx" path="res://Autoloads/audio_manager.gd" id="1_5psad"]
-[ext_resource type="AudioStream" uid="uid://btvcus6k4lchv" path="res://entities/player/sound_effects/Checkpoint 4.wav" id="2_apnpw"]
-[ext_resource type="AudioStream" uid="uid://bvp7f0aa4apr4" path="res://entities/player/sound_effects/Jump.mp3" id="3_h43j6"]
-[ext_resource type="AudioStream" uid="uid://b08p7jq51ccls" path="res://entities/player/sound_effects/Caminar llave.wav" id="4_amsdr"]
-[ext_resource type="AudioStream" uid="uid://diyf4lorwoi14" path="res://entities/player/sound_effects/hit_top_kay.mp3" id="5_amsdr"]
-[ext_resource type="AudioStream" uid="uid://cyo85uln5gg48" path="res://entities/player/sound_effects/hit_body_kay.mp3" id="6_jpqn3"]
-[ext_resource type="AudioStream" uid="uid://cxo78iy4sip1h" path="res://entities/player/sound_effects/Regen.mp3" id="7_filgv"]
-[ext_resource type="AudioStream" uid="uid://3yualgxbo3y2" path="res://entities/player/sound_effects/RegenFinished.mp3" id="8_monbp"]
+[ext_resource type="Script" uid="uid://blaq0kvb4wqdx" path="res://autoloads/audio_manager.gd" id="1_alnp1"]
+[ext_resource type="AudioStream" uid="uid://btvcus6k4lchv" path="res://sound_effects/fall.wav" id="2_plitr"]
+[ext_resource type="AudioStream" uid="uid://cyo85uln5gg48" path="res://sound_effects/hit_body_kay.mp3" id="3_vovef"]
+[ext_resource type="AudioStream" uid="uid://diyf4lorwoi14" path="res://sound_effects/hit_top_kay.mp3" id="4_a4ose"]
+[ext_resource type="AudioStream" uid="uid://cxo78iy4sip1h" path="res://sound_effects/regen.mp3" id="5_plitr"]
+[ext_resource type="AudioStream" uid="uid://3yualgxbo3y2" path="res://sound_effects/regen_finished.mp3" id="6_plitr"]
+[ext_resource type="AudioStream" uid="uid://bvp7f0aa4apr4" path="res://sound_effects/jump.mp3" id="7_jwsh5"]
+[ext_resource type="AudioStream" uid="uid://b08p7jq51ccls" path="res://sound_effects/walk_old.wav" id="8_jwsh5"]
+[ext_resource type="AudioStream" uid="uid://b6cchjp3wb0vi" path="res://music/Main Title Kay.ogg" id="9_jwsh5"]
+[ext_resource type="AudioStream" uid="uid://chjunxmctufxs" path="res://sound_effects/checkpoint.mp3" id="9_tp26y"]
 
 [node name="AudioManager" type="Node2D" unique_id=1272728578]
-script = ExtResource("1_5psad")
-sound_list = Dictionary[String, AudioStream]({
-"fall_sound": ExtResource("2_apnpw"),
-"hit_body_sound": ExtResource("6_jpqn3"),
-"hit_top_sound": ExtResource("5_amsdr"),
-"jump_sound": ExtResource("3_h43j6"),
-"regen_finished_sound": ExtResource("8_monbp"),
-"regen_sound": ExtResource("7_filgv"),
-"step_sound": ExtResource("4_amsdr")
+script = ExtResource("1_alnp1")
+sfx_list = Dictionary[String, AudioStream]({
+"checkpoint_sound": ExtResource("9_tp26y"),
+"fall_sound": ExtResource("2_plitr"),
+"hit_body_sound": ExtResource("3_vovef"),
+"hit_top_sound": ExtResource("4_a4ose"),
+"jump_sound": ExtResource("7_jwsh5"),
+"regen_finished_sound": ExtResource("6_plitr"),
+"regen_sound": ExtResource("5_plitr"),
+"walk_sound": ExtResource("8_jwsh5")
+})
+music_list = Dictionary[String, AudioStream]({
+"main_title": ExtResource("9_jwsh5")
 })

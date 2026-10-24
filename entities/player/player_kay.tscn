@@ -2,7 +2,14 @@
 
 [ext_resource type="Script" uid="uid://cohbe6snwea6f" path="res://entities/player/player.gd" id="1_e0vk3"]
 [ext_resource type="Shader" uid="uid://bqb3ocrwgvrbt" path="res://shaders&effects/hit_flash.tres" id="2_qbdww"]
-[ext_resource type="Texture2D" uid="uid://b28kaj3ey450f" path="res://entities/player/sprites/SpriteSheet3.0.png" id="5_ede4x"]
+[ext_resource type="Texture2D" uid="uid://ptuylq54n7lx" path="res://entities/player/sprites/SpriteSheetKay.png" id="3_ubhm2"]
+[ext_resource type="Script" uid="uid://8r2q7kohhkn4" path="res://entities/player/state_machine.gd" id="4_7jst2"]
+[ext_resource type="Script" uid="uid://bp15nqqesnpyy" path="res://entities/player/idle.gd" id="5_5jssd"]
+[ext_resource type="Script" uid="uid://d1v5c4ya36128" path="res://entities/player/jump.gd" id="6_5jssd"]
+[ext_resource type="Script" uid="uid://djjuj13wvxj4n" path="res://entities/player/walk.gd" id="7_nq1nd"]
+[ext_resource type="Script" uid="uid://b1tm4rr6ag32q" path="res://entities/player/fall.gd" id="8_02u73"]
+[ext_resource type="Script" uid="uid://cbe6avhwlumrx" path="res://entities/player/repair.gd" id="9_tf0bk"]
+[ext_resource type="Script" uid="uid://b0vcaw3lgyicf" path="res://entities/player/knockback.gd" id="10_ubhm2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qbdww"]
 resource_local_to_scene = true
@@ -125,17 +132,18 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_3pycs"]
 resource_name = "Jump"
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("PlayerSprites:frame")
-tracks/0/interp = 1
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [20, 21]
+"update": 0,
+"values": [33, 39]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -212,7 +220,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3333, 0.6667),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [5, 6, 7]
+"values": [9, 10, 11]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -236,10 +244,10 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0.25, 0.75),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
-"args": ["step_sound", -28.0, 1.0, true],
+"args": ["walk_sound", -32.0, 1.0, true],
 "method": &"play_fx"
 }, {
-"args": ["step_sound", -28.0, 1.0, true],
+"args": ["walk_sound", -32.0, 1.0, true],
 "method": &"play_fx"
 }]
 }
@@ -328,7 +336,7 @@ size = Vector2(4, 23)
 size = Vector2(7.5, 7)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5jssd"]
-size = Vector2(14, 17)
+size = Vector2(11, 16.939129)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uu6xs"]
 size = Vector2(16, 19)
@@ -356,12 +364,12 @@ colors = PackedColorArray(0.57254905, 0.5882353, 0.6, 1, 0.31764707, 0.34117648,
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_7jst2"]
 gradient = SubResource("Gradient_qbdww")
 
-[sub_resource type="Curve" id="Curve_7mycd"]
+[sub_resource type="Curve" id="Curve_akky2"]
 _data = [Vector2(0, 1), 0.0, -1.3765634, 0, 0, Vector2(1, 0.19999993), -0.6361288, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_5jssd"]
-curve = SubResource("Curve_7mycd")
+curve = SubResource("Curve_akky2")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ede4x"]
 lifetime_randomness = 0.2
@@ -384,8 +392,15 @@ interpolation_mode = 1
 offsets = PackedFloat32Array(0, 0.23502304, 0.47926268, 0.94930875)
 colors = PackedColorArray(0.7411765, 0.44705883, 0.2509804, 1, 0.6313726, 0.39215687, 0.21960784, 1, 0.2784314, 0.19215687, 0.16862746, 1, 0.047058824, 0.0627451, 0.07058824, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_ioqlv"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qbdww"]
 gradient = SubResource("Gradient_ede4x")
+
+[sub_resource type="Curve" id="Curve_7mycd"]
+_data = [Vector2(0, 1), 0.0, -1.3765634, 0, 0, Vector2(1, 0.19999993), -0.6361288, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_7jst2"]
+curve = SubResource("Curve_7mycd")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qbdww"]
 lifetime_randomness = 0.2
@@ -399,9 +414,17 @@ initial_velocity_max = 100.0
 gravity = Vector3(0, 98, 0)
 scale_min = 0.0
 scale_max = 7.0
-scale_curve = SubResource("CurveTexture_5jssd")
-color_ramp = SubResource("GradientTexture1D_ioqlv")
+scale_curve = SubResource("CurveTexture_7jst2")
+color_ramp = SubResource("GradientTexture1D_qbdww")
 turbulence_noise_strength = 5.0
+
+[sub_resource type="Gradient" id="Gradient_7jst2"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.2718894, 0.48847926, 0.95852536)
+colors = PackedColorArray(0.7411765, 0.44705883, 0.2509804, 1, 0.6313726, 0.39215687, 0.21960784, 1, 0.2784314, 0.19215687, 0.16862746, 1, 0.047058824, 0.0627451, 0.07058824, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ede4x"]
+gradient = SubResource("Gradient_7jst2")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7jst2"]
 lifetime_randomness = 0.2
@@ -415,12 +438,12 @@ gravity = Vector3(0, 98, 0)
 scale_min = 0.0
 scale_max = 7.0
 scale_curve = SubResource("CurveTexture_5jssd")
-color_ramp = SubResource("GradientTexture1D_ioqlv")
+color_ramp = SubResource("GradientTexture1D_ede4x")
 turbulence_noise_strength = 5.0
 
 [sub_resource type="Gradient" id="Gradient_5jssd"]
 interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.22119816)
+offsets = PackedFloat32Array(0, 0.26728112)
 colors = PackedColorArray(0.57254905, 0.5882353, 0.6, 1, 0.31764707, 0.34117648, 0.35686275, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_5jssd"]
@@ -440,17 +463,19 @@ angle_min = -360.0
 angle_max = 360.00003
 gravity = Vector3(0, 0, 0)
 scale_min = 0.0
-scale_max = 7.0
+scale_max = 8.0
 scale_curve = SubResource("CurveTexture_02u73")
 color_ramp = SubResource("GradientTexture1D_5jssd")
 turbulence_enabled = true
 turbulence_noise_strength = 5.0
 
-[node name="PlayerKay" type="CharacterBody2D" unique_id=789730671 node_paths=PackedStringArray("player_sprites", "player_animator", "flash_animator", "player_smoke_particles", "player_jump_particles", "damage_particles_left", "damage_particles_right")]
+[node name="PlayerKay" type="CharacterBody2D" unique_id=789730671 node_paths=PackedStringArray("state_machine", "jump_buffer", "player_sprites", "player_animator", "flash_animator", "player_smoke_particles", "player_jump_particles", "damage_particles_left", "damage_particles_right")]
 collision_layer = 3
 collision_mask = 2
 script = ExtResource("1_e0vk3")
-pause_duration = 0.06
+max_speed = 10.0
+state_machine = NodePath("StateMachine")
+jump_buffer = NodePath("JumpBufferTime")
 player_sprites = NodePath("PlayerSprites")
 player_animator = NodePath("PlayerAnimation")
 flash_animator = NodePath("FlashAnimationPlayer")
@@ -462,9 +487,9 @@ damage_particles_right = NodePath("DamageParticlesRight")
 [node name="PlayerSprites" type="Sprite2D" parent="." unique_id=301333307]
 z_index = 2
 material = SubResource("ShaderMaterial_qbdww")
-texture = ExtResource("5_ede4x")
-hframes = 4
-vframes = 2
+texture = ExtResource("3_ubhm2")
+hframes = 8
+vframes = 5
 
 [node name="PlayerAnimation" type="AnimationPlayer" parent="." unique_id=527000476]
 libraries/ = SubResource("AnimationLibrary_gyxac")
@@ -481,7 +506,7 @@ position = Vector2(1.25, -10.5)
 shape = SubResource("RectangleShape2D_nq1nd")
 
 [node name="CollisionBody" type="CollisionShape2D" parent="." unique_id=1950924580]
-position = Vector2(-2.3841858e-07, 7.5)
+position = Vector2(0.49999976, 7.469565)
 shape = SubResource("RectangleShape2D_5jssd")
 
 [node name="HurtBox" type="Area2D" parent="." unique_id=524004160 groups=["player_hurtbox"]]
@@ -504,6 +529,7 @@ shape = SubResource("CircleShape2D_r0du0")
 debug_color = Color(0.5975209, 0.5411475, 0.18252495, 0.41960785)
 
 [node name="InvulerableZone" type="Area2D" parent="." unique_id=1480487209 groups=["player_invulnerable_zone"]]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InvulerableZone" unique_id=347955879]
 position = Vector2(0, -8.5)
@@ -514,6 +540,7 @@ position = Vector2(1.5, -10)
 shape = SubResource("RectangleShape2D_qbdww")
 
 [node name="DetectCeiling" type="Area2D" parent="." unique_id=1863159239]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectCeiling" unique_id=805824137]
 position = Vector2(-0.5, -15)
@@ -555,6 +582,7 @@ process_material = SubResource("ParticleProcessMaterial_7jst2")
 [node name="SmokeParticles" type="GPUParticles2D" parent="." unique_id=373390573 groups=["pixel_perfect_back"]]
 z_index = 1
 position = Vector2(0, 15)
+emitting = false
 amount = 24
 lifetime = 0.52
 trail_lifetime = 0.84
@@ -580,6 +608,28 @@ remote_path = NodePath("../DamageParticlesRight")
 unique_name_in_owner = true
 wait_time = 0.12
 one_shot = true
+
+[node name="StateMachine" type="Node" parent="." unique_id=1131089704 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("4_7jst2")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=850735463]
+script = ExtResource("5_5jssd")
+
+[node name="Jump" type="Node" parent="StateMachine" unique_id=1042648279]
+script = ExtResource("6_5jssd")
+
+[node name="Walk" type="Node" parent="StateMachine" unique_id=1928690889]
+script = ExtResource("7_nq1nd")
+
+[node name="Fall" type="Node" parent="StateMachine" unique_id=2066770664]
+script = ExtResource("8_02u73")
+
+[node name="Repair" type="Node" parent="StateMachine" unique_id=1276381627]
+script = ExtResource("9_tf0bk")
+
+[node name="Knockback" type="Node" parent="StateMachine" unique_id=524111491]
+script = ExtResource("10_ubhm2")
 
 [connection signal="body_entered" from="DetectCeiling" to="." method="_on_detect_ceiling_body_entered"]
 [connection signal="body_exited" from="DetectCeiling" to="." method="_on_detect_ceiling_body_exited"]
