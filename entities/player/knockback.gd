@@ -1,7 +1,7 @@
 extends State
 
 func enter() -> void:
-	player.player_animator.play("fall", -1, 1.5)
+	player.player_animator.play("knockback", -1, 1.5)
 
 func physics_update(delta: float) -> void:
 	player.velocity = player.knockback

@@ -159,6 +159,45 @@ tracks/1/keys = {
 "method": &"play_fx"
 }]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerSprites:material")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PlayerSprites:material:shader_parameter/top_limit")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-5.0, -5.0]
+}
+
+[sub_resource type="Animation" id="Animation_ubhm2"]
+resource_name = "knockback"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprites:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [24, 24]
+}
 
 [sub_resource type="Animation" id="Animation_5jssd"]
 resource_name = "MoveEyes"
@@ -259,6 +298,7 @@ _data = {
 &"fall": SubResource("Animation_qrqov"),
 &"idle": SubResource("Animation_q3cu5"),
 &"jump": SubResource("Animation_3pycs"),
+&"knockback": SubResource("Animation_ubhm2"),
 &"move_eyes": SubResource("Animation_5jssd"),
 &"parry": SubResource("Animation_n2o76"),
 &"sleep": SubResource("Animation_nq1nd"),
@@ -336,7 +376,7 @@ size = Vector2(4, 23)
 size = Vector2(7.5, 7)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5jssd"]
-size = Vector2(11, 16.939129)
+size = Vector2(9, 16.939129)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uu6xs"]
 size = Vector2(16, 19)
@@ -473,7 +513,9 @@ turbulence_noise_strength = 5.0
 collision_layer = 3
 collision_mask = 2
 script = ExtResource("1_e0vk3")
-max_speed = 10.0
+max_speed = 100.0
+jump_velocity = -245.0
+acceleration = 10.0
 state_machine = NodePath("StateMachine")
 jump_buffer = NodePath("JumpBufferTime")
 player_sprites = NodePath("PlayerSprites")
@@ -506,7 +548,7 @@ position = Vector2(1.25, -10.5)
 shape = SubResource("RectangleShape2D_nq1nd")
 
 [node name="CollisionBody" type="CollisionShape2D" parent="." unique_id=1950924580]
-position = Vector2(0.49999976, 7.469565)
+position = Vector2(0.49999988, 7.469565)
 shape = SubResource("RectangleShape2D_5jssd")
 
 [node name="HurtBox" type="Area2D" parent="." unique_id=524004160 groups=["player_hurtbox"]]
