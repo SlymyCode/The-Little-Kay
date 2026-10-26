@@ -1,0 +1,31 @@
+78098b89c88a74ebe8c20117b8754620
+::res://::1792967927
+main.tscn::PackedScene::-1::0::0::1::::<><><>0<>0<><>::
+nivel.tscn::PackedScene::-1::0::0::1::::<><><>0<>0<><>::
+::res://entities/::0
+::res://entities/player/::0
+player_kay.tscn::PackedScene::-1::0::0::1::::<><><>0<>0<><>::
+::res://entities/player/sound_effects/::0
+Abrir puerta.wav::::-1::0::0::0::::<><><>0<>0<><>::
+Bajar picaporte.wav::::-1::0::0::0::::<><><>0<>0<><>::
+Caminar llave.wav::::-1::0::0::0::::<><><>0<>0<><>::
+Candado.wav::::-1::0::0::0::::<><><>0<>0<><>::
+Cerrar puerta.wav::::-1::0::0::0::::<><><>0<>0<><>::
+Checkpoint2.wav::::-1::0::0::0::::<><><>0<>0<><>::
+Checkpoint 4.wav::::-1::0::0::0::::<><><>0<>0<><>::
+Checkpoint.wav::::-1::0::0::0::::<><><>0<>0<><>::
+Checkponit 3.wav::::-1::0::0::0::::<><><>0<>0<><>::
+Daño a llave.wav::::-1::0::0::0::::<><><>0<>0<><>::
+Insertar llave en puerta 2.wav::::-1::0::0::0::::<><><>0<>0<><>::
+Insertar llave en puerta.wav::::-1::0::0::0::::<><><>0<>0<><>::
+Jump.mp3::::-1::0::0::0::::<><><>0<>0<><>::
+Nose2.wav::::-1::0::0::0::::<><><>0<>0<><>::
+Nose3.wav::::-1::0::0::0::::<><><>0<>0<><>::
+Nose.wav::::-1::0::0::0::::<><><>0<>0<><>::
+Puerta2.wav::::-1::0::0::0::::<><><>0<>0<><>::
+Puerta.wav::::-1::0::0::0::::<><><>0<>0<><>::
+::res://entities/player/sprites/::0
+SpriteSheet.png::::-1::0::0::0::::<><><>0<>0<><>::
+::res://tiles/::0
+::res://tiles/grass/::0
+TopGreenPrototype.png::::-1::0::0::0::::<><><>0<>0<><>::
