@@ -1,14 +1,17 @@
 [gd_scene format=3 uid="uid://bfhoccdja3yis"]
 
+[ext_resource type="Script" uid="uid://b555cfwomjons" path="res://main.gd" id="1_4c57u"]
 [ext_resource type="PackedScene" uid="uid://dckx5roben64j" path="res://entities/player/player_ui.tscn" id="1_kek77"]
 [ext_resource type="PackedScene" uid="uid://bykqqyanps31s" path="res://entities/player/player_kay.tscn" id="2_1bvp3"]
-[ext_resource type="Script" uid="uid://2s4na0x0tqke" path="res://Levels/level_controller.gd" id="2_efxa6"]
-[ext_resource type="PackedScene" uid="uid://tgq2f32huuqg" path="res://Levels/level_1.tscn" id="3_dg77c"]
-[ext_resource type="PackedScene" uid="uid://cu0aqoyn4pcjs" path="res://Levels/level_2.tscn" id="4_272bh"]
+[ext_resource type="Script" uid="uid://2s4na0x0tqke" path="res://levels/level_controller.gd" id="2_efxa6"]
+[ext_resource type="PackedScene" uid="uid://tgq2f32huuqg" path="res://levels/level_1.tscn" id="3_dg77c"]
+[ext_resource type="PackedScene" uid="uid://cu0aqoyn4pcjs" path="res://levels/level_2.tscn" id="4_272bh"]
 [ext_resource type="Script" uid="uid://u7og3chrlw7s" path="res://entities/player/player_camera.gd" id="4_kek77"]
+[ext_resource type="PackedScene" uid="uid://cctxmlb8culrj" path="res://levels/level_3.tscn" id="6_dg77c"]
 [ext_resource type="Script" uid="uid://beahke065ujik" path="res://shaders&effects/pixel_perfect_layer.gd" id="7_5vw27"]
 [ext_resource type="Shader" uid="uid://pmk64oy02q7g" path="res://shaders&effects/fade.gdshader" id="8_kek77"]
 [ext_resource type="Texture2D" uid="uid://bf5cr6f5x861g" path="res://shaders&effects/game_palette.png" id="9_4c57u"]
+[ext_resource type="PackedScene" uid="uid://m5mid8v2musp" path="res://menus/pause_menu/pause_menu.tscn" id="11_efxa6"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ede4x"]
 blend_mode = 4
@@ -24,17 +27,19 @@ shader = ExtResource("8_kek77")
 shader_parameter/palette = ExtResource("9_4c57u")
 
 [node name="MainController" type="Node" unique_id=1501523321]
+script = ExtResource("1_4c57u")
 
 [node name="HUD" parent="." unique_id=859151768 instance=ExtResource("1_kek77")]
 
 [node name="LevelController" type="Node" parent="." unique_id=885103477 node_paths=PackedStringArray("player", "fading_rect")]
 script = ExtResource("2_efxa6")
-levels = Array[PackedScene]([ExtResource("3_dg77c"), ExtResource("4_272bh")])
+levels = Array[PackedScene]([ExtResource("3_dg77c"), ExtResource("4_272bh"), ExtResource("6_dg77c")])
 player = NodePath("../PlayerKay")
 fading_rect = NodePath("../FadingLayer/FadingRect")
 
 [node name="PlayerKay" parent="." unique_id=789730671 instance=ExtResource("2_1bvp3")]
 position = Vector2(45, 160)
+pause_duration = 0.06
 metadata/_edit_group_ = true
 
 [node name="PlayerCamera" type="Camera2D" parent="PlayerKay" unique_id=292519567]
@@ -134,7 +139,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
+
+[node name="PauseMenu" parent="." unique_id=1535213218 instance=ExtResource("11_efxa6")]
+process_mode = 3
+layer = 8
 
 [node name="CQLayer" type="CanvasLayer" parent="." unique_id=1207750144]
 layer = 32

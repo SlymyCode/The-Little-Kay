@@ -11,10 +11,10 @@ func physics_update(delta: float) -> void:
 	time_in_idle += delta
 
 	if not player.is_on_floor():
-		transitioned.emit(&"Fall")
+		transitioned.emit("Fall")
 	elif player.try_jump():
-		transitioned.emit(&"Jump")
+		transitioned.emit("Jump")
 	elif player.direction != 0.0 and not player.is_on_wall():
-		transitioned.emit(&"Walk")
+		transitioned.emit("Walk")
 	elif time_in_idle > 0.1 and player.can_repair():
-		transitioned.emit(&"Repair")
+		transitioned.emit("Repair")

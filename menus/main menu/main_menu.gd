@@ -22,7 +22,6 @@ func _ready() -> void:
 func start_game() -> void:
 	AudioManager.stop_music()
 	get_tree().change_scene_to_file("res://main.tscn")
-	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 
 func _connect_submenu(button: TextureButton, menu: Control) -> void:
 	menu.hide()
@@ -35,4 +34,4 @@ func _hide_initial_menu (menu: Control) -> void:
 
 func _show_initial_menu (button: TextureButton) -> void:
 	initial_menu.show()
-	button.grab_focus(true)
+	new_game_button.grab_focus(true)

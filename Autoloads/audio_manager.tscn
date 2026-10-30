@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://chjunxmctufxs" path="res://sound_effects/checkpoint.mp3" id="9_tp26y"]
 
 [node name="AudioManager" type="Node2D" unique_id=1272728578]
+process_mode = 3
 script = ExtResource("1_alnp1")
 sfx_list = Dictionary[String, AudioStream]({
 "checkpoint_sound": ExtResource("9_tp26y"),

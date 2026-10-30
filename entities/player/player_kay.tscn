@@ -132,7 +132,6 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_3pycs"]
 resource_name = "Jump"
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -145,39 +144,25 @@ tracks/0/keys = {
 "update": 0,
 "values": [33, 39]
 }
-tracks/1/type = "method"
+tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".")
+tracks/1/path = NodePath("PlayerSprites:material")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": ["jump_sound", -12.0, 1.0, true],
-"method": &"play_fx"
-}]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("PlayerSprites:material")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(),
 "transitions": PackedFloat32Array(),
 "update": 1,
 "values": []
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("PlayerSprites:material:shader_parameter/top_limit")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerSprites:material:shader_parameter/top_limit")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
@@ -379,10 +364,10 @@ size = Vector2(7.5, 7)
 size = Vector2(9, 16.939129)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uu6xs"]
-size = Vector2(16, 19)
+size = Vector2(14, 19)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j6q8q"]
-size = Vector2(13, 2)
+size = Vector2(12, 2)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r0du0"]
 radius = 22.022715
@@ -542,10 +527,12 @@ libraries/ = SubResource("AnimationLibrary_7jst2")
 [node name="CollisionLine" type="CollisionShape2D" parent="." unique_id=1441683710]
 position = Vector2(-1, -3.5)
 shape = SubResource("RectangleShape2D_ede4x")
+disabled = true
 
 [node name="CollisionTop" type="CollisionShape2D" parent="." unique_id=1780755708]
 position = Vector2(1.25, -10.5)
 shape = SubResource("RectangleShape2D_nq1nd")
+disabled = true
 
 [node name="CollisionBody" type="CollisionShape2D" parent="." unique_id=1950924580]
 position = Vector2(0.49999988, 7.469565)
@@ -560,7 +547,7 @@ shape = SubResource("RectangleShape2D_uu6xs")
 debug_color = Color(0.90588236, 0.02745098, 0.2, 0.27450982)
 
 [node name="HurtCollision2" type="CollisionShape2D" parent="HurtBox" unique_id=852313196]
-position = Vector2(-0.49999976, -2)
+position = Vector2(2.3841858e-07, -2)
 shape = SubResource("RectangleShape2D_j6q8q")
 debug_color = Color(0.90588236, 0.02745098, 0.2, 0.27450982)
 
@@ -582,7 +569,6 @@ position = Vector2(1.5, -10)
 shape = SubResource("RectangleShape2D_qbdww")
 
 [node name="DetectCeiling" type="Area2D" parent="." unique_id=1863159239]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectCeiling" unique_id=805824137]
 position = Vector2(-0.5, -15)

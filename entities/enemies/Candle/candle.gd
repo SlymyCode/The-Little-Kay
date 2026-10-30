@@ -54,9 +54,9 @@ func _on_awakening_area_body_exited(body: Node2D) -> void:
 func _on_hit_box_area_entered(area: Area2D) -> void:
 	if area.is_in_group("player_hurtbox") :
 		player_colliding = area.get_parent()
-		player_colliding.receive_damage(1)
 		var knockback_direction = global_position.direction_to(player_colliding.global_position)
-		player_colliding.apply_knockback(Vector2(-200, 0), knockback_strength, 0.12)
+		player_colliding.apply_knockback(knockback_direction, knockback_strength, 0.12)
+		player_colliding.receive_damage(1)
 		die()
 
 func _on_hit_box_body_entered(body: Node2D) -> void:

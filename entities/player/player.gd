@@ -11,6 +11,7 @@ class_name Player
 @export var repair_time: float = 1.2
 @export var invincibility_duration: float = 1.4
 @export var pause_duration: float = 0.04
+@export var coyote_time: float = 0.12
 
 @export_group("Components")
 @export var state_machine: StateMachine
@@ -41,6 +42,8 @@ var pitch_end: float = 0.725
 var last_tick: int = -1
 var time_on_ground: float = 0
 var is_first_frame: bool = true
+var can_move = true
+var coyote_timer: float = 0.0
 
 func _ready() -> void:
 	current_hp = max_hp
@@ -50,6 +53,11 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if is_first_frame:
 		is_first_frame = false
+		move_and_slide()
+		return
+	if !can_move:
+		state_machine.change_state("Idle")
+		velocity = get_gravity() * delta*10
 		move_and_slide()
 		return
 	direction = roundf(Input.get_axis("move_left", "move_right"))
@@ -62,8 +70,10 @@ func _physics_process(delta: float) -> void:
 	if is_on_floor():
 		time_on_ground += delta
 		jumps_performed = 0
+		coyote_timer = coyote_time
 	else:
 		time_on_ground = 0
+		coyote_timer = maxf(coyote_timer - delta, 0.0)
 		velocity += get_gravity() * delta
 
 	if current_hp <= 0:
@@ -79,10 +89,16 @@ func _physics_process(delta: float) -> void:
 func move() -> void:
 	velocity.x = lerp(velocity.x, direction * max_speed, lerp_weight)
 
+func disable_movement (time: float) -> void:
+	can_move = false
+	await get_tree().create_timer(time).timeout
+	can_move = true
+
 func jump() -> void:
 	velocity.y = jump_velocity
 	player_sprites.scale = Vector2(0.7, 1.3)
 	jumps_performed += 1
+	AudioManager.play_fx("jump_sound", -12, 1, true)
 	if jumps_performed > 1 or not is_on_floor():
 		player_jump_particles.restart()
 
@@ -98,11 +114,11 @@ func try_jump() -> bool:
 		return true
 	return false
 
-func ground_state() -> StringName:
+func ground_state() -> String:
 	return "Walk" if direction != 0.0 and not is_on_wall() else "Idle"
 
 func reset_scale(delta: float) -> void:
-	var step := 2 * delta
+	var step = 2 * delta
 	player_sprites.scale.x = move_toward(player_sprites.scale.x, 1, step)
 	player_sprites.scale.y = move_toward(player_sprites.scale.y, 1, step)
 
@@ -173,7 +189,7 @@ func apply_knockback(knockback_direction: Vector2, force: float, knockback_durat
 		knockback_timer = knockback_duration
 		state_machine.change_state("Knockback")
 
-#Effects Section
+#region Effects Section
 
 func apply_flash_fx(flash_type: String):
 	match flash_type:
@@ -198,7 +214,8 @@ func apply_flash_fx(flash_type: String):
 func play_fx(audio: String, volume: float, pitch: float, random_pitch: bool):
 	AudioManager.play_fx(audio, volume, pitch, random_pitch)
 
-#Detect Ceiling (just to prevent jumping under a tile)
+#endregion
+#region Detect Ceiling (just to prevent jumping under a tile)
 
 func _on_detect_ceiling_body_entered(body: Node2D) -> void:
 	if body is TileMapLayer:
@@ -207,3 +224,5 @@ func _on_detect_ceiling_body_entered(body: Node2D) -> void:
 func _on_detect_ceiling_body_exited(body: Node2D) -> void:
 	if body is TileMapLayer:
 		colliding_with_ceiling = false
+
+#endregion

@@ -1,0 +1,147 @@
+[gd_scene format=3 uid="uid://m5mid8v2musp"]
+
+[ext_resource type="Script" uid="uid://b6agvoqbh4xsm" path="res://menus/pause_menu/pause_menu.gd" id="1_5ndmu"]
+[ext_resource type="Texture2D" uid="uid://dhf6ion20dr0s" path="res://menus/images/BotonPausaBlanco.png" id="2_hjpdg"]
+[ext_resource type="Shader" uid="uid://bs4e2ddx17fk6" path="res://shaders&effects/crt_shader.gdshader" id="2_l4eqo"]
+[ext_resource type="Texture2D" uid="uid://dl0hrogw63gxu" path="res://menus/images/JuegoPausado.png" id="3_l4eqo"]
+[ext_resource type="Texture2D" uid="uid://tkd0sh1k1xid" path="res://menus/images/Buttons/btnContinuar.png" id="4_orpgp"]
+[ext_resource type="Texture2D" uid="uid://xure4b4cnr1x" path="res://menus/images/Buttons/btnContinuarPresionado.png" id="5_racry"]
+[ext_resource type="Texture2D" uid="uid://bq2so4v8j3hfy" path="res://menus/images/Buttons/btnSettings.png" id="6_3oo7h"]
+[ext_resource type="Texture2D" uid="uid://b3exjyxfjc0f6" path="res://menus/images/Buttons/btnSettingsPresionado.png" id="7_2g2at"]
+[ext_resource type="Texture2D" uid="uid://bc66kvfepm531" path="res://menus/images/Buttons/btnMainMenu.png" id="8_tjaam"]
+[ext_resource type="Texture2D" uid="uid://v5coxc0tdlga" path="res://menus/images/Buttons/btnMainMenuPresionado.png" id="9_twrce"]
+[ext_resource type="PackedScene" uid="uid://b82qe04lpdkyd" path="res://menus/settings/settings.tscn" id="10_hc5v2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hc5v2"]
+shader = ExtResource("2_l4eqo")
+shader_parameter/scanline_intensity = 0.1150000054625
+shader_parameter/scanline_count = 450.0
+shader_parameter/vignette_intensity = 0.3250000154375
+shader_parameter/chromatic_aberration = 0.0005
+shader_parameter/scanline_speed = 0.250000011875
+shader_parameter/flicker_intensity = 0.015
+shader_parameter/distortion_strength = 0.0003
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qjpom"]
+content_margin_left = 4.0
+bg_color = Color(0.9843137, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2rgmr"]
+content_margin_left = 4.0
+bg_color = Color(0.57254905, 0.5882353, 0.6, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=792038200 node_paths=PackedStringArray("pause", "pause_bg", "menu", "settings", "continue_button")]
+script = ExtResource("1_5ndmu")
+pause = NodePath("Pause")
+pause_bg = NodePath("PauseBG")
+menu = NodePath("Menu")
+settings = NodePath("Settings")
+continue_button = NodePath("Menu/VBoxContainer/Continue")
+
+[node name="CRTInGame" type="ColorRect" parent="." unique_id=596731734]
+visible = false
+material = SubResource("ShaderMaterial_hc5v2")
+offset_left = -4.0
+offset_top = -3.0
+offset_right = 326.0
+offset_bottom = 185.0
+color = Color(0, 0, 0, 0.5411765)
+
+[node name="Pause" type="Button" parent="." unique_id=2089607266]
+visible = false
+modulate = Color(0.8392157, 0.8666667, 0.8666667, 1)
+offset_left = 301.0
+offset_right = 320.0
+offset_bottom = 19.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_qjpom")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2rgmr")
+action_mode = 0
+icon = ExtResource("2_hjpdg")
+flat = true
+
+[node name="Menu" type="ColorRect" parent="." unique_id=1785086311]
+process_mode = 3
+visible = false
+offset_left = 80.0
+offset_top = 45.0
+offset_right = 240.0
+offset_bottom = 135.0
+color = Color(0.046899997, 0.062299997, 0.07, 0.5882353)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu" unique_id=1470371148]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 6.0
+offset_right = 120.0
+offset_bottom = 81.0
+
+[node name="TextureRect" type="TextureRect" parent="Menu/VBoxContainer" unique_id=634451405]
+layout_mode = 2
+texture = ExtResource("3_l4eqo")
+
+[node name="Continue" type="TextureButton" parent="Menu/VBoxContainer" unique_id=627012496]
+process_mode = 3
+layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../MainMenu")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../Settings")
+focus_next = NodePath("../Settings")
+focus_previous = NodePath("../MainMenu")
+texture_normal = ExtResource("4_orpgp")
+texture_hover = ExtResource("5_racry")
+texture_focused = ExtResource("5_racry")
+stretch_mode = 3
+
+[node name="Settings" type="TextureButton" parent="Menu/VBoxContainer" unique_id=1236427965]
+process_mode = 3
+layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../Continue")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../MainMenu")
+focus_next = NodePath("../MainMenu")
+focus_previous = NodePath("../Continue")
+texture_normal = ExtResource("6_3oo7h")
+texture_hover = ExtResource("7_2g2at")
+texture_focused = ExtResource("7_2g2at")
+stretch_mode = 3
+
+[node name="MainMenu" type="TextureButton" parent="Menu/VBoxContainer" unique_id=1687405629]
+process_mode = 3
+layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../Settings")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../Continue")
+focus_next = NodePath("../Continue")
+focus_previous = NodePath("../Settings")
+texture_normal = ExtResource("8_tjaam")
+texture_hover = ExtResource("9_twrce")
+texture_focused = ExtResource("9_twrce")
+stretch_mode = 3
+
+[node name="Settings" parent="." unique_id=2145677217 instance=ExtResource("10_hc5v2")]
+visible = false
+
+[node name="PauseBG" type="ColorRect" parent="." unique_id=1591989368]
+visible = false
+material = SubResource("ShaderMaterial_hc5v2")
+offset_left = -4.0
+offset_top = -3.0
+offset_right = 326.0
+offset_bottom = 185.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.5411765)
+
+[connection signal="pressed" from="Menu/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="Menu/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Menu/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]

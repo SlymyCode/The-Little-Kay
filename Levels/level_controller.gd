@@ -8,7 +8,7 @@ signal level_loaded(index: int)
 @export var player: Player
 @export var fade_duration: float = 1
 
-@export_file("*.tscn") var main_menu_scene: String = "res://menus/main menu/main_menu.tscn"
+var main_menu_scene: String = "res://menus/main menu/main_menu.tscn"
 @export var fading_rect: ColorRect
 
 var current_index: int
@@ -22,7 +22,7 @@ func next_level() -> void:
 	if current_index + 1 < levels.size():
 		change_level.call_deferred(current_index + 1)
 	else:
-		queue_free()
+		get_tree().quit()
 
 func restart_level() -> void:
 	change_level.call_deferred(current_index)
@@ -37,7 +37,7 @@ func change_level(index: int) -> void:
 		await initial_tween.finished
 
 		current_level.queue_free()
-
+	
 	current_index = index
 	current_level = levels[index].instantiate()
 	add_child(current_level)
@@ -58,3 +58,5 @@ func change_level(index: int) -> void:
 	var tween = create_tween()
 	tween.tween_property(fading_rect, "modulate", Color.TRANSPARENT, fade_duration)
 	await tween.finished
+	var exit: Exit = current_level.get_node("Exit")
+	exit.can_complete = true

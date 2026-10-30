@@ -14,6 +14,17 @@
 [ext_resource type="Texture2D" uid="uid://b352na6000p5p" path="res://menus/images/Buttons/btnCreditsPresionado.png" id="12_laprl"]
 [ext_resource type="Texture2D" uid="uid://dr47f8rgf2ia5" path="res://menus/images/Buttons/btnQuit.png" id="13_vfs64"]
 [ext_resource type="Texture2D" uid="uid://b5avuxuv3svg2" path="res://menus/images/Buttons/btnQuitPresionado.png" id="14_w2mh0"]
+[ext_resource type="Shader" uid="uid://bs4e2ddx17fk6" path="res://shaders&effects/crt_shader.gdshader" id="15_7fw32"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eedwr"]
+shader = ExtResource("15_7fw32")
+shader_parameter/scanline_intensity = 0.1150000054625
+shader_parameter/scanline_count = 450.0
+shader_parameter/vignette_intensity = 0.3250000154375
+shader_parameter/chromatic_aberration = 0.0005
+shader_parameter/scanline_speed = 0.250000011875
+shader_parameter/flicker_intensity = 0.015
+shader_parameter/distortion_strength = 0.0003
 
 [node name="MainMenu" type="Control" unique_id=1634701214 node_paths=PackedStringArray("new_game_button", "settings_button", "credits_button", "quit_button", "initial_menu", "settings_menu", "credits_menu")]
 layout_mode = 3
@@ -91,7 +102,6 @@ focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../ButtonQuit")
 focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath("../ButtonSettings")
-mouse_default_cursor_shape = 2
 texture_normal = ExtResource("7_123g8")
 texture_hover = ExtResource("8_abxcs")
 texture_focused = ExtResource("8_abxcs")
@@ -137,3 +147,15 @@ texture_normal = ExtResource("13_vfs64")
 texture_hover = ExtResource("14_w2mh0")
 texture_focused = ExtResource("14_w2mh0")
 stretch_mode = 3
+
+[node name="CRTShader" type="ColorRect" parent="." unique_id=2145792195]
+visible = false
+z_index = 2
+material = SubResource("ShaderMaterial_eedwr")
+layout_mode = 0
+offset_left = -4.0
+offset_top = -3.0
+offset_right = 326.0
+offset_bottom = 185.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.5411765)

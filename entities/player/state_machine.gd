@@ -8,7 +8,7 @@ var states: Dictionary[String, State] = {}
 
 func _ready() -> void:
 	for child in get_children():
-		var state := child as State
+		var state = child as State
 		if state:
 			states[state.name] = state
 			state.player = owner as Player

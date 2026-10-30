@@ -31,7 +31,7 @@ func _ready() -> void:
 
 	visibility_changed.connect(func():
 		if is_visible_in_tree():
-			sfx_slider.grab_focus(true))
+			sfx_slider.call_deferred("grab_focus"))
 
 func link_slider(slider: HSlider, bus_name: String) -> void:
 	var bus := AudioServer.get_bus_index(bus_name)

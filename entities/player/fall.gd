@@ -7,9 +7,9 @@ func enter() -> void:
 
 func physics_update(_delta: float) -> void:
 	player.move()
-
+	
 	if player.try_jump():
-		transitioned.emit(&"Jump")
+		transitioned.emit("Jump")
 	elif player.is_on_floor():
 		player.player_sprites.scale = Vector2(1.2, 0.9)
 		player.play_fx("fall_sound", -28, 1, true)
