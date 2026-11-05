@@ -30,15 +30,16 @@ func play_fx(audio: String, volume: float = 0.0, pitch: float = 1.0, random_pitc
 	sfx_sound.play()
 	sfx_sound.finished.connect(sfx_sound.queue_free)
 	
-func play_music(track: String, volume: float = 0.0):
+func play_music(track: String, volume: float = 0.0, loop: bool = false):
 	if current_music == track and music_player.playing:
 		return
 	
-	var stream = music_list.get(track)
+	var stream = music_list.get(track) as AudioStreamOggVorbis
 	
 	music_player.stream = stream
 	music_player.volume_db = volume
 	music_player.play()
+	if loop: stream.loop = true
 	current_music = track
 	
 func stop_music():

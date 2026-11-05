@@ -1,6 +1,5 @@
-[gd_scene format=3 uid="uid://cplnfqplf04da"]
+[gd_scene format=3 uid="uid://doekdn42ry5mo"]
 
-[ext_resource type="Script" uid="uid://b035dli43j4np" path="res://menus/botones duplicados/menu_pausa.gd" id="1_0efpp"]
 [ext_resource type="Texture2D" uid="uid://dhf6ion20dr0s" path="res://menus/images/BotonPausaBlanco.png" id="2_m3yup"]
 [ext_resource type="Texture2D" uid="uid://dl0hrogw63gxu" path="res://menus/images/JuegoPausado.png" id="3_0gesy"]
 [ext_resource type="Texture2D" uid="uid://tkd0sh1k1xid" path="res://menus/images/Buttons/btnContinuar.png" id="4_045g6"]
@@ -9,6 +8,68 @@
 [ext_resource type="Texture2D" uid="uid://b3exjyxfjc0f6" path="res://menus/images/Buttons/btnSettingsPresionado.png" id="7_g1qdb"]
 [ext_resource type="Texture2D" uid="uid://bc66kvfepm531" path="res://menus/images/Buttons/btnMainMenu.png" id="8_7w2pe"]
 [ext_resource type="Texture2D" uid="uid://v5coxc0tdlga" path="res://menus/images/Buttons/btnMainMenuPresionado.png" id="9_khljv"]
+[ext_resource type="Texture2D" uid="uid://db1wox64nvt1u" path="res://menus/images/Buttons/btnVolver.png" id="11_045g6"]
+[ext_resource type="Texture2D" uid="uid://bnjw06qmxwshx" path="res://menus/images/Buttons/btnVolverPresionado.png" id="12_c45du"]
+
+[sub_resource type="GDScript" id="GDScript_exuou"]
+script/source = "extends Control
+
+@export_category(\"Buttons\")
+@export var BotonPausar: Button
+@export var BotonContinuar: TextureButton
+@export var BotonVolver: TextureButton
+@export var BotonAjustes: TextureButton
+@export var VolverPausa: TextureButton
+
+@export_category(\"Paneles\")
+@export var FondoPausa: ColorRect
+@export var MenuPausa : Panel
+@export var Ajustes: Panel
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	AudioManager.play_music(\"music1\")
+	
+	BotonPausar.pressed.connect(pausar)
+	BotonContinuar.pressed.connect(continuar)
+	BotonVolver.pressed.connect(volver)
+	BotonAjustes.pressed.connect(ajustes)
+	VolverPausa.pressed.connect(salir_de_ajustes)
+	
+func _physics_process(delta: float) -> void:
+	if Input.is_action_pressed(\"Pausar\"):
+		pausar()
+	
+func pausar()->void:
+	BotonPausar.hide()
+	MenuPausa.show()
+	BotonContinuar.grab_focus()
+	FondoPausa.show()
+	get_tree().paused = true
+	$\"Menu/MenuMusic\".play()
+	
+func continuar()->void:
+	get_tree().paused = false
+	MenuPausa.hide()
+	FondoPausa.hide()
+	BotonPausar.show()
+	$\"Menu/MenuMusic\".stop()
+	
+func ajustes()->void:
+	get_tree().paused = true
+	MenuPausa.hide()
+	Ajustes.show()
+	VolverPausa.grab_focus()
+	
+func salir_de_ajustes()->void:
+	MenuPausa.show()
+	Ajustes.hide()
+	BotonContinuar.grab_focus()
+	
+func volver()->void:
+	get_tree().paused = false
+	get_tree().change_scene_to_file(\"res://menus/main menu/menu_principal.tscn\")
+"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1qitr"]
 content_margin_left = 4.0
@@ -33,19 +94,18 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
-[node name="Menu Pausa" type="Control" unique_id=1238612063 node_paths=PackedStringArray("BotonPausar", "BotonContinuar", "BotonVolver", "BotonAjustes", "FondoPausa", "MenuPausa")]
-top_level = true
-z_index = 1000
-z_as_relative = false
+[node name="Menu Pausa" type="Control" unique_id=1238612063 node_paths=PackedStringArray("BotonPausar", "BotonContinuar", "BotonVolver", "BotonAjustes", "VolverPausa", "FondoPausa", "MenuPausa", "Ajustes")]
 layout_mode = 3
 anchors_preset = 0
-script = ExtResource("1_0efpp")
+script = SubResource("GDScript_exuou")
 BotonPausar = NodePath("Pausar")
 BotonContinuar = NodePath("Menu/VBoxContainer/Continuar")
 BotonVolver = NodePath("Menu/VBoxContainer/Menu Principal")
 BotonAjustes = NodePath("Menu/VBoxContainer/Ajustes")
+VolverPausa = NodePath("Ajustes/Atras")
 FondoPausa = NodePath("Fondo Pausa")
 MenuPausa = NodePath("Menu")
+Ajustes = NodePath("Ajustes")
 
 [node name="Pausar" type="Button" parent="." unique_id=1816471235]
 modulate = Color(0.8392157, 0.8666667, 0.8666667, 1)
@@ -123,4 +183,30 @@ focus_neighbor_bottom = NodePath("../Continuar")
 texture_normal = ExtResource("8_7w2pe")
 texture_hover = ExtResource("9_khljv")
 texture_focused = ExtResource("9_khljv")
+stretch_mode = 3
+
+[node name="Ajustes" type="Panel" parent="." unique_id=1005650314]
+process_mode = 3
+visible = false
+layout_mode = 0
+offset_left = 60.0
+offset_top = 30.0
+offset_right = 260.0
+offset_bottom = 150.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_w12uw")
+
+[node name="Atras" type="TextureButton" parent="Ajustes" unique_id=742841783]
+process_mode = 3
+layout_mode = 0
+offset_left = 65.0
+offset_top = 101.0
+offset_right = 137.0
+offset_bottom = 120.0
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+texture_normal = ExtResource("11_045g6")
+texture_hover = ExtResource("12_c45du")
+texture_focused = ExtResource("12_c45du")
 stretch_mode = 3

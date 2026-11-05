@@ -1,0 +1,133 @@
+[gd_scene format=3 uid="uid://bxgvskyvq2l36"]
+
+[ext_resource type="Texture2D" uid="uid://b3kkc67wj2nu3" path="res://entities/enemies/Candle/Sprites/SpriteSheetCandle.png" id="1_0yfmh"]
+[ext_resource type="Script" uid="uid://8ywk3wpfp5bk" path="res://entities/enemies/Candle/candle.gd" id="1_ncc41"]
+
+[sub_resource type="Animation" id="Animation_yuiiw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CandleSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_akky2"]
+resource_name = "awaking"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CandleSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_ncc41"]
+resource_name = "awake"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CandleSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [6, 7, 8, 9, 10]
+}
+
+[sub_resource type="Animation" id="Animation_0yfmh"]
+resource_name = "asleep"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CandleSprite:frame")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [12, 17]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yuiiw"]
+_data = {
+&"RESET": SubResource("Animation_yuiiw"),
+&"asleep": SubResource("Animation_akky2"),
+&"awake": SubResource("Animation_ncc41"),
+&"awaking": SubResource("Animation_0yfmh")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6nhcr"]
+size = Vector2(18, 12)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8w0r3"]
+radius = 9.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h4t55"]
+radius = 67.11929
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w7mgy"]
+size = Vector2(18, 175)
+
+[node name="Candle" type="CharacterBody2D" unique_id=343651260 node_paths=PackedStringArray("candle_anim")]
+collision_mask = 0
+script = ExtResource("1_ncc41")
+candle_anim = NodePath("CandleAnim")
+
+[node name="CandleSprite" type="Sprite2D" parent="." unique_id=144603]
+texture = ExtResource("1_0yfmh")
+hframes = 6
+vframes = 3
+
+[node name="CandleAnim" type="AnimationPlayer" parent="." unique_id=1714931507]
+libraries/ = SubResource("AnimationLibrary_yuiiw")
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=204603530]
+visible = false
+position = Vector2(0, 11)
+shape = SubResource("RectangleShape2D_6nhcr")
+debug_color = Color(0.83750945, 0.33432546, 0.51074237, 0.41960785)
+
+[node name="HitBox" type="Area2D" parent="." unique_id=1831493574]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=1191760142]
+position = Vector2(0, 11)
+shape = SubResource("CircleShape2D_8w0r3")
+debug_color = Color(0.8383657, 0.33836833, 0.48938382, 0.41960785)
+
+[node name="AwakeningArea" type="Area2D" parent="." unique_id=869533173]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AwakeningArea" unique_id=2064214901]
+position = Vector2(0, 11)
+shape = SubResource("CircleShape2D_h4t55")
+debug_color = Color(0.86883914, 0.30501366, 0.46507585, 0.41960785)
+
+[node name="ActivationArea" type="Area2D" parent="." unique_id=473644176]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ActivationArea" unique_id=1770993680]
+position = Vector2(0, 92.5)
+shape = SubResource("RectangleShape2D_w7mgy")
+debug_color = Color(0.8810585, 0.28420874, 0.47629887, 0.41960785)
+
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
+[connection signal="body_entered" from="AwakeningArea" to="." method="_on_awakening_area_body_entered"]
+[connection signal="body_exited" from="AwakeningArea" to="." method="_on_awakening_area_body_exited"]
+[connection signal="body_entered" from="ActivationArea" to="." method="_on_activation_area_body_entered"]

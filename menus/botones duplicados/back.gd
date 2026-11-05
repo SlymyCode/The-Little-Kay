@@ -1,11 +1,11 @@
-extends Control
+extends TextureButton
 
-@export var Back: TextureButton
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	Back.grab_focus()
-	Back.pressed.connect(_backear)
-	
-func _backear():
-	get_tree().change_scene_to_file("res://menus/main menu/menu_principal.tscn")
+	pressed.connect(close_menu)
+
+func close_menu() -> void:
+	get_parent().hide()
+
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("ui_cancel"):
+		close_menu()

@@ -12,10 +12,10 @@ var hearts: Array[Sprite2D]
 var current_health: int
 
 func _ready() -> void:
-	Events.set_max_health.connect(set_max_hp)
-	Events.update_health.connect(update_hp) # usar formas en pasado para signals
+	Events.max_health_updated.connect(on_max_hp_updated)
+	Events.health_updated.connect(on_hp_updated) # usar formas en pasado para signals
 
-func update_hp(new_health: int): # usar formas en pasado + on para funciones callback
+func on_hp_updated(new_health: int): # usar formas en pasado + on para funciones callback
 	new_health = clampi(new_health, 0, heart_number)
 	if new_health == current_health:
 		return
@@ -29,7 +29,7 @@ func update_hp(new_health: int): # usar formas en pasado + on para funciones cal
 	
 	current_health = new_health
 
-func set_max_hp(max_hp: int):
+func on_max_hp_updated(max_hp: int):
 	if max_hp == heart_number:
 		return
 	
