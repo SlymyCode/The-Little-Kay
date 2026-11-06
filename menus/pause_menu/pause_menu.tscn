@@ -13,7 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://v5coxc0tdlga" path="res://menus/images/Buttons/btnMainMenuPresionado.png" id="9_twrce"]
 [ext_resource type="Texture2D" uid="uid://l0pjrdofgjr1" path="res://menus/images/Buttons/btnGuardarPartidaPresionado.png" id="10_3oo7h"]
 [ext_resource type="PackedScene" uid="uid://b82qe04lpdkyd" path="res://menus/settings/settings.tscn" id="10_hc5v2"]
-[ext_resource type="Texture2D" uid="uid://skgywj3xs7qd" path="res://menus/images/Buttons/btnGuardarPresionado.png" id="11_2g2at"]
 [ext_resource type="Script" uid="uid://bvlvqwl5gujsa" path="res://menus/main menu/guardar game.gd" id="12_3oo7h"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hc5v2"]
@@ -111,7 +110,7 @@ layout_mode = 2
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../Continue")
 focus_neighbor_right = NodePath(".")
-focus_neighbor_bottom = NodePath("../MainMenu")
+focus_neighbor_bottom = NodePath("../SaveGame")
 focus_next = NodePath("../MainMenu")
 focus_previous = NodePath("../Continue")
 texture_normal = ExtResource("6_3oo7h")
@@ -121,9 +120,13 @@ stretch_mode = 0
 
 [node name="SaveGame" type="TextureButton" parent="Menu/VBoxContainer" unique_id=1160973532]
 layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../Settings")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../MainMenu")
 texture_normal = ExtResource("9_racry")
 texture_hover = ExtResource("10_3oo7h")
-texture_focused = ExtResource("11_2g2at")
+texture_focused = ExtResource("10_3oo7h")
 stretch_mode = 0
 script = ExtResource("12_3oo7h")
 
@@ -131,7 +134,7 @@ script = ExtResource("12_3oo7h")
 process_mode = 3
 layout_mode = 2
 focus_neighbor_left = NodePath(".")
-focus_neighbor_top = NodePath("../Settings")
+focus_neighbor_top = NodePath("../SaveGame")
 focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath("../Continue")
 focus_next = NodePath("../Continue")

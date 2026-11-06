@@ -27,7 +27,7 @@ func _ready() -> void:
 	SettingsInstance = SETTINGS_SCENE.instantiate()
 	add_child(SettingsInstance)
 	SettingsInstance.visible = false
-	SettingsInstance.cerrar_ajustes.connect(cerrar_ajustes)
+	SettingsInstance.pressed.connect(cerrar_ajustes)
 
 # Nueva partida
 func new_game():
