@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4jw21j1bnl2"
-path="res://.godot/imported/Sprite.png-135251a4ba55c0b27e531b46c8e8725a.ctex"
+uid="uid://cvdia76qyi5ke"
+path="res://.godot/imported/jumppotion.png-3ef8ed49a05f22c77f85547eeff62690.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/interactables/potions/speed_potion/sprites/Sprite.png"
-dest_files=["res://.godot/imported/Sprite.png-135251a4ba55c0b27e531b46c8e8725a.ctex"]
+source_file="res://entities/interactables/potions/jump_potion/sprites/jumppotion.png"
+dest_files=["res://.godot/imported/jumppotion.png-3ef8ed49a05f22c77f85547eeff62690.ctex"]
 
 [params]
 
