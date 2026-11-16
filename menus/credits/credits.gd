@@ -2,10 +2,10 @@ extends Control
 
 @export var names_label: Label
 
-@export var programming_button: TextureButton
-@export var art_button: TextureButton
-@export var game_design_button: TextureButton
-@export var audio_button: TextureButton
+@export var programming_button: CustomButton
+@export var art_button: CustomButton
+@export var game_design_button: CustomButton
+@export var audio_button: CustomButton
 @export var button_back: Control
 
 func _ready() -> void:
@@ -16,7 +16,7 @@ func _ready() -> void:
 	_link_button(game_design_button, ["Brunella Lucas", "Santiago Arce", "Mauricio Rodriguez", "Santino Zuasnabar", "Facundo Noble"])
 	_link_button(audio_button, ["Santiago Arce"])
 
-func _link_button(button: TextureButton, names: PackedStringArray) -> void:
+func _link_button(button: CustomButton, names: PackedStringArray) -> void:
 	button.pressed.connect(show_names.bind(names))
 
 func show_names(names: PackedStringArray) -> void:

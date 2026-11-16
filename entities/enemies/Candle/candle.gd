@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Enemy
 
 @export var knockback_strength: float = 100
 

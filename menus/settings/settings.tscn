@@ -9,7 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://c1kjcyejuxnjn" path="res://menus/images/button_off.png" id="6_nuhl7"]
 [ext_resource type="Texture2D" uid="uid://db1wox64nvt1u" path="res://menus/images/Buttons/btnVolver.png" id="9_e2fab"]
 [ext_resource type="Script" uid="uid://diwddgkexcd3u" path="res://menus/botones duplicados/back.gd" id="10_e2fab"]
-[ext_resource type="Texture2D" uid="uid://bnjw06qmxwshx" path="res://menus/images/Buttons/btnVolverPresionado.png" id="10_w8yqo"]
+[ext_resource type="Texture2D" uid="uid://d01aexc6gbgep" path="res://menus/images/Buttons/btnGuardar.png" id="11_ffcyu"]
+[ext_resource type="Script" uid="uid://bnvp3ytxcl60d" path="res://menus/settings/guardar config.gd" id="13_mqjvq"]
+[ext_resource type="Texture2D" uid="uid://713vkcr21x3p" path="res://menus/images/Buttons/btnCargar.png" id="14_ehvol"]
+[ext_resource type="Script" uid="uid://rd3bwgbgrnv" path="res://menus/settings/cargar config.gd" id="16_2b3et"]
 
 [sub_resource type="Gradient" id="Gradient_jykqg"]
 offsets = PackedFloat32Array(0)
@@ -1887,8 +1890,9 @@ color = Color(0.047058824, 0.0627451, 0.07058824, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=225525736]
 layout_mode = 0
+offset_top = 15.0
 offset_right = 320.0
-offset_bottom = 23.0
+offset_bottom = 38.0
 
 [node name="Ajustes" type="Label" parent="VBoxContainer" unique_id=2001203965]
 layout_mode = 2
@@ -1900,9 +1904,9 @@ vertical_alignment = 1
 [node name="VBoxContainer2" type="VBoxContainer" parent="." unique_id=1861854094]
 layout_mode = 0
 offset_left = 45.0
-offset_top = 34.0
+offset_top = 40.0
 offset_right = 280.00015
-offset_bottom = 125.0
+offset_bottom = 130.99994
 
 [node name="Efectos" type="HBoxContainer" parent="VBoxContainer2" unique_id=1036834704]
 layout_mode = 2
@@ -1918,7 +1922,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 focus_neighbor_left = NodePath(".")
-focus_neighbor_top = NodePath("../../../ButtonBack")
+focus_neighbor_top = NodePath("../../HBoxContainer3/ButtonCargar")
 focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath("../../Musica/MusicVolumeSlider")
 focus_next = NodePath("../../Musica/MusicVolumeSlider")
@@ -1999,27 +2003,54 @@ size_flags_horizontal = 3
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../../HBoxContainer/CheckButton")
 focus_neighbor_right = NodePath(".")
-focus_neighbor_bottom = NodePath("../../../ButtonBack")
-focus_next = NodePath("../../../ButtonBack")
+focus_neighbor_bottom = NodePath("../../HBoxContainer3/ButtonCargar")
+focus_next = NodePath("../../HBoxContainer3/ButtonCargar")
 focus_previous = NodePath("../../HBoxContainer/CheckButton")
 theme = SubResource("Theme_6plv5")
 theme_override_fonts/font = ExtResource("1_jykqg")
 theme_override_font_sizes/font_size = 16
 
-[node name="ButtonBack" type="TextureButton" parent="." unique_id=50051579]
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer2" unique_id=758460063]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+
+[node name="ButtonCargar" type="TextureButton" parent="VBoxContainer2/HBoxContainer3" unique_id=74844640]
 process_mode = 3
-layout_mode = 0
-offset_left = 123.0
-offset_top = 159.0
-offset_right = 195.0
-offset_bottom = 181.0
-focus_neighbor_left = NodePath(".")
-focus_neighbor_top = NodePath("../VBoxContainer2/HBoxContainer2/CheckButton2")
-focus_neighbor_right = NodePath(".")
-focus_neighbor_bottom = NodePath("../VBoxContainer2/Efectos/SFXVolumeSlider")
+layout_mode = 2
+focus_neighbor_left = NodePath("../ButtonGuardar")
+focus_neighbor_top = NodePath("../../HBoxContainer2/CheckButton2")
+focus_neighbor_right = NodePath("../ButtonBack")
+focus_neighbor_bottom = NodePath("../../Efectos/SFXVolumeSlider")
+focus_behavior_recursive = 2
+texture_normal = ExtResource("14_ehvol")
+stretch_mode = 3
+script = ExtResource("16_2b3et")
+metadata/_custom_type_script = "uid://djn8bo37rjhhk"
+
+[node name="ButtonBack" type="TextureButton" parent="VBoxContainer2/HBoxContainer3" unique_id=375364858 node_paths=PackedStringArray("menu")]
+process_mode = 3
+layout_mode = 2
+focus_neighbor_left = NodePath("../ButtonCargar")
+focus_neighbor_top = NodePath("../../HBoxContainer2/CheckButton2")
+focus_neighbor_right = NodePath("../ButtonGuardar")
+focus_neighbor_bottom = NodePath("../../Efectos/SFXVolumeSlider")
 focus_behavior_recursive = 2
 texture_normal = ExtResource("9_e2fab")
-texture_hover = ExtResource("10_w8yqo")
-texture_focused = ExtResource("10_w8yqo")
 stretch_mode = 3
 script = ExtResource("10_e2fab")
+menu = NodePath("../../..")
+metadata/_custom_type_script = "uid://djn8bo37rjhhk"
+
+[node name="ButtonGuardar" type="TextureButton" parent="VBoxContainer2/HBoxContainer3" unique_id=1565064338]
+process_mode = 3
+layout_mode = 2
+focus_neighbor_left = NodePath("../ButtonBack")
+focus_neighbor_top = NodePath("../../HBoxContainer2/CheckButton2")
+focus_neighbor_right = NodePath("../ButtonCargar")
+focus_neighbor_bottom = NodePath("../../Efectos/SFXVolumeSlider")
+focus_behavior_recursive = 2
+texture_normal = ExtResource("11_ffcyu")
+stretch_mode = 3
+script = ExtResource("13_mqjvq")
+metadata/_custom_type_script = "uid://djn8bo37rjhhk"

@@ -7,6 +7,7 @@ extends Node
 
 var music_player: AudioStreamPlayer
 var current_music: String = ""
+var tween: Tween
 
 func _ready():
 	music_player = AudioStreamPlayer.new()
@@ -29,19 +30,31 @@ func play_fx(audio: String, volume: float = 0.0, pitch: float = 1.0, random_pitc
 	add_child(sfx_sound)
 	sfx_sound.play()
 	sfx_sound.finished.connect(sfx_sound.queue_free)
-	
-func play_music(track: String, volume: float = 0.0, loop: bool = false):
-	if current_music == track and music_player.playing:
+
+func play_music(track: String, volume: float = 0.0):
+	if tween and tween.is_running():
+		tween.kill()
+
+	var stream = music_list.get(track) as AudioStreamWAV
+
+	if stream == null:
 		return
+
+	var music_stream = stream.duplicate() as AudioStreamWAV
+
+	music_stream.loop_mode = AudioStreamWAV.LOOP_FORWARD
 	
-	var stream = music_list.get(track) as AudioStreamOggVorbis
-	
-	music_player.stream = stream
+	music_player.stop()
+	music_player.stream = music_stream
 	music_player.volume_db = volume
 	music_player.play()
-	if loop: stream.loop = true
+
 	current_music = track
-	
+
 func stop_music():
-	music_player.stop()
+	tween = create_tween()
+	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	tween.tween_property(music_player, "volume_db", -80.0, 5.2)
+	tween.tween_callback(music_player.stop)
+	tween.tween_callback(func(): music_player.volume_db = 0.0)
 	current_music = ""

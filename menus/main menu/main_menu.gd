@@ -1,16 +1,17 @@
 extends Control
 
-@export var new_game_button: TextureButton
-@export var settings_button: TextureButton
-@export var credits_button: TextureButton
-@export var quit_button: TextureButton
+@export var new_game_button: CustomButton
+@export var load_game_button: CustomButton
+@export var settings_button: CustomButton
+@export var credits_button: CustomButton
+@export var quit_button: CustomButton
 
 @export var initial_menu: Control
 @export var settings_menu: Control
 @export var credits_menu: Control
 
 func _ready() -> void:
-	AudioManager.play_music("main_title", 0, true)
+	play_main_song()
 	new_game_button.grab_focus(true)
 
 	new_game_button.pressed.connect(start_game)
@@ -32,6 +33,10 @@ func _hide_initial_menu (menu: Control) -> void:
 	initial_menu.hide()
 	menu.show()
 
+@warning_ignore("unused_parameter")
 func _show_initial_menu (button: TextureButton) -> void:
 	initial_menu.show()
 	new_game_button.grab_focus(true)
+
+func play_main_song ():
+	AudioManager.play_music("main_loop", 6.4)

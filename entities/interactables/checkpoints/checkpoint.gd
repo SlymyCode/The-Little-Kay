@@ -31,6 +31,9 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		player = body as Player
 		if active:
 			return
+		if player.last_respawn_pos == respawn_position: # level reloaded and the player respawned here
+			active = true
+			return
 		if !activating:
 			AudioManager.play_fx("checkpoint_sound", -20, 0.875, false)
 		activating = true

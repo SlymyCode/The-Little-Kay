@@ -35,6 +35,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_fj3tk"]
 resource_name = "idle"
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -83,6 +84,7 @@ radius = 71.00704
 [node name="Rat" type="CharacterBody2D" unique_id=1452248541 node_paths=PackedStringArray("rat_animation")]
 script = ExtResource("1_1s822")
 rat_animation = NodePath("RatAnimation")
+max_health = 2
 
 [node name="RatSprite" type="Sprite2D" parent="." unique_id=1825427925]
 texture = ExtResource("1_808lf")
@@ -110,5 +112,6 @@ visible = false
 shape = SubResource("CircleShape2D_808lf")
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="area_exited" from="Hitbox" to="." method="_on_hitbox_area_exited"]
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

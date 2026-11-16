@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Enemy
 class_name Bush
 
 @export_range(0, 2) var attack_speed: float = 1
@@ -24,8 +24,8 @@ func _physics_process(delta: float) -> void:
 func shoot():
 	var projectile_instance :BushProjectile = projectile.instantiate()
 	projectile_instance.direction = Vector2(-scale.x, 0)
-	var scene_tree = get_tree().current_scene
-	scene_tree.add_child(projectile_instance)
+	projectile_instance.shooter = self
+	get_parent().add_child(projectile_instance) # child of the level, so it disappears when the level reloads
 	projectile_instance.global_position = %SpawnPoint.global_position
 
 func _on_area_2d_body_entered(body: Node2D) -> void:

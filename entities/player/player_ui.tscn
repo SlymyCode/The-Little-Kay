@@ -8,13 +8,14 @@
 [ext_resource type="Texture2D" uid="uid://oh5qys4ixu71" path="res://entities/player/sprites/HpBarExpandable.png" id="6_l2mnk"]
 [ext_resource type="Texture2D" uid="uid://u8ns8so4baix" path="res://entities/player/sprites/HpBarCap.png" id="7_35srt"]
 
-[node name="HUD" type="CanvasLayer" unique_id=859151768 node_paths=PackedStringArray("heart_container", "heart_sprite", "hp_bar", "bar_piece", "bar_cap")]
+[node name="HUD" type="CanvasLayer" unique_id=859151768 node_paths=PackedStringArray("heart_container", "heart_sprite", "hp_bar", "bar_piece", "bar_cap", "energy_meter")]
 script = ExtResource("1_ffycu")
 heart_container = NodePath("HpBar/HeartContainer")
 heart_sprite = NodePath("HpBar/Heart")
 hp_bar = NodePath("HpBar")
 bar_piece = NodePath("HpBar/HeartContainer/BarPiece")
 bar_cap = NodePath("HpBar/BarCap")
+energy_meter = NodePath("HpBar/EnergyMeter")
 
 [node name="HpBar" type="TextureRect" parent="." unique_id=478951729]
 offset_left = 2.0
@@ -30,7 +31,6 @@ stretch_mode = 4
 position = Vector2(16.5, 19)
 texture = ExtResource("2_m1pxc")
 hframes = 4
-frame = 3
 
 [node name="Heart" type="Sprite2D" parent="HpBar" unique_id=488289161]
 z_index = 3

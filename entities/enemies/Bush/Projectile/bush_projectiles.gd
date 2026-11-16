@@ -14,6 +14,10 @@ var time_elapsed:float = 0
 var direction: Vector2
 var dead: bool = false
 var player: Player
+var shooter: Enemy
+var reflected: bool = false
+
+@onready var damage_area: Area2D = $DamageArea
 
 func kill_projectile():
 	if dead:
@@ -40,6 +44,8 @@ func _ready() -> void:
 		Events.add_to_group.emit(trail_particles, "pixel_perfect_front")
 
 func _physics_process(delta: float) -> void:
+	if reflected and not dead:
+		hit_enemies()
 	velocity = velocity.move_toward(direction * max_speed, acceleration * delta)
 	
 	var collision := move_and_collide(velocity * delta)
@@ -52,14 +58,33 @@ func _physics_process(delta: float) -> void:
 	if time_elapsed >= lifespan:
 		kill_projectile()
 
+func on_parried(_player: Player, perfect: bool) -> void:
+	if not perfect or not is_instance_valid(shooter) or shooter.dead:
+		kill_projectile()
+		return
+	reflected = true
+	time_elapsed = 0
+	direction = global_position.direction_to(shooter.hit_center())
+	velocity = direction * max_speed
+
+func hit_enemies() -> void:
+	for area in damage_area.get_overlapping_areas():
+		var enemy := area.get_parent() as Enemy
+		if enemy and area == enemy.hit_box and not enemy.dead:
+			enemy.take_damage(damage)
+			kill_projectile()
+			return
+
 func _on_damage_area_area_entered(area: Area2D) -> void:
-	if area.is_in_group("player_hurtbox") and !dead:
+	if dead or reflected:
+		return
+	if area.is_in_group("player_hurtbox"):
 		player = area.get_parent()
 		var knockback_direction = global_position.direction_to(player.global_position)
 		player.apply_knockback(knockback_direction, knockback_strength, 0.12)
 		player.receive_damage(damage)
 		kill_projectile()
-	elif area.is_in_group("player_invulnerable_zone") and !dead:
+	elif area.is_in_group("player_invulnerable_zone"):
 		player = area.get_parent()
 		player.apply_flash_fx("top")
 		kill_projectile()

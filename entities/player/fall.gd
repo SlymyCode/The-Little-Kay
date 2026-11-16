@@ -1,8 +1,6 @@
 extends State
 
 func enter() -> void:
-	if player.jumps_performed == 0:
-		player.jumps_performed = 1
 	player.player_animator.play("fall", -1, 1.5)
 
 func physics_update(_delta: float) -> void:

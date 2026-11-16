@@ -12,6 +12,12 @@ class_name Player
 @export var invincibility_duration: float = 1.4
 @export var pause_duration: float = 0.04
 @export var coyote_time: float = 0.12
+@export var attack_damage: int = 1
+@export var max_energy: int = 3
+@export var kill_energy: int = 1 # energy gained per enemy killed
+@export var parry_energy: int = 2 # energy gained per projectile parried
+@export var hit_shake_strength: float = 3.0
+@export var hit_shake_duration: float = 0.25
 
 @export_group("Components")
 @export var state_machine: StateMachine
@@ -23,6 +29,8 @@ class_name Player
 @export var player_jump_particles: GPUParticles2D
 @export var damage_particles_left: GPUParticles2D
 @export var damage_particles_right: GPUParticles2D
+@export var attack_area: Area2D
+@export var parry_area: Area2D
 
 var lerp_weight: float
 var direction: float
@@ -44,10 +52,19 @@ var time_on_ground: float = 0
 var is_first_frame: bool = true
 var can_move = true
 var coyote_timer: float = 0.0
+var can_turn: bool = true
+var energy: int = 0
+var current_exit: Exit
+
+# attack/parry cannot be used
+const BUSY_STATES: Array[String] = ["Attack", "Parry", "Knockback", "Dead", "VoidFall", "Hazard", "EnterDoor"]
+const DYING_STATES: Array[String] = ["Dead", "VoidFall", "Hazard", "EnterDoor"]
 
 func _ready() -> void:
 	current_hp = max_hp
 	Events.max_health_updated.emit(max_hp)
+	Events.energy_updated.emit(energy)
+	Events.enemy_killed.connect(_on_enemy_killed)
 	last_respawn_pos = position
 
 func _physics_process(delta: float) -> void:
@@ -64,7 +81,7 @@ func _physics_process(delta: float) -> void:
 	lerp_weight = delta * (acceleration if direction else friction)
 	invincibility_timer = maxf(invincibility_timer - delta, 0.0)
 
-	if direction:
+	if direction and can_turn:
 		player_sprites.flip_h = direction < 0
 
 	if is_on_floor():
@@ -74,10 +91,19 @@ func _physics_process(delta: float) -> void:
 	else:
 		time_on_ground = 0
 		coyote_timer = maxf(coyote_timer - delta, 0.0)
+		if coyote_timer == 0.0 and jumps_performed == 0:
+			jumps_performed = 1 # walked off a ledge: once the coyote time is over, the ground jump is gone
 		velocity += get_gravity() * delta
 
 	if current_hp <= 0:
-		respawn()
+		state_machine.change_state("Dead")
+	elif not str(state_machine.current_state.name) in BUSY_STATES:
+		if is_on_floor() and can_use_exit() and Input.is_action_just_pressed("move_up"):
+			state_machine.change_state("EnterDoor") # checked before jumping, because W is also a jump key
+		elif Input.is_action_just_pressed("attack"):
+			state_machine.change_state("Attack")
+		elif Input.is_action_just_pressed("parryaction"):
+			state_machine.change_state("Parry")
 
 	state_machine.physics_update(delta)
 
@@ -99,8 +125,7 @@ func jump() -> void:
 	player_sprites.scale = Vector2(0.7, 1.3)
 	jumps_performed += 1
 	AudioManager.play_fx("jump_sound", -12, 1, true)
-	if jumps_performed > 1 or not is_on_floor():
-		player_jump_particles.restart()
+	player_jump_particles.restart()
 
 func try_jump() -> bool:
 	if Input.is_action_just_pressed("jump") and not colliding_with_ceiling:
@@ -117,6 +142,12 @@ func try_jump() -> bool:
 func ground_state() -> String:
 	return "Walk" if direction != 0.0 and not is_on_wall() else "Idle"
 
+# State to go back to after an action ends
+func free_state() -> String:
+	if is_on_floor():
+		return ground_state()
+	return "Jump" if velocity.y < 0.0 else "Fall"
+
 func reset_scale(delta: float) -> void:
 	var step = 2 * delta
 	player_sprites.scale.x = move_toward(player_sprites.scale.x, 1, step)
@@ -127,6 +158,7 @@ func reset_scale(delta: float) -> void:
 func can_repair() -> bool:
 	return (
 		current_hp < max_hp
+		and energy >= max_energy
 		and direction == 0.0
 		and invincibility_timer <= 0
 		and time_on_ground > 0.2
@@ -136,7 +168,7 @@ func can_repair() -> bool:
 func repair(delta: float) -> void:
 	if current_hp < max_hp:
 		time_repairing += delta
-
+		
 		var progress = clamp(time_repairing / repair_time, 0.0, 1.0)
 		var tick = min(int(progress * repair_ticks), repair_ticks - 1)
 
@@ -145,11 +177,19 @@ func repair(delta: float) -> void:
 			var t = float(tick) / float(max(repair_ticks - 1, 1))
 			var pitch = lerp(pitch_start, pitch_end, t)
 			AudioManager.play_fx("regen_sound", -8, pitch, false)
+			var tween = create_tween()
+			tween.tween_property(self, "modulate", Color(13.514, 2.166, 1.661), 0.1)
+			tween.tween_property(self, "modulate", Color.WHITE, 0.1)
 
 		if time_repairing >= repair_time:
 			current_hp += 1
 			Events.health_updated.emit(current_hp)
+			add_energy(-max_energy)
 			AudioManager.play_fx("regen_finished_sound", -12, 0.8, false)
+			var tween = create_tween()
+			tween.set_trans(Tween.TRANS_QUAD)
+			tween.tween_property(self, "modulate", Color(2.438, 1.085, 1.289, 1.0), 0.2)
+			tween.tween_property(self, "modulate", Color.WHITE, 0.2)
 			time_repairing = 0
 			last_tick = -1
 	else:
@@ -159,15 +199,48 @@ func cancel_repair() -> void:
 	time_repairing = 0
 	last_tick = -1
 
+#Energy Section
+
+func add_energy(amount: int) -> void:
+	energy = clampi(energy + amount, 0, max_energy)
+	Events.energy_updated.emit(energy)
+
+func _on_enemy_killed() -> void:
+	add_energy(kill_energy)
+
+func can_use_exit() -> bool:
+	return is_instance_valid(current_exit) and current_exit.can_complete
+
 #Hp Section
 
-func respawn() -> void:
-	position = last_respawn_pos
-	velocity = Vector2.ZERO
+func is_dying() -> bool:
+	return str(state_machine.current_state.name) in DYING_STATES
+
+func revive() -> void:
+	invincibility_timer = 0.0
 	current_hp = max_hp
-	state_machine.change_state("Idle")
-	await get_tree().create_timer(0.525).timeout
 	Events.health_updated.emit(current_hp)
+
+# Void zone: level restarts
+func fall_into_void() -> void:
+	if not is_dying():
+		state_machine.change_state("VoidFall")
+
+# Hazard zone (spikes): lose hp and tp back to the last checkpoint
+func hazard_hit(damage: int) -> void:
+	if is_dying():
+		return
+	current_hp -= damage
+	Events.health_updated.emit(current_hp)
+	Events.camera_shake_requested.emit(hit_shake_strength, hit_shake_duration)
+	apply_flash_fx("full")
+	if current_hp > 0:
+		state_machine.change_state("Hazard")
+
+func hit_stop(duration: float) -> void:
+	Engine.time_scale = 0
+	await get_tree().create_timer(duration, true, false, true).timeout
+	Engine.time_scale = 1
 
 func receive_damage(damage_dealt: int):
 	if invincibility_timer <= 0:
@@ -178,6 +251,7 @@ func receive_damage(damage_dealt: int):
 		Engine.time_scale = 1
 		current_hp -= damage_dealt
 		Events.health_updated.emit(current_hp)
+		Events.camera_shake_requested.emit(hit_shake_strength, hit_shake_duration)
 		apply_flash_fx("full")
 		await get_tree().create_timer(0.1).timeout
 		damage_particles_left.emitting = true
@@ -189,7 +263,7 @@ func apply_knockback(knockback_direction: Vector2, force: float, knockback_durat
 		knockback_timer = knockback_duration
 		state_machine.change_state("Knockback")
 
-#region Effects Section
+#Effects Section
 
 func apply_flash_fx(flash_type: String):
 	match flash_type:
@@ -214,8 +288,7 @@ func apply_flash_fx(flash_type: String):
 func play_fx(audio: String, volume: float, pitch: float, random_pitch: bool):
 	AudioManager.play_fx(audio, volume, pitch, random_pitch)
 
-#endregion
-#region Detect Ceiling (just to prevent jumping under a tile)
+#Detect Ceiling (just to prevent jumping under a tile)
 
 func _on_detect_ceiling_body_entered(body: Node2D) -> void:
 	if body is TileMapLayer:
@@ -224,5 +297,3 @@ func _on_detect_ceiling_body_entered(body: Node2D) -> void:
 func _on_detect_ceiling_body_exited(body: Node2D) -> void:
 	if body is TileMapLayer:
 		colliding_with_ceiling = false
-
-#endregion

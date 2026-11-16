@@ -4,7 +4,7 @@ extends CanvasLayer
 @export var pause_bg: ColorRect
 @export var menu: ColorRect
 @export var settings: Control
-@export var continue_button: TextureButton
+@export var continue_button: CustomButton
 
 func _ready() -> void:
 	await get_tree().create_timer(1.2).timeout
@@ -15,7 +15,7 @@ func _ready() -> void:
 		continue_button.grab_focus(true))
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("pause_game"):
+	if Input.is_action_just_pressed("pause_game") and settings.visible == false:
 		get_tree().paused = not get_tree().paused
 		update_pause_ui()
 	elif get_tree().paused and (Input.is_action_just_pressed("pause_game") or Input.is_action_just_pressed("ui_cancel")) and menu.visible:

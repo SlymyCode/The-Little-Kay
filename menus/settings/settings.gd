@@ -29,6 +29,10 @@ func _ready() -> void:
 	resolution_option.disabled = fullscreen_button.button_pressed
 	fullscreen_button.toggled.connect(set_fullscreen)
 
+	SaveManager.save_config_notification.connect(guardar_ajustes)
+	SaveManager.load_config_notification.connect(cargar_ajustes)
+	SaveManager.load_config()
+
 	visibility_changed.connect(func():
 		if is_visible_in_tree():
 			sfx_slider.call_deferred("grab_focus"))
@@ -48,3 +52,17 @@ func set_fullscreen(on: bool) -> void:
 	if not on:
 		await get_tree().process_frame
 		set_resolution(resolution_option.selected)
+
+func guardar_ajustes(save_dict: Dictionary) -> void:
+	save_dict["audio"] = {
+		"Music": music_slider.value,
+		"SFX": sfx_slider.value,
+	}
+
+func cargar_ajustes(save_dict: Dictionary) -> void:
+	if not save_dict.has("audio"):
+		return
+
+	var audio: Dictionary = save_dict["audio"]
+	music_slider.value = audio.get("Music", 100.0)
+	sfx_slider.value = audio.get("SFX", 100.0)

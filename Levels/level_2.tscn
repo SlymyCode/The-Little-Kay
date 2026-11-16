@@ -180,7 +180,7 @@ physics_layer_0/collision_mask = 15
 sources/5 = SubResource("TileSetAtlasSource_5vw27")
 pattern_0 = SubResource("TileMapPattern_5vw27")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_s275v"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_dfjjl"]
 radius = 26.019224
 
 [node name="Level1" type="Node2D" unique_id=961938127]
@@ -315,11 +315,13 @@ position = Vector2(1736, -7)
 [node name="PlayerSpawn" type="Marker2D" parent="." unique_id=278758741]
 position = Vector2(79, 169)
 
-[node name="Exit" type="Area2D" parent="." unique_id=1020250829]
-position = Vector2(41.045, 3)
+[node name="Exit" type="Area2D" parent="." unique_id=1027022689]
+position = Vector2(1968, 60)
 script = ExtResource("6_fbld2")
 metadata/_edit_group_ = true
 
-[node name="Collision" type="CollisionShape2D" parent="Exit" unique_id=563524199]
-position = Vector2(1927, 52)
-shape = SubResource("CircleShape2D_s275v")
+[node name="Collision" type="CollisionShape2D" parent="Exit" unique_id=1420978208]
+shape = SubResource("CircleShape2D_dfjjl")
+
+[node name="EnterPoint" type="Marker2D" parent="Exit" unique_id=1653984280]
+position = Vector2(-14, 0)

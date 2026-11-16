@@ -234,7 +234,7 @@ position = Vector2(471, 48)
 position = Vector2(1296, 64)
 
 [node name="Arbusto" parent="." unique_id=331965848 instance=ExtResource("3_fqog2")]
-position = Vector2(884, 159)
+position = Vector2(884, 176)
 
 [node name="Arbusto2" parent="." unique_id=1841538210 instance=ExtResource("3_fqog2")]
 position = Vector2(1832, 64)

@@ -6,10 +6,16 @@
 [ext_resource type="Script" uid="uid://8r2q7kohhkn4" path="res://entities/player/state_machine.gd" id="4_7jst2"]
 [ext_resource type="Script" uid="uid://bp15nqqesnpyy" path="res://entities/player/idle.gd" id="5_5jssd"]
 [ext_resource type="Script" uid="uid://d1v5c4ya36128" path="res://entities/player/jump.gd" id="6_5jssd"]
+[ext_resource type="Script" uid="uid://k7p2axinpa6v" path="res://entities/player/enter_door.gd" id="6_li42n"]
 [ext_resource type="Script" uid="uid://djjuj13wvxj4n" path="res://entities/player/walk.gd" id="7_nq1nd"]
 [ext_resource type="Script" uid="uid://b1tm4rr6ag32q" path="res://entities/player/fall.gd" id="8_02u73"]
 [ext_resource type="Script" uid="uid://cbe6avhwlumrx" path="res://entities/player/repair.gd" id="9_tf0bk"]
 [ext_resource type="Script" uid="uid://b0vcaw3lgyicf" path="res://entities/player/knockback.gd" id="10_ubhm2"]
+[ext_resource type="Script" uid="uid://byyj7u61c42lp" path="res://entities/player/attack.gd" id="11_attack"]
+[ext_resource type="Script" uid="uid://x4hknwkitocw" path="res://entities/player/parry.gd" id="12_parry"]
+[ext_resource type="Script" uid="uid://tlnqkvjgnkh8" path="res://entities/player/dead.gd" id="13_dead"]
+[ext_resource type="Script" uid="uid://d1fymnj4nsaju" path="res://entities/player/void_fall.gd" id="14_void"]
+[ext_resource type="Script" uid="uid://bmh5mbgi7w2ne" path="res://entities/player/hazard.gd" id="15_hazard"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qbdww"]
 resource_local_to_scene = true
@@ -20,7 +26,7 @@ shader_parameter/full_body_enabled = false
 shader_parameter/tint = Color(1, 1, 1, 1)
 
 [sub_resource type="Animation" id="Animation_gyxac"]
-length = 0.001
+length = 0.16666667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -31,7 +37,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [22]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -70,20 +76,50 @@ tracks/3/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_ede4x"]
-resource_name = "Blink"
-loop_mode = 1
+[sub_resource type="Animation" id="Animation_pnlvj"]
+resource_name = "attqack"
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprites:frame")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [34, 41]
+}
+
+[sub_resource type="Animation" id="Animation_death"]
+resource_name = "death"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("PlayerSprites:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.06, 0.12, 0.18, 0.24, 0.3, 0.38, 0.46, 0.54, 0.62, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [12, 13]
+"values": [22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32]
+}
+
+[sub_resource type="Animation" id="Animation_ke117"]
+resource_name = "enter_door"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprites:frame")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [99, 103]
 }
 
 [sub_resource type="Animation" id="Animation_qrqov"]
@@ -91,15 +127,15 @@ resource_name = "Fall"
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("PlayerSprites:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [24, 25]
+"update": 0,
+"values": [11, 14]
 }
 
 [sub_resource type="Animation" id="Animation_q3cu5"]
@@ -115,7 +151,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [0, 1]
+"values": [66, 67]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -142,7 +178,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [33, 39]
+"values": [0, 7]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -166,7 +202,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [-5.0, -5.0]
+"values": [-7.0, -7.0]
 }
 
 [sub_resource type="Animation" id="Animation_ubhm2"]
@@ -181,54 +217,23 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [24, 24]
-}
-
-[sub_resource type="Animation" id="Animation_5jssd"]
-resource_name = "MoveEyes"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = false
-tracks/0/path = NodePath("PlayerSprites:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [8, 9]
+"values": [55, 55]
 }
 
 [sub_resource type="Animation" id="Animation_n2o76"]
 resource_name = "Parry"
+length = 0.44
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("PlayerSprites:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.04, 0.08, 0.12, 0.18, 0.28, 0.36),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [17, 16]
-}
-
-[sub_resource type="Animation" id="Animation_nq1nd"]
-resource_name = "Sleep"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = false
-tracks/0/path = NodePath("PlayerSprites:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [16, 17]
+"values": [44, 45, 46, 47, 48, 49, 50]
 }
 
 [sub_resource type="Animation" id="Animation_14dpy"]
@@ -244,7 +249,52 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3333, 0.6667),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [9, 10, 11]
+"values": [78, 79, 80]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerSprites:material:shader_parameter/top_limit")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-5.0]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.25, 0.75),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": ["walk_sound", -32.0, 1.0, true],
+"method": &"play_fx"
+}, {
+"args": ["walk_sound", -32.0, 1.0, true],
+"method": &"play_fx"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_mitrv"]
+resource_name = "walk_blink"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprites:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 0.6667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [89, 90, 91]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -279,15 +329,16 @@ tracks/2/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gyxac"]
 _data = {
 &"RESET": SubResource("Animation_gyxac"),
-&"blink": SubResource("Animation_ede4x"),
+&"attack": SubResource("Animation_pnlvj"),
+&"death": SubResource("Animation_death"),
+&"enter_door": SubResource("Animation_ke117"),
 &"fall": SubResource("Animation_qrqov"),
 &"idle": SubResource("Animation_q3cu5"),
 &"jump": SubResource("Animation_3pycs"),
 &"knockback": SubResource("Animation_ubhm2"),
-&"move_eyes": SubResource("Animation_5jssd"),
 &"parry": SubResource("Animation_n2o76"),
-&"sleep": SubResource("Animation_nq1nd"),
-&"walk": SubResource("Animation_14dpy")
+&"walk": SubResource("Animation_14dpy"),
+&"walk_blink": SubResource("Animation_mitrv")
 }
 
 [sub_resource type="Animation" id="Animation_7jst2"]
@@ -371,6 +422,11 @@ size = Vector2(12, 2)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r0du0"]
 radius = 22.022715
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_attack"]
+size = Vector2(31, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_35srt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8w0r3"]
 size = Vector2(8, 13)
@@ -494,13 +550,14 @@ color_ramp = SubResource("GradientTexture1D_5jssd")
 turbulence_enabled = true
 turbulence_noise_strength = 5.0
 
-[node name="PlayerKay" type="CharacterBody2D" unique_id=789730671 node_paths=PackedStringArray("state_machine", "jump_buffer", "player_sprites", "player_animator", "flash_animator", "player_smoke_particles", "player_jump_particles", "damage_particles_left", "damage_particles_right")]
+[node name="PlayerKay" type="CharacterBody2D" unique_id=789730671 node_paths=PackedStringArray("state_machine", "jump_buffer", "player_sprites", "player_animator", "flash_animator", "player_smoke_particles", "player_jump_particles", "damage_particles_left", "damage_particles_right", "attack_area", "parry_area")]
 collision_layer = 3
 collision_mask = 2
 script = ExtResource("1_e0vk3")
 max_speed = 100.0
 jump_velocity = -245.0
 acceleration = 10.0
+coyote_time = 0.0
 state_machine = NodePath("StateMachine")
 jump_buffer = NodePath("JumpBufferTime")
 player_sprites = NodePath("PlayerSprites")
@@ -510,13 +567,17 @@ player_smoke_particles = NodePath("SmokeParticles")
 player_jump_particles = NodePath("JumpParticles")
 damage_particles_left = NodePath("DamageParticlesLeft")
 damage_particles_right = NodePath("DamageParticlesRight")
+attack_area = NodePath("AttackArea")
+parry_area = NodePath("ParryArea")
 
 [node name="PlayerSprites" type="Sprite2D" parent="." unique_id=301333307]
 z_index = 2
 material = SubResource("ShaderMaterial_qbdww")
+position = Vector2(0, 2)
 texture = ExtResource("3_ubhm2")
-hframes = 8
-vframes = 5
+hframes = 11
+vframes = 10
+frame = 22
 
 [node name="PlayerAnimation" type="AnimationPlayer" parent="." unique_id=527000476]
 libraries/ = SubResource("AnimationLibrary_gyxac")
@@ -556,6 +617,22 @@ debug_color = Color(0.90588236, 0.02745098, 0.2, 0.27450982)
 [node name="InteractCollision" type="CollisionShape2D" parent="InteractZone" unique_id=949527503]
 shape = SubResource("CircleShape2D_r0du0")
 debug_color = Color(0.5975209, 0.5411475, 0.18252495, 0.41960785)
+
+[node name="AttackArea" type="Area2D" parent="." unique_id=150731740]
+collision_layer = 0
+
+[node name="AttackCollision" type="CollisionShape2D" parent="AttackArea" unique_id=102663561]
+position = Vector2(21.5, 4)
+shape = SubResource("RectangleShape2D_attack")
+debug_color = Color(0.9, 0.6, 0.1, 0.3)
+
+[node name="ParryArea" type="Area2D" parent="." unique_id=163082814]
+collision_layer = 0
+
+[node name="ParryCollision" type="CollisionShape2D" parent="ParryArea" unique_id=89749296]
+position = Vector2(13, -6)
+shape = SubResource("RectangleShape2D_35srt")
+debug_color = Color(5.246252e-06, 0.8110048, 0.22666341, 0.3019608)
 
 [node name="InvulerableZone" type="Area2D" parent="." unique_id=1480487209 groups=["player_invulnerable_zone"]]
 visible = false
@@ -644,6 +721,9 @@ initial_state = NodePath("Idle")
 [node name="Idle" type="Node" parent="StateMachine" unique_id=850735463]
 script = ExtResource("5_5jssd")
 
+[node name="EnterDoor" type="Node" parent="StateMachine" unique_id=1516560103]
+script = ExtResource("6_li42n")
+
 [node name="Jump" type="Node" parent="StateMachine" unique_id=1042648279]
 script = ExtResource("6_5jssd")
 
@@ -658,6 +738,21 @@ script = ExtResource("9_tf0bk")
 
 [node name="Knockback" type="Node" parent="StateMachine" unique_id=524111491]
 script = ExtResource("10_ubhm2")
+
+[node name="Attack" type="Node" parent="StateMachine" unique_id=1306458683]
+script = ExtResource("11_attack")
+
+[node name="Parry" type="Node" parent="StateMachine" unique_id=579611584]
+script = ExtResource("12_parry")
+
+[node name="Dead" type="Node" parent="StateMachine" unique_id=1648047230]
+script = ExtResource("13_dead")
+
+[node name="VoidFall" type="Node" parent="StateMachine" unique_id=1915979665]
+script = ExtResource("14_void")
+
+[node name="Hazard" type="Node" parent="StateMachine" unique_id=1629890100]
+script = ExtResource("15_hazard")
 
 [connection signal="body_entered" from="DetectCeiling" to="." method="_on_detect_ceiling_body_entered"]
 [connection signal="body_exited" from="DetectCeiling" to="." method="_on_detect_ceiling_body_exited"]

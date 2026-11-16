@@ -94,6 +94,7 @@ hframes = 4
 vframes = 2
 
 [node name="Collision" type="CollisionShape2D" parent="." unique_id=526020332]
+visible = false
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_vm6b0")
 
@@ -112,6 +113,7 @@ shape = SubResource("CircleShape2D_vm6b0")
 debug_color = Color(0.8, 0.39200002, 0.3987999, 0.050980393)
 
 [node name="HitBox" type="Area2D" parent="." unique_id=935553095]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=955516541]
 position = Vector2(0, -0.5)

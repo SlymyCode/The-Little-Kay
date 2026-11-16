@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b4b0c3rgd2nxj" path="res://entities/enemies/Plant/plant.tscn" id="6_rs4xw"]
 [ext_resource type="PackedScene" uid="uid://bxgvskyvq2l36" path="res://entities/enemies/Candle/candle.tscn" id="7_lk57d"]
 [ext_resource type="Texture2D" uid="uid://ckvqqcmyy1dab" path="res://tiles/doors/door_entrance.png" id="8_3sk1a"]
+[ext_resource type="PackedScene" uid="uid://dk1xcvj2ux7ao" path="res://entities/enemies/Bat/bat.tscn" id="9_3sk1a"]
 [ext_resource type="Texture2D" uid="uid://2h75wklhrg5h" path="res://tiles/doors/door_exit.png" id="9_08mmt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kek77"]
@@ -183,6 +184,12 @@ pattern_0 = SubResource("TileMapPattern_5vw27")
 [sub_resource type="CircleShape2D" id="CircleShape2D_8w0r3"]
 radius = 26.019224
 
+[sub_resource type="Curve2D" id="Curve2D_08mmt"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 150, 111, 0, 0, 0, 0, 119, 54.934433, 0, 0, 0, 0, 75, 35, 0, 0, 0, 0, 37, 51.196724, 0, 0, 0, 0, 17, 89)
+}
+point_count = 5
+
 [node name="Level1" type="Node2D" unique_id=961938127]
 
 [node name="DrawBehindParticles" type="CanvasLayer" parent="." unique_id=280647329]
@@ -309,3 +316,15 @@ metadata/_edit_group_ = true
 
 [node name="Collision" type="CollisionShape2D" parent="Exit" unique_id=1064821112]
 shape = SubResource("CircleShape2D_8w0r3")
+
+[node name="EnterPoint" type="Marker2D" parent="Exit" unique_id=468372062]
+position = Vector2(-14, 0)
+
+[node name="Bat" parent="." unique_id=1161696090 node_paths=PackedStringArray("flight_path") instance=ExtResource("9_3sk1a")]
+position = Vector2(148, 107)
+flight_path = NodePath("../Path2D")
+
+[node name="Path2D" type="Path2D" parent="." unique_id=1166642715]
+position = Vector2(0, 21.907894)
+scale = Vector2(1, 0.80263156)
+curve = SubResource("Curve2D_08mmt")
