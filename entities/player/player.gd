@@ -19,6 +19,12 @@ class_name Player
 @export var hit_shake_strength: float = 3.0
 @export var hit_shake_duration: float = 0.25
 
+@export_group("Potions")
+@export var speed_multiplier: float = 1.0
+@export var speed_boost_timer: float = 0.0
+@export var jump_multiplier: float = 1.0
+@export var jump_boost_timer: float = 0.0
+
 @export_group("Components")
 @export var state_machine: StateMachine
 @export var jump_buffer: Timer
@@ -80,7 +86,9 @@ func _physics_process(delta: float) -> void:
 	direction = roundf(Input.get_axis("move_left", "move_right"))
 	lerp_weight = delta * (acceleration if direction else friction)
 	invincibility_timer = maxf(invincibility_timer - delta, 0.0)
-
+	_update_speed_boost(delta)
+	_update_jump_boost(delta)
+	
 	if direction and can_turn:
 		player_sprites.flip_h = direction < 0
 
@@ -113,7 +121,8 @@ func _physics_process(delta: float) -> void:
 #Movement Section
 
 func move() -> void:
-	velocity.x = lerp(velocity.x, direction * max_speed, lerp_weight)
+	velocity.x = lerp(velocity.x, direction * max_speed * speed_multiplier, lerp_weight)
+
 
 func disable_movement (time: float) -> void:
 	can_move = false
@@ -121,7 +130,7 @@ func disable_movement (time: float) -> void:
 	can_move = true
 
 func jump() -> void:
-	velocity.y = jump_velocity
+	velocity.y = jump_velocity * jump_multiplier 
 	player_sprites.scale = Vector2(0.7, 1.3)
 	jumps_performed += 1
 	AudioManager.play_fx("jump_sound", -12, 1, true)
@@ -297,3 +306,32 @@ func _on_detect_ceiling_body_entered(body: Node2D) -> void:
 func _on_detect_ceiling_body_exited(body: Node2D) -> void:
 	if body is TileMapLayer:
 		colliding_with_ceiling = false
+
+# Speed Boost Section
+
+func apply_speed_boost(multiplier: float, duration: float) -> void:
+	speed_multiplier = multiplier
+	speed_boost_timer = duration
+
+func _update_speed_boost(delta: float) -> void:
+	if speed_boost_timer > 0.0:
+		speed_boost_timer -= delta
+		if speed_boost_timer <= 0.0:
+			speed_multiplier = 1.0
+
+# Jump Boost Section
+
+func apply_jump_boost(multiplier: float, duration: float) -> void:
+	jump_multiplier = multiplier
+	jump_boost_timer = duration
+
+func _update_jump_boost(delta: float) -> void:
+	if jump_boost_timer > 0.0:
+		jump_boost_timer -= delta
+		if jump_boost_timer <= 0.0:
+			jump_multiplier = 1.0
+
+# Inmune Potion Section
+
+func apply_invincibility(duration: float) -> void:
+	invincibility_timer = duration
