@@ -332,6 +332,14 @@ func _update_jump_boost(delta: float) -> void:
 			jump_multiplier = 1.0
 
 # Inmune Potion Section
-
+# ARREGLAR
 func apply_invincibility(duration: float) -> void:
 	invincibility_timer = duration
+
+# Corazones Potion Section
+
+func apply_heart() -> void:
+	max_hp += 1
+	current_hp = max_hp
+	Events.max_health_updated.emit(max_hp)
+	Events.health_updated.emit(current_hp)

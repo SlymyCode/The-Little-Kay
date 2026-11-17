@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bb604anvp6auh"]
 
 [ext_resource type="Shader" uid="uid://cniqo4dxtutaw" path="res://shaders&effects/shine.gdshader" id="1_7x6r5"]
+[ext_resource type="Script" uid="uid://b5pw5dmgkftd6" path="res://entities/interactables/potions/coras_potion/coras_potion.gd" id="2_ik0l3"]
 [ext_resource type="Texture2D" uid="uid://xw3wqxgn7xv1" path="res://entities/interactables/potions/coras_potion/sprites/curar.png" id="2_uwjnj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7klj2"]
@@ -20,6 +21,7 @@ radius = 13.0
 
 [node name="CorasPotion" type="Area2D" unique_id=5898993]
 material = SubResource("ShaderMaterial_7klj2")
+script = ExtResource("2_ik0l3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1188233838]
 shape = SubResource("CircleShape2D_8w0r3")

@@ -1,7 +1,6 @@
 [gd_scene format=4 uid="uid://tgq2f32huuqg"]
 
 [ext_resource type="Texture2D" uid="uid://cpx545eia8wpd" path="res://tiles/Bricks/mockup equipo llave.png" id="1_0urlm"]
-[ext_resource type="PackedScene" uid="uid://c3hldyy1cc65l" path="res://entities/interactables/potions/invulnerabilidad_potion/invulnerabilidad_potion - copia.tscn" id="4_62b6n"]
 [ext_resource type="PackedScene" uid="uid://bq4xpv0a0kjxt" path="res://entities/interactables/checkpoints/checkpoint.tscn" id="4_f4pg2"]
 [ext_resource type="PackedScene" uid="uid://4jgy1a0c87dj" path="res://entities/enemies/Bush/bush.tscn" id="5_62b6n"]
 [ext_resource type="Script" uid="uid://b3sx0nu53ucsr" path="res://Levels/exit_level.gd" id="6_rfktq"]
@@ -9,7 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://bxgvskyvq2l36" path="res://entities/enemies/Candle/candle.tscn" id="7_lk57d"]
 [ext_resource type="Texture2D" uid="uid://ckvqqcmyy1dab" path="res://tiles/doors/door_entrance.png" id="8_3sk1a"]
 [ext_resource type="Texture2D" uid="uid://2h75wklhrg5h" path="res://tiles/doors/door_exit.png" id="9_08mmt"]
+[ext_resource type="PackedScene" uid="uid://3b4gntnjpe1y" path="res://entities/interactables/potions/jump_potion/jump_potion.tscn" id="9_f4pg2"]
 [ext_resource type="Shader" uid="uid://cniqo4dxtutaw" path="res://shaders&effects/shine.gdshader" id="10_62b6n"]
+[ext_resource type="PackedScene" uid="uid://bb604anvp6auh" path="res://entities/interactables/potions/coras_potion/coras_potion.tscn" id="11_62b6n"]
+[ext_resource type="PackedScene" uid="uid://c88rnqr6867ug" path="res://entities/interactables/potions/speed_potion/speed_potion.tscn" id="12_rs4xw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kek77"]
 texture = ExtResource("1_0urlm")
@@ -185,7 +187,31 @@ pattern_0 = SubResource("TileMapPattern_5vw27")
 [sub_resource type="CircleShape2D" id="CircleShape2D_8w0r3"]
 radius = 26.019224
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_f4pg2"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rs4xw"]
+resource_local_to_scene = true
+shader = ExtResource("10_62b6n")
+shader_parameter/shine_color = Color(1, 1, 1, 0.2784314)
+shader_parameter/use_texture_size = true
+shader_parameter/pixel_resolution = Vector2(16, 16)
+shader_parameter/line_width = 0.06
+shader_parameter/angle = 0.7853982
+shader_parameter/speed = 1.0
+shader_parameter/wait_cycles = 1.0
+shader_parameter/steps_per_second = 12.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lk57d"]
+resource_local_to_scene = true
+shader = ExtResource("10_62b6n")
+shader_parameter/shine_color = Color(1, 1, 1, 0.2784314)
+shader_parameter/use_texture_size = true
+shader_parameter/pixel_resolution = Vector2(16, 16)
+shader_parameter/line_width = 0.06
+shader_parameter/angle = 0.7853982
+shader_parameter/speed = 1.0
+shader_parameter/wait_cycles = 1.0
+shader_parameter/steps_per_second = 12.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2hkqn"]
 resource_local_to_scene = true
 shader = ExtResource("10_62b6n")
 shader_parameter/shine_color = Color(1, 1, 1, 0.2784314)
@@ -327,6 +353,14 @@ shape = SubResource("CircleShape2D_8w0r3")
 [node name="EnterPoint" type="Marker2D" parent="Exit" unique_id=468372062]
 position = Vector2(-14, 0)
 
-[node name="InmunePotion" parent="." unique_id=5898993 instance=ExtResource("4_62b6n")]
-material = SubResource("ShaderMaterial_f4pg2")
-position = Vector2(178, 112)
+[node name="JumpPotion" parent="." unique_id=427932296 instance=ExtResource("9_f4pg2")]
+material = SubResource("ShaderMaterial_rs4xw")
+position = Vector2(82, 147)
+
+[node name="CorasPotion" parent="." unique_id=5898993 instance=ExtResource("11_62b6n")]
+material = SubResource("ShaderMaterial_lk57d")
+position = Vector2(163, 108)
+
+[node name="SpeedPotion" parent="." unique_id=1365520524 instance=ExtResource("12_rs4xw")]
+material = SubResource("ShaderMaterial_2hkqn")
+position = Vector2(118, 119)
