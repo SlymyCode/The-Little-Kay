@@ -1,8 +1,8 @@
-[gd_scene format=3 uid="uid://ksbwinvabbjn"]
+[gd_scene format=3 uid="uid://3b4gntnjpe1y"]
 
 [ext_resource type="Shader" uid="uid://cniqo4dxtutaw" path="res://shaders&effects/shine.gdshader" id="1_7x6r5"]
+[ext_resource type="Script" uid="uid://d36pw4bww7you" path="res://entities/interactables/potions/jump_potion/jump_potion.gd" id="2_5mtbm"]
 [ext_resource type="Texture2D" uid="uid://cvdia76qyi5ke" path="res://entities/interactables/potions/jump_potion/sprites/jumppotion.png" id="2_ojexw"]
-[ext_resource type="Script" uid="uid://w7ywxg4p25u4" path="res://entities/interactables/potions/jump_potion/jump_potion.gd" id="3_ojexw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7klj2"]
 resource_local_to_scene = true
@@ -21,7 +21,7 @@ radius = 13.0
 
 [node name="JumpPotion" type="Area2D" unique_id=427932296]
 material = SubResource("ShaderMaterial_7klj2")
-script = ExtResource("3_ojexw")
+script = ExtResource("2_5mtbm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1188233838]
 shape = SubResource("CircleShape2D_8w0r3")
