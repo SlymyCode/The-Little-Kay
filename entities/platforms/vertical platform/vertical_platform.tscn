@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bbmor08jsbwpv"]
+
+[ext_resource type="Script" uid="uid://cf5ak6d5k3jjg" path="res://entities/platforms/linear_platform.gd" id="1_platform"]
+[ext_resource type="Texture2D" uid="uid://de0p531033wyw" path="res://entities/platforms/vertical platform/sprites/Sprite-0001.png" id="2_sprite"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_platform"]
+size = Vector2(48, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_detector"]
+size = Vector2(44, 4)
+
+[node name="VerticalPlatform" type="AnimatableBody2D" unique_id=2050906714]
+collision_layer = 10
+collision_mask = 0
+script = ExtResource("1_platform")
+direction = Vector2(0, 1)
+distance = 64.0
+smoothing = 0.5
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=451972349]
+texture = ExtResource("2_sprite")
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=1657455357]
+shape = SubResource("RectangleShape2D_platform")
+
+[node name="PlayerDetector" type="Area2D" parent="." unique_id=1140263845]
+collision_layer = 0
+
+[node name="DetectorShape" type="CollisionShape2D" parent="PlayerDetector" unique_id=2127355573]
+position = Vector2(0, -9)
+shape = SubResource("RectangleShape2D_detector")
+debug_color = Color(0.3, 0.8, 1, 0.25)

@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://c0vkk7nqambol"]
+
+[ext_resource type="Script" uid="uid://xpslsjf021rn" path="res://entities/platforms/circular_platform.gd" id="1_platform"]
+[ext_resource type="Texture2D" uid="uid://dq5wm4qr1v8pm" path="res://entities/platforms/circular platform/sprites/Sprite-0001.png" id="2_sprite"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_platform"]
+size = Vector2(48, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_detector"]
+size = Vector2(44, 4)
+
+[node name="CircularPlatform" type="AnimatableBody2D" unique_id=277109656]
+collision_layer = 10
+collision_mask = 0
+script = ExtResource("1_platform")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1538988405]
+texture = ExtResource("2_sprite")
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=1239101304]
+shape = SubResource("RectangleShape2D_platform")
+
+[node name="PlayerDetector" type="Area2D" parent="." unique_id=1161046558]
+collision_layer = 0
+
+[node name="DetectorShape" type="CollisionShape2D" parent="PlayerDetector" unique_id=2001238567]
+position = Vector2(0, -9)
+shape = SubResource("RectangleShape2D_detector")
+debug_color = Color(0.3, 0.8, 1, 0.25)

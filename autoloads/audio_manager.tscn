@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://cv0qte17wro2c"]
+
+[ext_resource type="Script" uid="uid://blaq0kvb4wqdx" path="res://autoloads/audio_manager.gd" id="1_alnp1"]
+[ext_resource type="AudioStream" uid="uid://btvcus6k4lchv" path="res://sound_effects/fall.wav" id="2_plitr"]
+[ext_resource type="AudioStream" uid="uid://cyo85uln5gg48" path="res://sound_effects/hit_body_kay.mp3" id="3_vovef"]
+[ext_resource type="AudioStream" uid="uid://diyf4lorwoi14" path="res://sound_effects/hit_top_kay.mp3" id="4_a4ose"]
+[ext_resource type="AudioStream" uid="uid://cxo78iy4sip1h" path="res://sound_effects/regen.mp3" id="5_plitr"]
+[ext_resource type="AudioStream" uid="uid://3yualgxbo3y2" path="res://sound_effects/regen_finished.mp3" id="6_plitr"]
+[ext_resource type="AudioStream" uid="uid://bvp7f0aa4apr4" path="res://sound_effects/jump.mp3" id="7_jwsh5"]
+[ext_resource type="AudioStream" uid="uid://b08p7jq51ccls" path="res://sound_effects/walk_old.wav" id="8_jwsh5"]
+[ext_resource type="AudioStream" uid="uid://chjunxmctufxs" path="res://sound_effects/checkpoint.mp3" id="9_tp26y"]
+[ext_resource type="AudioStream" uid="uid://c0kors7nbi2g1" path="res://music/Kay Brass.wav" id="10_tp26y"]
+[ext_resource type="AudioStream" uid="uid://beorxwang2tqo" path="res://music/Kay Brass Loop.wav" id="11_0hj8x"]
+[ext_resource type="AudioStream" uid="uid://dmhkjwmcvu2l4" path="res://music/Kay Brass Main Loop.wav" id="12_44o5v"]
+
+[node name="AudioManager" type="Node2D" unique_id=1272728578]
+process_mode = 3
+script = ExtResource("1_alnp1")
+sfx_list = Dictionary[String, AudioStream]({
+"checkpoint_sound": ExtResource("9_tp26y"),
+"fall_sound": ExtResource("2_plitr"),
+"hit_body_sound": ExtResource("3_vovef"),
+"hit_top_sound": ExtResource("4_a4ose"),
+"jump_sound": ExtResource("7_jwsh5"),
+"regen_finished_sound": ExtResource("6_plitr"),
+"regen_sound": ExtResource("5_plitr"),
+"walk_sound": ExtResource("8_jwsh5")
+})
+music_list = Dictionary[String, AudioStream]({
+"main_loop": ExtResource("12_44o5v"),
+"main_title": ExtResource("10_tp26y"),
+"main_title_loop": ExtResource("11_0hj8x")
+})
