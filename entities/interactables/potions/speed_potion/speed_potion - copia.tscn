@@ -1,7 +1,8 @@
-[gd_scene format=3 uid="uid://caxe6vmjkbk8x"]
+[gd_scene format=3 uid="uid://c88rnqr6867ug"]
 
 [ext_resource type="Shader" uid="uid://cniqo4dxtutaw" path="res://shaders&effects/shine.gdshader" id="1_7x6r5"]
-[ext_resource type="Script" uid="uid://w7ywxg4p25u4" path="res://entities/interactables/potions/speed_potion/speed_potion.gd" id="2_0hcp6"]
+[ext_resource type="Script" uid="uid://dbppck6da18ic" path="res://entities/interactables/potions/speed_potion/speed_potion.gd" id="2_0hcp6"]
+[ext_resource type="Texture2D" uid="uid://b252s7h0xj5if" path="res://entities/interactables/potions/speed_potion/sprites/speedpotion.png" id="3_0hcp6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7klj2"]
 resource_local_to_scene = true
@@ -18,9 +19,6 @@ shader_parameter/steps_per_second = 12.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_8w0r3"]
 radius = 13.0
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7vcq6"]
-load_path = "res://.godot/imported/Sprite.png-135251a4ba55c0b27e531b46c8e8725a.ctex"
-
 [node name="SpeedPotion" type="Area2D" unique_id=1365520524]
 material = SubResource("ShaderMaterial_7klj2")
 collision_layer = 3
@@ -33,4 +31,4 @@ visibility_layer = 3
 shape = SubResource("CircleShape2D_8w0r3")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1969320326]
-texture = SubResource("CompressedTexture2D_7vcq6")
+texture = ExtResource("3_0hcp6")

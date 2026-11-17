@@ -1,8 +1,8 @@
-[gd_scene format=3 uid="uid://caxe6vmjkbk8x"]
+[gd_scene format=3 uid="uid://ksbwinvabbjn"]
 
-[ext_resource type="Shader" path="res://shaders&effects/shine.gdshader" id="1_7x6r5"]
+[ext_resource type="Shader" uid="uid://cniqo4dxtutaw" path="res://shaders&effects/shine.gdshader" id="1_7x6r5"]
 [ext_resource type="Texture2D" uid="uid://cvdia76qyi5ke" path="res://entities/interactables/potions/jump_potion/sprites/jumppotion.png" id="2_ojexw"]
-[ext_resource type="Script" uid="uid://w7ywxg4p25u4" path="res://entities/interactables/potions/speed_potion/speed_potion.gd" id="3_ojexw"]
+[ext_resource type="Script" uid="uid://w7ywxg4p25u4" path="res://entities/interactables/potions/jump_potion/jump_potion.gd" id="3_ojexw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7klj2"]
 resource_local_to_scene = true

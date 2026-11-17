@@ -1,8 +1,8 @@
-[gd_scene format=3 uid="uid://caxe6vmjkbk8x"]
+[gd_scene format=3 uid="uid://c3hldyy1cc65l"]
 
-[ext_resource type="Shader" path="res://shaders&effects/shine.gdshader" id="1_7x6r5"]
+[ext_resource type="Shader" uid="uid://cniqo4dxtutaw" path="res://shaders&effects/shine.gdshader" id="1_7x6r5"]
+[ext_resource type="Script" uid="uid://w7ywxg4p25u4" path="res://entities/interactables/potions/invulnerabilidad_potion/invulnerabilidad_potion.gd" id="2_mhoal"]
 [ext_resource type="Texture2D" uid="uid://d4kjo0rwk3q73" path="res://entities/interactables/potions/invulnerabilidad_potion/sprites/invenpotion.png" id="2_npy7c"]
-[ext_resource type="Script" uid="uid://w7ywxg4p25u4" path="res://entities/interactables/potions/invulnerabilidad_potion/invulnerabilidad_potion.gd" id="3_npy7c"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7klj2"]
 resource_local_to_scene = true
@@ -21,7 +21,7 @@ radius = 13.0
 
 [node name="InmunePotion" type="Area2D" unique_id=5898993]
 material = SubResource("ShaderMaterial_7klj2")
-script = ExtResource("3_npy7c")
+script = ExtResource("2_mhoal")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1188233838]
 shape = SubResource("CircleShape2D_8w0r3")

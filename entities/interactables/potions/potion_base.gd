@@ -1,7 +1,6 @@
 class_name PotionBase
 extends Area2D
 
-@export var potion_id: StringName = &""
 @export var multiplier: float = 1.5
 @export var duration: float = 5.0
 
