@@ -1,0 +1,9 @@
+CharacterBody2D
+TextureRect
+ColorRect
+Sprite2D
+Marker2D
+CustomButton
+HBoxContainer
+Path2D
+CollisionShape2D

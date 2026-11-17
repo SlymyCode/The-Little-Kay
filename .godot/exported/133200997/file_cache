@@ -1,0 +1,38 @@
+res://autoloads/audio_manager.tscn::46f0d1486820cb69fd3babf43d3580d0::1794830609::res://.godot/exported/133200997/export-74588f7eb356ea7ce0c9799423640d0a-audio_manager.scn
+res://entities/enemies/Bat/bat.tscn::2f665a5fff239838e8778c67f48e6669::1793697568::res://.godot/exported/133200997/export-f326e1bf2ff4ab118839576b8c1daefb-bat.scn
+res://entities/enemies/Bush/Projectile/bush_projectiles.tscn::497531926aa87651a7340a8e0b72d1a0::1794831481::res://.godot/exported/133200997/export-cba8a48e519d3fb8ef0a19ad83686e15-bush_projectiles.scn
+res://entities/enemies/Bush/bush.tscn::5662b416758e02d5ee0f21449780c9c8::1791334046::res://.godot/exported/133200997/export-fbb43f6648df92739783b583843e18ee-bush.scn
+res://entities/enemies/Candle/candle.tscn::fe7d0739e36ae3856ad3cbcb8ed6b327::1794876482::res://.godot/exported/133200997/export-f423ef8ebe0999528dd82c12ab1f3013-candle.scn
+res://entities/enemies/Plant/Projectile/plant_projectiles.tscn::f927f874d3b4c54056f94569d727ccc7::1791334760::res://.godot/exported/133200997/export-141f0d38c025522c384250f7e08b2af4-plant_projectiles.scn
+res://entities/enemies/Plant/plant.tscn::f93ac5524f9474cfc044d6bdef12cb0c::1793468410::res://.godot/exported/133200997/export-73f8d7e4caca6a13a5445bcfc9ab4b89-plant.scn
+res://entities/enemies/Rat/rat.tscn::60ef145bb51d6c66d0156f4ea526330d::1793697568::res://.godot/exported/133200997/export-54de7c4dcf1e1794fd1e17c7f2837f07-rat.scn
+res://entities/interactables/checkpoints/checkpoint.tscn::b0c5922df6482255d8e133eada7aaf9c::1793776982::res://.godot/exported/133200997/export-eb9e3e3edc502e54b4a1bb3070b5689f-checkpoint.scn
+res://entities/interactables/fall_zone/fall_zone.tscn::02ef5053ca75bf691268b6cfa59868b1::1793776982::res://.godot/exported/133200997/export-ace16ff67110cfbd4d1819f79b819cfa-fall_zone.scn
+res://entities/player/player_kay.tscn::996d52d554ba1d22b2a1b76a0d66021b::1794833564::res://.godot/exported/133200997/export-2d244127a90b2b826032fde3a3bbeeaa-player_kay.scn
+res://entities/player/player_ui.tscn::11cfc6e796cccec9f51a0f7383d9d469::1794562053::res://.godot/exported/133200997/export-7f80ebc7fad0b2132aca78a9a0e67184-player_ui.scn
+res://levels/level_1.tscn::91ad74e9fa0b51cb436add9548080fe0::1794883695::res://.godot/exported/133200997/export-12535bc1b7f5d974130914d712c29d37-level_1.scn
+res://levels/level_2.tscn::664b93d215699387598051d52d6510ad::1794883399::res://.godot/exported/133200997/export-c54f4559c5b4f25cf8605c0540fcbd9b-level_2.scn
+res://levels/level_3.tscn::4fce0c991f6e834235443a2189091e7f::1794577119::res://.godot/exported/133200997/export-3d738aaadeadb8d954981574c88bf6fc-level_3.scn
+res://menus/botones duplicados/menu_pausa.tscn::e5542cb16914645b37f0645779b85938::1792977530::res://.godot/exported/133200997/export-50922d66898cf9d473077e80469afbec-menu_pausa.scn
+res://menus/credits/credits.tscn::e4c00ab9ef36c24d52b1be80b73c5c29::1794575059::res://.godot/exported/133200997/export-9b93dbed401a1720d461560928543497-credits.scn
+res://menus/main menu/main_menu.tscn::021a1d66ad742e5dd87c93d4b18611eb::1794838502::res://.godot/exported/133200997/export-635116aac303df37610bc40b0dde94d1-main_menu.scn
+res://menus/pause_menu/pause_menu.tscn::305c91fba3307265cc7f3c5eb5e9510e::1794575838::res://.godot/exported/133200997/export-871377c7ed74e5a052a117d104d821c8-pause_menu.scn
+res://menus/settings/settings.tscn::7f8d732fbda50cb5ee9a912513915452::1794567226::res://.godot/exported/133200997/export-65afb3edb70b456fdfb7a5abd42f3d8d-settings.scn
+res://menus/styles/general_theme.tres::66393188b1aa296395ccd6cf70e65834::1792978972::res://.godot/exported/133200997/export-11cd160fbec5440720b1bf240445be4b-general_theme.res
+res://menus/styles/style bordes.tres::2e090237a0f16b1fc9bec34dc0067809::1792585150::res://.godot/exported/133200997/export-841ba3b776e74c7772284cfce78bf98d-style bordes.res
+res://menus/styles/style botones pausa.tres::bca84b58296fa66e891bdfe1766a25fb::1792585150::res://.godot/exported/133200997/export-f689d2cf97d3693cd0a56132d92cbc1e-style botones pausa.res
+res://menus/styles/style botones.tres::d355c211830c7d1af79bf41c1dcd5e12::1792585150::res://.godot/exported/133200997/export-cfca7da3d27f831967d1c43150fcec9b-style botones.res
+res://menus/styles/style hover botones pausa.tres::4a5ab05f537f46cbcb290c1767efdaa2::1792585150::res://.godot/exported/133200997/export-adc7e88d3a2d75888e7af93a778428a1-style hover botones pausa.res
+res://menus/new_button_group.tres::fab5974cf8e267d188ae6706fc8bff76::1792700250::res://.godot/exported/133200997/export-1763c6112b2f1ac3934792f55acaaf26-new_button_group.res
+res://shaders&effects/hit_flash.tres::c8e941b2204dff9da611d409f2f5b9f8::1794871589::res://.godot/exported/133200997/export-d1fa8cf5978f7da211e64cb9224d6311-hit_flash.res
+res://default_bus_layout.tres::ba4229aa8646ddb10dca0ea0b4695bc4::1793186100::res://.godot/exported/133200997/export-19246414aa9fb561ced4b8dce477acec-default_bus_layout.res
+res://main.tscn::343b6ec11210a9cb42e6cfbc3333e36a::1794410155::res://.godot/exported/133200997/export-3070c538c03ee49b7677ff960a3f5195-main.scn
+res://entities/interactables/potions/speed_potion/speed_potion.tscn::0ee9faa07bf57a55846f3221091faf3c::1794882116::res://.godot/exported/133200997/export-678fd23371f2d2ae048b3d68696e4fef-speed_potion.scn
+res://entities/interactables/potions/coras_potion/coras_potion.tscn::2f7debe6b02007bdd079284c5a9e9a92::1794882645::res://.godot/exported/133200997/export-feb3b4cb581867145118789ed36921d4-coras_potion.scn
+res://entities/interactables/potions/invulnerabilidad_potion/invulnerabilidad_potion.tscn::54e75ca6e85a7cfce17e4d43cc39ef88::1794882107::res://.godot/exported/133200997/export-921b06b15114bf8514b851ffb30b2a8a-invulnerabilidad_potion.scn
+res://entities/interactables/potions/jump_potion/jump_potion.tscn::4b4398ce9a0bc9b85ae641151474e376::1794883370::res://.godot/exported/133200997/export-35d3747e043e61439259c2c03b2bbbde-jump_potion.scn
+res://entities/obstacles/retractable spikes/retractable_spikes.tscn::2fa8ff6fd1ba8e42c0a09fcb8b6dd9ee::1794870371::res://.godot/exported/133200997/export-2fce0c244063ad6fc4e682b4d66b7eb0-retractable_spikes.scn
+res://entities/obstacles/static spikes/static_spikes.tscn::fb582d086d7b3a68106c5c51326022b0::1794870371::res://.godot/exported/133200997/export-09e4220695b67046e53f52be153bc069-static_spikes.scn
+res://entities/platforms/circular platform/circular_platform.tscn::74129bb42d5b754418e83a02cc3fe2e3::1794881281::res://.godot/exported/133200997/export-88c87281411abc77a8d800dabb52beb7-circular_platform.scn
+res://entities/platforms/horizontal platform/horizontal_platform.tscn::61b9c857d098019623e6173872659c35::1794881294::res://.godot/exported/133200997/export-cc6b6a3961ae156bfc7f24ac4f4b9421-horizontal_platform.scn
+res://entities/platforms/vertical platform/vertical_platform.tscn::62d4c6a427ed963f9b4a860af58a7b33::1794871005::res://.godot/exported/133200997/export-14c7e3f35c3800b8a5af32a695f34212-vertical_platform.scn

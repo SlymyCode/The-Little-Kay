@@ -1,0 +1,31 @@
+res://levels/level_1.tscn
+res://shaders&effects/hit_flash.tres
+res://shaders&effects/shine.gdshader
+res://shaders&effects/swaying.gdshader
+res://entities/player/player.gd
+res://entities/interactables/potions/Potion.gd
+res://entities/enemies/Candle/candle.gd
+res://entities/obstacles/static spikes/static_spikes.gd
+res://entities/obstacles/spike_hazard.gd
+res://entities/obstacles/retractable spikes/retractable_spikes.gd
+res://entities/platforms/linear_platform.gd
+res://entities/enemies/Candle/candle.tscn
+res://entities/platforms/circular platform/circular_platform.tscn
+res://entities/platforms/moving_platform.gd
+res://entities/player/knockback.gd
+res://entities/platforms/circular_platform.gd
+res://entities/platforms/horizontal platform/horizontal_platform.tscn
+res://menus/main menu/custom_buttons.gd
+res://entities/interactables/potions/speed_potion/speed_potion.tscn
+res://entities/interactables/potions/jump_potion/jump_potion.tscn
+res://entities/interactables/potions/coras_potion/coras_potion.tscn
+res://entities/interactables/potions/invulnerabilidad_potion/invulnerabilidad_potion.tscn
+res://entities/interactables/potions/coras_potion/coras_potion.gd
+res://entities/interactables/potions/invulnerabilidad_potion/invulnerabilidad_potion.gd
+res://levels/level_2.tscn
+res://entities/enemies/Plant/Projectile/plant_projectiles.gd
+res://entities/platforms/vertical platform/vertical_platform.tscn
+res://entities/player/player_ui.tscn
+res://entities/player/player_ui.gd
+res://entities/player/dead.gd
+res://entities/player/void_fall.gd
