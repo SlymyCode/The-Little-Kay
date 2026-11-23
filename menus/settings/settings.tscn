@@ -2,51 +2,29 @@
 
 [ext_resource type="Script" uid="uid://qp1peevdd8hx" path="res://menus/settings/settings.gd" id="1_50vup"]
 [ext_resource type="FontFile" uid="uid://c2lcmmri3l7ib" path="res://menus/styles/homespun/homespun.ttf" id="1_jykqg"]
-[ext_resource type="Texture2D" uid="uid://b6ee22r4nucvm" path="res://menus/images/fullscreen.png" id="4_50vup"]
-[ext_resource type="Texture2D" uid="uid://syrea67cjs4x" path="res://menus/images/resolution_change.png" id="5_6plv5"]
+[ext_resource type="Texture2D" uid="uid://sn78epswd2xh" path="res://menus/images/bg.png" id="2_p1xil"]
+[ext_resource type="Texture2D" uid="uid://dkj27tvugpmt4" path="res://menus/images/pergamino.png" id="3_ffcyu"]
+[ext_resource type="Texture2D" uid="uid://ccvgr8v0adlqa" path="res://menus/images/grabber.png" id="5_ffcyu"]
 [ext_resource type="Texture2D" uid="uid://br1ebrbnij8xc" path="res://menus/images/button_on.png" id="5_qt7f2"]
 [ext_resource type="Texture2D" uid="uid://dj4lmc6cq224h" path="res://menus/images/arrow_down.png" id="6_5w2mp"]
+[ext_resource type="Texture2D" uid="uid://ncwjtifapw0c" path="res://menus/images/grabberArea.png" id="6_byb6x"]
+[ext_resource type="StyleBox" uid="uid://crcf15fqghcg" path="res://menus/styles/Slider.tres" id="6_ehvol"]
 [ext_resource type="Texture2D" uid="uid://c1kjcyejuxnjn" path="res://menus/images/button_off.png" id="6_nuhl7"]
+[ext_resource type="StyleBox" uid="uid://bty0d60fcmyqi" path="res://menus/styles/sliderGraberArea.tres" id="8_rb0lh"]
 [ext_resource type="Texture2D" uid="uid://db1wox64nvt1u" path="res://menus/images/Buttons/btnVolver.png" id="9_e2fab"]
 [ext_resource type="Script" uid="uid://diwddgkexcd3u" path="res://menus/botones duplicados/back.gd" id="10_e2fab"]
-[ext_resource type="Texture2D" uid="uid://d01aexc6gbgep" path="res://menus/images/Buttons/btnGuardar.png" id="11_ffcyu"]
+[ext_resource type="Texture2D" uid="uid://crscmmk2pilju" path="res://menus/images/Buttons/cargar_settings.png" id="12_byb6x"]
 [ext_resource type="Script" uid="uid://bnvp3ytxcl60d" path="res://menus/settings/guardar config.gd" id="13_mqjvq"]
-[ext_resource type="Texture2D" uid="uid://713vkcr21x3p" path="res://menus/images/Buttons/btnCargar.png" id="14_ehvol"]
+[ext_resource type="Texture2D" uid="uid://n3qr527mjhhb" path="res://menus/images/Buttons/guardar_settings.png" id="14_mqjvq"]
 [ext_resource type="Script" uid="uid://rd3bwgbgrnv" path="res://menus/settings/cargar config.gd" id="16_2b3et"]
 
-[sub_resource type="Gradient" id="Gradient_jykqg"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0.7411765, 0.44705883, 0.2509804, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_laprl"]
-gradient = SubResource("Gradient_jykqg")
-width = 12
-height = 12
-
-[sub_resource type="Gradient" id="Gradient_50vup"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_6plv5"]
-gradient = SubResource("Gradient_50vup")
-width = 12
-height = 12
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7fw32"]
-content_margin_top = 12.0
-content_margin_right = 100.0
-bg_color = Color(0.31764707, 0.34117648, 0.35686275, 1)
-anti_aliasing = false
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eedwr"]
-bg_color = Color(0.85882354, 0.79607844, 0.6431373, 1)
-anti_aliasing = false
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kvc6m"]
-bg_color = Color(0.85882354, 0.79607844, 0.6431373, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_8w0r3"]
-font = ExtResource("1_jykqg")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2b3et"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+texture = ExtResource("6_byb6x")
+texture_margin_left = 8.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nuhl7"]
 texture = ExtResource("5_qt7f2")
@@ -1877,71 +1855,89 @@ PopupMenu/styles/separator = SubResource("StyleBoxLine_ehvol")
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_50vup")
-sfx_slider = NodePath("VBoxContainer2/Efectos/SFXVolumeSlider")
-music_slider = NodePath("VBoxContainer2/Musica/MusicVolumeSlider")
-fullscreen_button = NodePath("VBoxContainer2/HBoxContainer/CheckButton")
-resolution_option = NodePath("VBoxContainer2/HBoxContainer2/CheckButton2")
+sfx_slider = NodePath("Ajustes (en el pergamino)/Efectos/SFXVolumeSlider")
+music_slider = NodePath("Ajustes (en el pergamino)/Musica/MusicVolumeSlider")
+fullscreen_button = NodePath("Ajustes (en el pergamino)/HBoxContainer/CheckButton")
+resolution_option = NodePath("Ajustes (en el pergamino)/HBoxContainer2/CheckButton2")
 
-[node name="Color" type="ColorRect" parent="." unique_id=1766198915]
+[node name="BG" type="TextureRect" parent="." unique_id=2089341768]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_p1xil")
+
+[node name="Pergamino" type="TextureRect" parent="." unique_id=9050444]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 22.0
+offset_right = 245.0
+offset_bottom = 149.0
+texture = ExtResource("3_ffcyu")
+
+[node name="Ajustes Label" type="VBoxContainer" parent="." unique_id=225525736]
 layout_mode = 0
 offset_right = 320.0
-offset_bottom = 183.0
-color = Color(0.047058824, 0.0627451, 0.07058824, 1)
+offset_bottom = 23.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=225525736]
-layout_mode = 0
-offset_top = 15.0
-offset_right = 320.0
-offset_bottom = 38.0
-
-[node name="Ajustes" type="Label" parent="VBoxContainer" unique_id=2001203965]
+[node name="Ajustes" type="Label" parent="Ajustes Label" unique_id=2001203965]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_jykqg")
+theme_override_font_sizes/font_size = 16
 text = "AJUSTES"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="." unique_id=1861854094]
+[node name="Ajustes (en el pergamino)" type="VBoxContainer" parent="." unique_id=1861854094]
 layout_mode = 0
-offset_left = 45.0
+offset_left = 81.0
 offset_top = 40.0
-offset_right = 280.00015
-offset_bottom = 130.99994
+offset_right = 232.0
+offset_bottom = 137.0
 
-[node name="Efectos" type="HBoxContainer" parent="VBoxContainer2" unique_id=1036834704]
+[node name="Efectos" type="HBoxContainer" parent="Ajustes (en el pergamino)" unique_id=1036834704]
 layout_mode = 2
 alignment = 1
 
-[node name="SonidoSFX" type="Label" parent="VBoxContainer2/Efectos" unique_id=66222053]
+[node name="SonidoSFX" type="Label" parent="Ajustes (en el pergamino)/Efectos" unique_id=66222053]
 layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("1_jykqg")
-text = "Efectos de Sonido"
+theme_override_font_sizes/font_size = 12
+text = "Efectos"
+clip_text = true
 
-[node name="SFXVolumeSlider" type="HSlider" parent="VBoxContainer2/Efectos" unique_id=1730372254]
+[node name="SFXVolumeSlider" type="HSlider" parent="Ajustes (en el pergamino)/Efectos" unique_id=1730372254]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 focus_neighbor_left = NodePath(".")
-focus_neighbor_top = NodePath("../../HBoxContainer3/ButtonCargar")
+focus_neighbor_top = NodePath("../../Botones guardado_cargado/ButtonCargar")
 focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath("../../Musica/MusicVolumeSlider")
 focus_next = NodePath("../../Musica/MusicVolumeSlider")
-theme_override_icons/grabber = SubResource("GradientTexture2D_laprl")
-theme_override_icons/grabber_highlight = SubResource("GradientTexture2D_6plv5")
-theme_override_styles/slider = SubResource("StyleBoxFlat_7fw32")
-theme_override_styles/grabber_area = SubResource("StyleBoxFlat_eedwr")
-theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_kvc6m")
+theme_override_icons/grabber = ExtResource("5_ffcyu")
+theme_override_icons/grabber_highlight = ExtResource("5_ffcyu")
+theme_override_icons/grabber_disabled = ExtResource("5_ffcyu")
+theme_override_icons/tick = ExtResource("5_ffcyu")
+theme_override_styles/slider = ExtResource("6_ehvol")
+theme_override_styles/grabber_area = SubResource("StyleBoxTexture_2b3et")
+theme_override_styles/grabber_area_highlight = ExtResource("8_rb0lh")
 value = 100.0
 
-[node name="Musica" type="HBoxContainer" parent="VBoxContainer2" unique_id=1085237025]
+[node name="Musica" type="HBoxContainer" parent="Ajustes (en el pergamino)" unique_id=1085237025]
 layout_mode = 2
 
-[node name="SonidoMusica" type="Label" parent="VBoxContainer2/Musica" unique_id=2093187968]
+[node name="SonidoMusica" type="Label" parent="Ajustes (en el pergamino)/Musica" unique_id=2093187968]
 layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("1_jykqg")
-text = "Musica"
+theme_override_font_sizes/font_size = 12
+text = "Música"
+clip_text = true
 
-[node name="MusicVolumeSlider" type="HSlider" parent="VBoxContainer2/Musica" unique_id=738602296]
+[node name="MusicVolumeSlider" type="HSlider" parent="Ajustes (en el pergamino)/Musica" unique_id=738602296]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -1951,30 +1947,30 @@ focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath("../../HBoxContainer/CheckButton")
 focus_next = NodePath("../../HBoxContainer/CheckButton")
 focus_previous = NodePath("../../Efectos/SFXVolumeSlider")
-theme_override_icons/grabber = SubResource("GradientTexture2D_laprl")
-theme_override_icons/grabber_highlight = SubResource("GradientTexture2D_6plv5")
-theme_override_styles/slider = SubResource("StyleBoxFlat_7fw32")
-theme_override_styles/grabber_area = SubResource("StyleBoxFlat_eedwr")
-theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_kvc6m")
+theme_override_icons/grabber = ExtResource("5_ffcyu")
+theme_override_icons/grabber_highlight = ExtResource("5_ffcyu")
+theme_override_icons/grabber_disabled = ExtResource("5_ffcyu")
+theme_override_icons/tick = ExtResource("5_ffcyu")
+theme_override_styles/slider = ExtResource("6_ehvol")
+theme_override_styles/grabber_area = ExtResource("8_rb0lh")
+theme_override_styles/grabber_area_highlight = ExtResource("8_rb0lh")
 value = 100.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2" unique_id=1076205689]
+[node name="HBoxContainer" type="HBoxContainer" parent="Ajustes (en el pergamino)" unique_id=1076205689]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer2/HBoxContainer" unique_id=1150366232]
+[node name="Pantalla Completa" type="Label" parent="Ajustes (en el pergamino)/HBoxContainer" unique_id=242703618]
 layout_mode = 2
-texture = ExtResource("4_50vup")
-stretch_mode = 3
-
-[node name="Label" type="Label" parent="VBoxContainer2/HBoxContainer" unique_id=1938907823]
-layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("1_jykqg")
+theme_override_font_sizes/font_size = 12
 text = "Pantalla Completa"
-label_settings = SubResource("LabelSettings_8w0r3")
+clip_text = true
 
-[node name="CheckButton" type="CheckButton" parent="VBoxContainer2/HBoxContainer" unique_id=308339443]
+[node name="CheckButton" type="CheckButton" parent="Ajustes (en el pergamino)/HBoxContainer" unique_id=308339443]
 custom_maximum_size = Vector2(32, 15.79)
 layout_mode = 2
-size_flags_horizontal = 0
 size_flags_vertical = 8
 offset_transform_enabled = true
 focus_neighbor_left = NodePath(".")
@@ -1989,68 +1985,81 @@ theme_override_icons/checked = ExtResource("5_qt7f2")
 theme_override_icons/unchecked = ExtResource("6_nuhl7")
 button_pressed = true
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer2" unique_id=2010824042]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Ajustes (en el pergamino)" unique_id=2010824042]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer2/HBoxContainer2" unique_id=675129520]
+[node name="Resolucion" type="Label" parent="Ajustes (en el pergamino)/HBoxContainer2" unique_id=1406981292]
+custom_maximum_size = Vector2(55, -1)
 layout_mode = 2
-texture = ExtResource("5_6plv5")
-stretch_mode = 3
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("1_jykqg")
+theme_override_font_sizes/font_size = 12
+text = "Resolución"
+clip_text = true
 
-[node name="CheckButton2" type="OptionButton" parent="VBoxContainer2/HBoxContainer2" unique_id=610601501]
+[node name="CheckButton2" type="OptionButton" parent="Ajustes (en el pergamino)/HBoxContainer2" unique_id=610601501]
+custom_maximum_size = Vector2(85, 14)
 layout_mode = 2
 size_flags_horizontal = 3
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../../HBoxContainer/CheckButton")
 focus_neighbor_right = NodePath(".")
-focus_neighbor_bottom = NodePath("../../HBoxContainer3/ButtonCargar")
-focus_next = NodePath("../../HBoxContainer3/ButtonCargar")
+focus_neighbor_bottom = NodePath("../../Botones guardado_cargado/ButtonCargar")
+focus_next = NodePath("../../Botones guardado_cargado/ButtonCargar")
 focus_previous = NodePath("../../HBoxContainer/CheckButton")
 theme = SubResource("Theme_6plv5")
+theme_override_constants/h_separation = 2
 theme_override_fonts/font = ExtResource("1_jykqg")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 12
+theme_override_constants/arrow_margin = 4
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer2" unique_id=758460063]
+[node name="Botones guardado_cargado" type="HBoxContainer" parent="Ajustes (en el pergamino)" unique_id=758460063]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 6
+size_flags_vertical = 4
+alignment = 1
 
-[node name="ButtonCargar" type="TextureButton" parent="VBoxContainer2/HBoxContainer3" unique_id=74844640]
+[node name="ButtonCargar" type="TextureButton" parent="Ajustes (en el pergamino)/Botones guardado_cargado" unique_id=74844640]
 process_mode = 3
 layout_mode = 2
 focus_neighbor_left = NodePath("../ButtonGuardar")
 focus_neighbor_top = NodePath("../../HBoxContainer2/CheckButton2")
-focus_neighbor_right = NodePath("../ButtonBack")
+focus_neighbor_right = NodePath("../../../ButtonBack")
 focus_neighbor_bottom = NodePath("../../Efectos/SFXVolumeSlider")
 focus_behavior_recursive = 2
-texture_normal = ExtResource("14_ehvol")
-stretch_mode = 3
+texture_normal = ExtResource("12_byb6x")
+stretch_mode = 0
 script = ExtResource("16_2b3et")
+pressed_color = Color(0.8392157, 0.81960785, 0.84313726, 1)
 metadata/_custom_type_script = "uid://djn8bo37rjhhk"
 
-[node name="ButtonBack" type="TextureButton" parent="VBoxContainer2/HBoxContainer3" unique_id=375364858 node_paths=PackedStringArray("menu")]
+[node name="ButtonGuardar" type="TextureButton" parent="Ajustes (en el pergamino)/Botones guardado_cargado" unique_id=1565064338]
 process_mode = 3
 layout_mode = 2
-focus_neighbor_left = NodePath("../ButtonCargar")
-focus_neighbor_top = NodePath("../../HBoxContainer2/CheckButton2")
-focus_neighbor_right = NodePath("../ButtonGuardar")
-focus_neighbor_bottom = NodePath("../../Efectos/SFXVolumeSlider")
-focus_behavior_recursive = 2
-texture_normal = ExtResource("9_e2fab")
-stretch_mode = 3
-script = ExtResource("10_e2fab")
-menu = NodePath("../../..")
-metadata/_custom_type_script = "uid://djn8bo37rjhhk"
-
-[node name="ButtonGuardar" type="TextureButton" parent="VBoxContainer2/HBoxContainer3" unique_id=1565064338]
-process_mode = 3
-layout_mode = 2
-focus_neighbor_left = NodePath("../ButtonBack")
+focus_neighbor_left = NodePath("../../../ButtonBack")
 focus_neighbor_top = NodePath("../../HBoxContainer2/CheckButton2")
 focus_neighbor_right = NodePath("../ButtonCargar")
 focus_neighbor_bottom = NodePath("../../Efectos/SFXVolumeSlider")
 focus_behavior_recursive = 2
-texture_normal = ExtResource("11_ffcyu")
-stretch_mode = 3
+texture_normal = ExtResource("14_mqjvq")
+stretch_mode = 0
 script = ExtResource("13_mqjvq")
+metadata/_custom_type_script = "uid://djn8bo37rjhhk"
+
+[node name="ButtonBack" type="TextureButton" parent="." unique_id=375364858 node_paths=PackedStringArray("menu")]
+process_mode = 3
+layout_mode = 0
+offset_left = 131.0
+offset_top = 151.0
+offset_right = 178.0
+offset_bottom = 166.0
+focus_neighbor_left = NodePath("../Ajustes (en el pergamino)/Botones guardado_cargado/ButtonCargar")
+focus_neighbor_top = NodePath("../Ajustes (en el pergamino)/HBoxContainer2/CheckButton2")
+focus_neighbor_right = NodePath("../Ajustes (en el pergamino)/Botones guardado_cargado/ButtonGuardar")
+focus_neighbor_bottom = NodePath("../Ajustes (en el pergamino)/Efectos/SFXVolumeSlider")
+focus_behavior_recursive = 2
+texture_normal = ExtResource("9_e2fab")
+stretch_mode = 3
+script = ExtResource("10_e2fab")
+menu = NodePath("..")
 metadata/_custom_type_script = "uid://djn8bo37rjhhk"
