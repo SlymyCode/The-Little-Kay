@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cg8qjac2kylb4"
+path="res://.godot/imported/pause menu.mp3-a03cf34ce22641cfd912c7b25b88b959.mp3str"
+
+[deps]
+
+source_file="res://sound_effects/pause menu.mp3"
+dest_files=["res://.godot/imported/pause menu.mp3-a03cf34ce22641cfd912c7b25b88b959.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

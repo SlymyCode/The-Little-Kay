@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://b3sx0nu53ucsr" path="res://levels/exit_level.gd" id="6_fbld2"]
 [ext_resource type="Texture2D" uid="uid://ckvqqcmyy1dab" path="res://tiles/doors/door_entrance.png" id="7_dfjjl"]
 [ext_resource type="Texture2D" uid="uid://2h75wklhrg5h" path="res://tiles/doors/door_exit.png" id="8_at1ld"]
+[ext_resource type="Script" path="res://levels/camera_limits.gd" id="camlim_1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kek77"]
 texture = ExtResource("1_bcgyv")
@@ -325,3 +326,8 @@ shape = SubResource("CircleShape2D_dfjjl")
 
 [node name="EnterPoint" type="Marker2D" parent="Exit" unique_id=348453316]
 position = Vector2(-14, 0)
+
+[node name="CameraLimits" type="Node2D" parent="."]
+position = Vector2(-16, 0)
+script = ExtResource("camlim_1")
+size = Vector2(2016, 236)

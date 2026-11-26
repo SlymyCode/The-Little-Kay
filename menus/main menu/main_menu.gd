@@ -10,9 +10,10 @@ extends Control
 @export var settings_menu: Control
 @export var credits_menu: Control
 
+
 func _ready() -> void:
-	play_main_song()
-	new_game_button.grab_focus(true)
+	AudioManager.play_music("title", 6.4)
+	new_game_button.grab_focus_silent()
 
 	new_game_button.pressed.connect(start_game)
 	quit_button.pressed.connect(get_tree().quit)
@@ -20,23 +21,18 @@ func _ready() -> void:
 	_connect_submenu(settings_button, settings_menu)
 	_connect_submenu(credits_button, credits_menu)
 
+
 func start_game() -> void:
-	AudioManager.stop_music()
+	AudioManager.play_level_music()
 	get_tree().change_scene_to_file("res://main.tscn")
 
-func _connect_submenu(button: TextureButton, menu: Control) -> void:
-	menu.hide()
-	button.pressed.connect(_hide_initial_menu.bind(menu))
-	menu.hidden.connect(_show_initial_menu.bind(button))
 
-func _hide_initial_menu (menu: Control) -> void:
-	initial_menu.hide()
-	menu.show()
-
-@warning_ignore("unused_parameter")
-func _show_initial_menu (button: TextureButton) -> void:
-	initial_menu.show()
-	new_game_button.grab_focus(true)
-
-func play_main_song ():
-	AudioManager.play_music("main_loop", 6.4)
+# The button opens the submenu; when the submenu closes, the initial menu comes back.
+func _connect_submenu(button: BaseButton, submenu: Control) -> void:
+	submenu.hide()
+	button.pressed.connect(func():
+		initial_menu.hide()
+		submenu.show())
+	submenu.hidden.connect(func():
+		initial_menu.show()
+		new_game_button.grab_focus_silent())

@@ -1,7 +1,9 @@
 extends State
 
 func enter() -> void:
+	AudioManager.slow_down_music()
 	player.reset_energy()
+	player.clear_boosts()
 	player.can_turn = false
 	player.invincibility_timer = 99.0
 	player.cancel_repair()

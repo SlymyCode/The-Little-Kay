@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b4b0c3rgd2nxj" path="res://entities/enemies/Plant/plant.tscn" id="4_ben3k"]
 [ext_resource type="PackedScene" uid="uid://bxgvskyvq2l36" path="res://entities/enemies/Candle/candle.tscn" id="5_77xid"]
 [ext_resource type="Script" uid="uid://b3sx0nu53ucsr" path="res://levels/exit_level.gd" id="6_m0m22"]
+[ext_resource type="Script" path="res://levels/camera_limits.gd" id="camlim_1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kek77"]
 texture = ExtResource("1_hvgxt")
@@ -314,3 +315,8 @@ metadata/_edit_group_ = true
 [node name="Collision" type="CollisionShape2D" parent="Exit" unique_id=563524199]
 position = Vector2(1927, 52)
 shape = SubResource("CircleShape2D_s275v")
+
+[node name="CameraLimits" type="Node2D" parent="."]
+position = Vector2(-16, 0)
+script = ExtResource("camlim_1")
+size = Vector2(2016, 236)

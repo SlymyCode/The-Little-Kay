@@ -15,6 +15,9 @@ const MIN_PUSH_SPEED := 10.0 # below this the player counts as standing still
 ## Force of the push. The player is pushed away from where he came from.
 @export_range(0, 400, 1, "or_greater") var knockback_strength: float = 120.0
 @export_range(0.0, 1.0, 0.01, "or_greater", "suffix:s") var knockback_time: float = 0.12
+## On: instead of pushing the player, works like a HAZARD fall zone: he loses `damage` hp,
+## the screen blinks black and he goes back to the last checkpoint. Knockback is ignored.
+@export var hazard_respawn := false
 
 @export_group("Array")
 ## How many spikes in a row, counting this one.
@@ -45,6 +48,9 @@ func find_player(zone: Area2D) -> Player:
 func hurt_player() -> void:
 	var player := find_player(self)
 	if player == null or player.is_dying():
+		return
+	if hazard_respawn:
+		player.hazard_hit(damage)
 		return
 	player.apply_knockback(_push_direction(player), knockback_strength, knockback_time)
 	player.receive_damage(damage)

@@ -15,7 +15,9 @@
 [ext_resource type="Shader" uid="uid://cniqo4dxtutaw" path="res://shaders&effects/shine.gdshader" id="12_nmsli"]
 [ext_resource type="PackedScene" uid="uid://c3hldyy1cc65l" path="res://entities/interactables/potions/invulnerabilidad_potion/invulnerabilidad_potion.tscn" id="13_vjtdm"]
 [ext_resource type="PackedScene" uid="uid://3b4gntnjpe1y" path="res://entities/interactables/potions/jump_potion/jump_potion.tscn" id="14_bgw3c"]
+[ext_resource type="PackedScene" uid="uid://bb604anvp6auh" path="res://entities/interactables/potions/coras_potion/coras_potion.tscn" id="15_lrvbd"]
 [ext_resource type="PackedScene" path="res://entities/obstacles/static spikes/static_spikes.tscn" id="15_vjtdm"]
+[ext_resource type="Script" uid="uid://b0ikw216j68jx" path="res://levels/camera_limits.gd" id="camlim_1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kek77"]
 texture = ExtResource("1_0urlm")
@@ -197,7 +199,7 @@ _data = {
 }
 point_count = 8
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bgw3c"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oqlok"]
 resource_local_to_scene = true
 shader = ExtResource("12_nmsli")
 shader_parameter/shine_color = Color(1, 1, 1, 0.2784314)
@@ -327,7 +329,7 @@ rotation = -1.5707964
 position = Vector2(248, 42)
 
 [node name="PlayerSpawn" type="Marker2D" parent="." unique_id=278758741]
-position = Vector2(50, 169)
+position = Vector2(1890, 43)
 
 [node name="Exit" type="Area2D" parent="." unique_id=1478080235]
 position = Vector2(1936, 42)
@@ -355,9 +357,8 @@ mode = 1
 array_count = 20
 
 [node name="SpeedPotion" parent="." unique_id=1242227650 instance=ExtResource("11_aerfg")]
-material = SubResource("ShaderMaterial_bgw3c")
+material = SubResource("ShaderMaterial_oqlok")
 position = Vector2(175, 115)
-multiplier = 5.0
 duration = 10.0
 
 [node name="InmunePotion" parent="." unique_id=5898993 instance=ExtResource("13_vjtdm")]
@@ -393,3 +394,11 @@ distance = 44.0
 wait_time = 0.85
 smoothing = 1.0
 activation = 2
+
+[node name="CorasPotion" parent="." unique_id=2143597859 instance=ExtResource("15_lrvbd")]
+position = Vector2(101, 136)
+
+[node name="CameraLimits" type="Node2D" parent="." unique_id=831376004]
+position = Vector2(-16, 0)
+script = ExtResource("camlim_1")
+size = Vector2(2016, 236)

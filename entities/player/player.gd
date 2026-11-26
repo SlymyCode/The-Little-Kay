@@ -19,11 +19,11 @@ class_name Player
 @export var hit_shake_strength: float = 3.0
 @export var hit_shake_duration: float = 0.25
 
+const POTION_TINT := Color(4.0, 2.0, 0.8) # sprite color while the invincibility potion is active
+const POTION_WARNING_TIME := 1.5 # the blink gets faster when this much time is left
+
 @export_group("Potions")
-@export var speed_multiplier: float = 1.0
-@export var speed_boost_timer: float = 0.0
-@export var jump_multiplier: float = 1.0
-@export var jump_boost_timer: float = 0.0
+@export var max_hp_limit: int = 8 # the heart potion stops adding hearts here (it only heals)
 
 @export_group("Components")
 @export var state_machine: StateMachine
@@ -46,7 +46,20 @@ var last_respawn_pos: Vector2
 var time_repairing: float = 0
 var knockback: Vector2 = Vector2.ZERO
 var knockback_timer: float = 0
-var invincibility_timer: float = 0
+var invincibility_timer: float = 0 # i-frames after a hit, and lock used by the Dead / Hazard / door states
+
+# Potion state (runtime only, not exported)
+var speed_multiplier: float = 1.0
+var speed_boost_timer: float = 0.0
+var jump_multiplier: float = 1.0
+var jump_boost_timer: float = 0.0
+var invincibility_potion_timer: float = 0.0 # its own timer: the states above overwrite invincibility_timer
+# total time of the last potion of each kind: the HUD needs it to draw the time bar
+var speed_boost_total: float = 0.0
+var jump_boost_total: float = 0.0
+var invincibility_potion_total: float = 0.0
+var potion_fx: PotionFx
+var _potion_blink: float = 0.0
 var colliding_with_ceiling: bool = false
 var flash_active: bool = false
 var flash_id: int = 0
@@ -67,6 +80,9 @@ const BUSY_STATES: Array[String] = ["Attack", "Parry", "Knockback", "Dead", "Voi
 const DYING_STATES: Array[String] = ["Dead", "VoidFall", "Hazard", "EnterDoor"]
 
 func _ready() -> void:
+	add_to_group("player") # the HUD finds the player through this group
+	potion_fx = PotionFx.new()
+	add_child(potion_fx)
 	current_hp = max_hp
 	Events.max_health_updated.emit(max_hp)
 	Events.energy_updated.emit(energy)
@@ -80,9 +96,16 @@ func _physics_process(delta: float) -> void:
 		is_first_frame = false
 		move_and_slide()
 		return
-	if !can_move:
-		state_machine.change_state("Idle")
-		velocity = get_gravity() * delta*10
+	_update_invincibility_potion(delta)
+	if !can_move and state_machine.current_state.name == "EnterDoor":
+		velocity = get_gravity() * delta * 10
+		move_and_slide()
+		return
+	elif !can_move:
+		# dying states end on their own, once the screen is covered and the player is moved back
+		if not is_dying():
+			state_machine.change_state("Idle")
+		velocity = get_gravity() * delta * 10
 		move_and_slide()
 		return
 	direction = roundf(Input.get_axis("move_left", "move_right"))
@@ -132,8 +155,8 @@ func disable_movement (time: float) -> void:
 	can_move = true
 
 func jump() -> void:
-	velocity.y = jump_velocity * jump_multiplier 
-	player_sprites.scale = Vector2(0.7, 1.3)
+	velocity.y = jump_velocity * jump_multiplier
+	player_sprites.scale = Vector2(0.6, 1.4) if jump_multiplier > 1.0 else Vector2(0.7, 1.3) # more spring with the potion
 	jumps_performed += 1
 	AudioManager.play_fx("jump_sound", -12, 1, true)
 	player_jump_particles.restart()
@@ -245,10 +268,11 @@ func fall_into_void() -> void:
 func hazard_hit(damage: int) -> void:
 	if is_dying():
 		return
-	current_hp -= damage
-	Events.health_updated.emit(current_hp)
-	Events.camera_shake_requested.emit(hit_shake_strength, hit_shake_duration)
-	apply_flash_fx("full")
+	if invincibility_potion_timer <= 0.0: # with the potion there is no damage, but he still goes back to the checkpoint
+		current_hp -= damage
+		Events.health_updated.emit(current_hp)
+		Events.camera_shake_requested.emit(hit_shake_strength, hit_shake_duration)
+		apply_flash_fx("full")
 	if current_hp > 0:
 		state_machine.change_state("Hazard")
 
@@ -258,7 +282,7 @@ func hit_stop(duration: float) -> void:
 	Engine.time_scale = 1
 
 func receive_damage(damage_dealt: int):
-	if invincibility_timer <= 0:
+	if not is_invulnerable():
 		cancel_repair()
 		invincibility_timer = invincibility_duration
 		Engine.time_scale = 0.0001
@@ -273,7 +297,7 @@ func receive_damage(damage_dealt: int):
 		damage_particles_right.emitting = true
 
 func apply_knockback(knockback_direction: Vector2, force: float, knockback_duration: float):
-	if invincibility_timer <= 0:
+	if not is_invulnerable():
 		knockback = knockback_direction * force
 		knockback_timer = knockback_duration
 		state_machine.change_state("Knockback")
@@ -318,6 +342,7 @@ func _on_detect_ceiling_body_exited(body: Node2D) -> void:
 func apply_speed_boost(multiplier: float, duration: float) -> void:
 	speed_multiplier = multiplier
 	speed_boost_timer = duration
+	speed_boost_total = duration
 
 func _update_speed_boost(delta: float) -> void:
 	if speed_boost_timer > 0.0:
@@ -330,6 +355,7 @@ func _update_speed_boost(delta: float) -> void:
 func apply_jump_boost(multiplier: float, duration: float) -> void:
 	jump_multiplier = multiplier
 	jump_boost_timer = duration
+	jump_boost_total = duration
 
 func _update_jump_boost(delta: float) -> void:
 	if jump_boost_timer > 0.0:
@@ -338,14 +364,48 @@ func _update_jump_boost(delta: float) -> void:
 			jump_multiplier = 1.0
 
 # Inmune Potion Section
-# ARREGLAR
+
+# Invulnerable to damage and knockback: after a hit (invincibility_timer) or with the potion.
+func is_invulnerable() -> bool:
+	return invincibility_timer > 0.0 or invincibility_potion_timer > 0.0
+
+# A second potion refreshes the time, it does not stack.
 func apply_invincibility(duration: float) -> void:
-	invincibility_timer = duration
+	invincibility_potion_timer = maxf(invincibility_potion_timer, duration)
+	invincibility_potion_total = invincibility_potion_timer
+
+func _update_invincibility_potion(delta: float) -> void:
+	if invincibility_potion_timer <= 0.0:
+		return
+	invincibility_potion_timer = maxf(invincibility_potion_timer - delta, 0.0)
+	if invincibility_potion_timer == 0.0:
+		player_sprites.modulate = Color.WHITE
+		return
+	# pulses on the sprite (not on the player), so it does not fight the heal / hit tweens that use self.modulate
+	_potion_blink += delta * (25.0 if invincibility_potion_timer < POTION_WARNING_TIME else 9.0)
+	player_sprites.modulate = Color.WHITE.lerp(POTION_TINT, 0.5 - 0.5 * cos(_potion_blink))
+
+# Ends every potion: used when the player dies.
+func clear_boosts() -> void:
+	speed_multiplier = 1.0
+	speed_boost_timer = 0.0
+	jump_multiplier = 1.0
+	jump_boost_timer = 0.0
+	invincibility_potion_timer = 0.0
+	speed_boost_total = 0.0
+	jump_boost_total = 0.0
+	invincibility_potion_total = 0.0
+	_potion_blink = 0.0
+	player_sprites.modulate = Color.WHITE
+	player_sprites.self_modulate = Color.WHITE
 
 # Corazones Potion Section
 
+# Adds a heart and heals. At max_hp_limit it only heals.
 func apply_heart() -> void:
-	max_hp += 1
+	if max_hp < max_hp_limit:
+		max_hp += 1
+		Events.max_health_updated.emit(max_hp) # first, so the HUD builds the heart before it is filled
 	current_hp = max_hp
-	Events.max_health_updated.emit(max_hp)
 	Events.health_updated.emit(current_hp)
+	potion_fx.heal_burst()

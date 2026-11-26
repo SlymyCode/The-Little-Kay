@@ -1,10 +1,6 @@
 class_name Exit
 extends Area2D
 
-# The player has to press up (W / stick up) in front of the door to use it.
-# Kay has to be at EnterPoint (a Marker2D child) for the key animation to line up with the keyhole:
-# EnterPoint = door position + (-19, +16)
-
 @onready var enter_point: Marker2D = get_node_or_null("EnterPoint")
 
 var can_complete: bool = false

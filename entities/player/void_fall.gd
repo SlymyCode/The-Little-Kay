@@ -4,7 +4,9 @@ extends State
 # and the level restarts from the very start (no checkpoints).
 
 func enter() -> void:
+	AudioManager.slow_down_music()
 	player.reset_energy()
+	player.clear_boosts()
 	player.invincibility_timer = 99.0
 	player.cancel_repair()
 	player.player_animator.play("fall", -1, 1.5)

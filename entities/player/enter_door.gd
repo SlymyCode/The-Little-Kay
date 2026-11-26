@@ -8,6 +8,7 @@ var walking: bool = true
 var time: float = 0.0
 
 func enter() -> void:
+	AudioManager.play_fx("next_level_sound", -14, 1.125)
 	door = player.current_exit
 	walking = true
 	time = 0.0

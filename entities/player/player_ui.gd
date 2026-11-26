@@ -13,8 +13,11 @@ var hearts: Array[Sprite2D]
 var current_health: int
 var energy_tween: Tween
 var energy_frame: int = 0
+var bar_cap_start_x: float # where the cap sits when there is a single heart
 
 func _ready() -> void:
+	bar_cap_start_x = bar_cap.position.x
+	add_child(PotionIndicators.new()) # icons of the active potions
 	Events.max_health_updated.connect(on_max_hp_updated)
 	Events.energy_updated.connect(on_energy_updated)
 	Events.health_updated.connect(on_hp_updated)
@@ -33,33 +36,47 @@ func on_hp_updated(new_health: int):
 
 	current_health = new_health
 
+# Called once at the start and again every time max hp grows (heart potion).
+# It only builds the hearts that are missing, the ones already there are left as they are.
 func on_max_hp_updated(max_hp: int):
 	if max_hp == heart_number:
 		return
 
-	heart_number = max_hp
-	current_health = max_hp
-	heart_sprite.frame = 1
-	hearts.append(heart_sprite)
+	var first_setup: bool = hearts.is_empty()
+	if first_setup:
+		hearts.append(heart_sprite)
+		heart_sprite.frame = 1
 
 	var step: int = heart_container.texture.get_width() + hearts_offset
 
-	for heart in (heart_number - 1):
+	for i in range(hearts.size(), max_hp):
 		var new_heart_container = heart_container.duplicate() as Sprite2D
-		new_heart_container.position.x += step * (heart + 1)
+		new_heart_container.position.x += step * i
 		hp_bar.add_child(new_heart_container)
 
 		var new_heart = heart_sprite.duplicate() as Sprite2D
-		new_heart.position.x += step * (heart + 1)
+		new_heart.position.x += step * i
+		new_heart.modulate = Color.WHITE # the original could be in the middle of a flash
+		new_heart.frame = 1 if first_setup else 0 # a new heart starts empty, on_hp_updated fills it
 		hp_bar.add_child(new_heart)
 
 		hearts.append(new_heart)
 
-	bar_cap.position.x = bar_cap.position.x + bar_piece.texture.get_width() * (heart_number - 1)
+	heart_number = max_hp
+	if first_setup:
+		current_health = max_hp # on growth current_health stays: health_updated animates the filling
+
+	bar_cap.position.x = bar_cap_start_x + bar_piece.texture.get_width() * (heart_number - 1)
 
 func _animate_heart(heart: Sprite2D, new_frame: int, delay: float = 0.0) -> void:
+	# if the same heart is animated again (e.g. damage right after a heal), only the latest one counts
+	var id: int = heart.get_meta("anim_id", 0) + 1
+	heart.set_meta("anim_id", id)
+
 	if delay > 0.0:
 		await get_tree().create_timer(delay).timeout
+		if heart.get_meta("anim_id") != id:
+			return
 
 	heart.frame = 1
 
@@ -68,6 +85,8 @@ func _animate_heart(heart: Sprite2D, new_frame: int, delay: float = 0.0) -> void
 		await get_tree().create_timer(0.08).timeout
 		heart.modulate = Color.WHITE
 		await get_tree().create_timer(0.08).timeout
+		if heart.get_meta("anim_id") != id:
+			return
 
 	heart.frame = new_frame
 

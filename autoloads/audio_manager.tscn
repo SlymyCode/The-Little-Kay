@@ -9,25 +9,45 @@
 [ext_resource type="AudioStream" uid="uid://bvp7f0aa4apr4" path="res://sound_effects/jump.mp3" id="7_jwsh5"]
 [ext_resource type="AudioStream" uid="uid://b08p7jq51ccls" path="res://sound_effects/walk_old.wav" id="8_jwsh5"]
 [ext_resource type="AudioStream" uid="uid://chjunxmctufxs" path="res://sound_effects/checkpoint.mp3" id="9_tp26y"]
-[ext_resource type="AudioStream" uid="uid://c0kors7nbi2g1" path="res://music/Kay Brass.wav" id="10_tp26y"]
-[ext_resource type="AudioStream" uid="uid://beorxwang2tqo" path="res://music/Kay Brass Loop.wav" id="11_0hj8x"]
-[ext_resource type="AudioStream" uid="uid://dmhkjwmcvu2l4" path="res://music/Kay Brass Main Loop.wav" id="12_44o5v"]
+[ext_resource type="AudioStream" uid="uid://dcr7tivhoiuxc" path="res://sound_effects/attack.mp3" id="10_f21h8"]
+[ext_resource type="AudioStream" uid="uid://vxqenmd3rrka" path="res://sound_effects/potion.mp3" id="11_thxvw"]
+[ext_resource type="AudioStream" uid="uid://c1exjfo0v523a" path="res://sound_effects/enterdoornextlevel.mp3" id="11_tw6on"]
+[ext_resource type="AudioStream" uid="uid://by8rxeu2v71uf" path="res://sound_effects/damage.ogg" id="12_d4kwn"]
+[ext_resource type="AudioStream" uid="uid://b1m821x6shqku" path="res://sound_effects/hoverbutton.mp3" id="13_d4kwn"]
+[ext_resource type="AudioStream" uid="uid://bchrj0wsdayik" path="res://sound_effects/clickbutton.mp3" id="14_tw6on"]
+[ext_resource type="AudioStream" uid="uid://dssa7f2bhgq60" path="res://music/Song 1 Levels.wav" id="15_hscw7"]
+[ext_resource type="AudioStream" uid="uid://cg8qjac2kylb4" path="res://sound_effects/pause menu.mp3" id="16_tw6on"]
+[ext_resource type="AudioStream" uid="uid://cyfc7c1v3011t" path="res://music/song 2 levels.wav" id="18_d4kwn"]
+[ext_resource type="AudioStream" uid="uid://dda30q8ets6fc" path="res://music/MainTitleGame.wav" id="20_e70gk"]
 
 [node name="AudioManager" type="Node2D" unique_id=1272728578]
 process_mode = 3
 script = ExtResource("1_alnp1")
 sfx_list = Dictionary[String, AudioStream]({
+"attack_sound": ExtResource("10_f21h8"),
 "checkpoint_sound": ExtResource("9_tp26y"),
+"click_sound": ExtResource("14_tw6on"),
+"damage_sound": ExtResource("12_d4kwn"),
 "fall_sound": ExtResource("2_plitr"),
 "hit_body_sound": ExtResource("3_vovef"),
 "hit_top_sound": ExtResource("4_a4ose"),
+"hover_sound": ExtResource("13_d4kwn"),
 "jump_sound": ExtResource("7_jwsh5"),
+"menu_sound": ExtResource("16_tw6on"),
+"next_level_sound": ExtResource("11_tw6on"),
+"potion_sound": ExtResource("11_thxvw"),
 "regen_finished_sound": ExtResource("6_plitr"),
 "regen_sound": ExtResource("5_plitr"),
 "walk_sound": ExtResource("8_jwsh5")
 })
 music_list = Dictionary[String, AudioStream]({
-"main_loop": ExtResource("12_44o5v"),
-"main_title": ExtResource("10_tp26y"),
-"main_title_loop": ExtResource("11_0hj8x")
+"title": ExtResource("20_e70gk")
 })
+level_music = Dictionary[String, AudioStream]({
+"song_1": ExtResource("15_hscw7"),
+"song_2": ExtResource("18_d4kwn")
+})
+level_music_volume_db = -6.0
+crossfade_time = 1.5
+stop_fade_time = 3.2
+death_pitch = 0.7

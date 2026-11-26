@@ -6,6 +6,7 @@ extends State
 var already_hit: Array[Node] = []
 
 func enter() -> void:
+	AudioManager.play_fx("attack_sound", -18, 1, true)
 	already_hit.clear()
 	player.can_turn = false
 	var facing := -1.0 if player.player_sprites.flip_h else 1.0

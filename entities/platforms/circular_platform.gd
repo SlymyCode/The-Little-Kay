@@ -26,6 +26,12 @@ func _offset_at(time_moving: float) -> Vector2:
 	return (Vector2.from_angle(angle) - Vector2.from_angle(start)) * radius
 
 
+func _loop_time() -> float:
+	if speed <= 0.0:
+		return 0.0
+	return TAU * radius / speed
+
+
 func _draw() -> void:
 	if not Engine.is_editor_hint():
 		return

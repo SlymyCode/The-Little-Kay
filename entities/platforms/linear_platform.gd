@@ -35,6 +35,24 @@ func _offset_at(time_moving: float) -> Vector2:
 	progress = lerpf(progress, smoothstep(0.0, 1.0, progress), smoothing)
 	return direction.normalized() * distance * progress
 
+func _loop_time() -> float:
+	if not return_trip or speed <= 0.0:
+		return 0.0
+	return 2.0 * (distance / speed + wait_time)
+
+func _end_time() -> float:
+	if return_trip or speed <= 0.0:
+		return INF
+	return distance / speed
+
+func _skip_pauses(time_moving: float) -> float:
+	var move_time := distance / speed
+	if time_moving >= 2.0 * move_time + wait_time:
+		return 0.0 # waiting at the start: already home
+	if time_moving > move_time and time_moving < move_time + wait_time:
+		return move_time # waiting at the end: comes back right away
+	return time_moving
+
 func _draw() -> void:
 	if not Engine.is_editor_hint():
 		return

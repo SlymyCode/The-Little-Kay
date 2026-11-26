@@ -1,0 +1,14 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://entities/decor/sprites/bracket_front.png" id="1_bracket"]
+[ext_resource type="PackedScene" uid="uid://bxgvskyvq2l36" path="res://entities/enemies/Candle/candle.tscn" id="2_candle"]
+
+[node name="CandleOnBracket" type="Node2D"]
+
+[node name="Bracket" type="Sprite2D" parent="."]
+position = Vector2(-7, 0)
+texture = ExtResource("1_bracket")
+centered = false
+
+[node name="Candle" parent="." instance=ExtResource("2_candle")]
+position = Vector2(0, -17)

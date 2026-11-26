@@ -1,7 +1,5 @@
 extends Node
 
-signal save_config_notification(save_dict: Dictionary)
-signal load_config_notification(save_dict: Dictionary)
 signal save_game_notification(save_dict: Dictionary)
 signal load_game_notification(save_dict: Dictionary)
 
@@ -10,10 +8,8 @@ const SAVE_GAME_PATH := "user://save_game_file.tlk"
 
 var pending_load := false
 
-func save_config() -> void:
-	var save_dict := {}
-	save_config_notification.emit(save_dict)
-	_write(SAVE_CONFIG_PATH, save_dict)
+func save_config(settings: Dictionary) -> void:
+	_write(SAVE_CONFIG_PATH, settings)
 
 func save_game() -> void:
 	var save_dict := {}
@@ -22,9 +18,8 @@ func save_game() -> void:
 		return
 	_write(SAVE_GAME_PATH, save_dict)
 
-func load_config() -> void:
-	var save_dict := _read(SAVE_CONFIG_PATH)
-	load_config_notification.emit(save_dict)
+func load_config() -> Dictionary:
+	return _read(SAVE_CONFIG_PATH)
 
 func load_game() -> void:
 	var save_dict := _read(SAVE_GAME_PATH)

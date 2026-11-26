@@ -22,6 +22,7 @@ func hit_center() -> Vector2:
 	return global_position
 
 func take_damage(amount: int) -> void:
+	AudioManager.play_fx("damage_sound", -8, 1, true)
 	if dead:
 		return
 	health -= amount

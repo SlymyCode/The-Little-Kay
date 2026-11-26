@@ -1,8 +1,6 @@
 extends CustomButton
 
-func _ready() -> void:
+
+func _on_pressed() -> void:
 	super()
-	pressed.connect(_on_pressed)
-	
-func _on_pressed()->void:
 	SaveManager.save_game()
