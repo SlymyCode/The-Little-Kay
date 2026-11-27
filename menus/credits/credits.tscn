@@ -64,7 +64,7 @@ theme_override_constants/separation = 2
 [node name="Heading" type="Label" parent="Sections/Column1/Arte" unique_id=1875864824]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.6313726, 0.39215687, 0.21960784, 1)
-text = "ARTE"
+text = "Arte"
 
 [node name="Line" type="ColorRect" parent="Sections/Column1/Arte" unique_id=1300156046]
 custom_minimum_size = Vector2(0, 1)
@@ -85,7 +85,7 @@ theme_override_constants/separation = 2
 [node name="Heading" type="Label" parent="Sections/Column1/Programacion" unique_id=797204847]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.6313726, 0.39215687, 0.21960784, 1)
-text = "PROGRAMACIÓN"
+text = "Programación"
 
 [node name="Line" type="ColorRect" parent="Sections/Column1/Programacion" unique_id=732965402]
 custom_minimum_size = Vector2(0, 1)
@@ -112,7 +112,7 @@ theme_override_constants/separation = 2
 [node name="Heading" type="Label" parent="Sections/Column2/GameDesign" unique_id=305698424]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.6313726, 0.39215687, 0.21960784, 1)
-text = "GAME DESIGN"
+text = "Game Design"
 
 [node name="Line" type="ColorRect" parent="Sections/Column2/GameDesign" unique_id=1154553811]
 custom_minimum_size = Vector2(0, 1)
@@ -122,11 +122,11 @@ color = Color(0.7490196, 0.6627451, 0.44705883, 1)
 
 [node name="Names" type="Label" parent="Sections/Column2/GameDesign" unique_id=140053501]
 layout_mode = 2
-text = "Brunella Lucas
-Santiago Arce
+text = "Santiago Arce
+Brunella Lucas
+Facundo Noble
 Mauricio Rodriguez
-Santino Zuasnabar
-Facundo Noble"
+Santino Zuasnabar"
 
 [node name="Audio" type="VBoxContainer" parent="Sections/Column2" unique_id=1196864205]
 layout_mode = 2
@@ -136,7 +136,7 @@ theme_override_constants/separation = 2
 [node name="Heading" type="Label" parent="Sections/Column2/Audio" unique_id=1742799110]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.6313726, 0.39215687, 0.21960784, 1)
-text = "AUDIO"
+text = "Audio"
 
 [node name="Line" type="ColorRect" parent="Sections/Column2/Audio" unique_id=93386392]
 custom_minimum_size = Vector2(0, 1)
